@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterService{
+    
     public function save(Request $request)
     {
         DB::beginTransaction();
@@ -33,6 +34,7 @@ class RegisterService{
         $merchant = new Merchant();
         $merchant->company_id = $data->id;
         $merchant->merchant_name = $data->merchant_name;
+        $merchant->status = 'PENDING';
         $merchant->token = self::token();
         $merchant->api_key_sb = self::generateKey('api_key', 'SB');
         $merchant->cb_key_sb = self::generateKey('cb_key', 'SB');

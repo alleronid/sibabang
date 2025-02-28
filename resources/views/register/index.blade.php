@@ -131,7 +131,7 @@
                                     <div class="form-group">
                                         <label class="text-sm font-weight-bolder text-dark">KTP<span
                                                 class="text-danger">*</span></label>
-                                        <input type="file" class="form-control" placeholder="No Telepon" name="ktp"
+                                        <input type="file" class="form-control" name="file_ktp"
                                             required />
                                     </div>
                                     <div class="form-group">

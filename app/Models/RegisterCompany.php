@@ -22,4 +22,8 @@ class RegisterCompany extends Model
         $id = Crypt::decrypt($id_hash);
         return $id;
     }
+
+    public function merchants(){
+        return $this->hasMany(Merchant::class, 'merchant_id', 'merchant_id');
+    }
 }
