@@ -13,5 +13,5 @@ Route::post('/register-save', [RegisterController::class, 'store'])->name('regis
 Route::get('/check-ktp/{ktp}', [RegisterController::class, 'checkKTP']);
 Route::get('/check-email/{email}', [RegisterController::class, 'checkEmail']);
 
-Route::get('/login', [AuthController::class ,'index'])->name('app.login');
+Route::get('/login', [AuthController::class ,'index'])->name('login');
 Route::post('/login-process', [AuthController::class, 'auth'])->name('login.process');
