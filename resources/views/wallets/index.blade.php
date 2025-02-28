@@ -1,0 +1,42 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h4>List Wallets</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Mechant</th>
+                                <th>Pending Amount</th>
+                                <th>Avail Amount</th>
+                                <th>Total Amount</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$item->merchant_name}}</td>
+                                    <td>Rp. {{$item->pending_balance}}</td>
+                                    <td>Rp. {{$item->avail_balance}}</td>
+                                    <td>Rp. {{$item->total_balance}}</td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-primary" style="float: right;">Request Disbursement</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+

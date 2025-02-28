@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
-use App\Models\Merchant;
-use App\Models\RegisterCompany;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\Wallet;
+use App\Models\Merchant;
 use Illuminate\Http\Request;
+use App\Models\RegisterCompany;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterService{
-    
+
     public function save(Request $request)
     {
         DB::beginTransaction();
@@ -48,6 +49,11 @@ class RegisterService{
         $user->password = Hash::make($data->password);
         $user->save();
 
+        $wallet = new Wallet();
+        $wallet->merchant_name = $data->merchant_name;
+        $wallet->company_id = $data->company_id;
+        $wallet->merchant_id = $data->merchant_id;
+        $wallet->save();
 
         DB::commit();
     }
