@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('merchants', function (Blueprint $table) {
             $table->bigIncrements('merchant_id');
             $table->string('merchant_name');
-            $table->enum('status', ['ACTIVE', 'DEACTIVE', 'PENDING', ''])->default('ACTIVE');
+            $table->enum('status', ['ACTIVE', 'DEACTIVE', 'PENDING', ''])->default('PENDING');
             $table->unsignedBigInteger('vendor_id')->default(1);
             $table->string('token');
             $table->enum('env', ['PRODUCTION', 'SANDBOX'])->default('SANDBOX');

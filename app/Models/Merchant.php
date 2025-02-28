@@ -22,4 +22,8 @@ class Merchant extends Model
         $id = Crypt::decrypt($id_hash);
         return $id;
     }
+
+    public function company(){
+        return $this->belongsTo(RegisterCompany::class, 'company_id', 'company_id');
+    }
 }
