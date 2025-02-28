@@ -14,6 +14,10 @@ class RegisterCompany extends Model
 
     protected $appends = ['id_hash'];
 
+    protected $primaryKey = 'company_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     public function getIdHashAttribute(){
         return Crypt::encrypt($this->id);
     }

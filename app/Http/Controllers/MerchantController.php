@@ -6,6 +6,7 @@ use App\Models\Merchant;
 use App\Services\MerchantService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class MerchantController extends Controller
 {
@@ -34,9 +35,23 @@ class MerchantController extends Controller
         }
     }
 
+    public function update(Request $request){
+        try{
+            $this->merchantService->edit($request);
+            return response()->json([
+                'message' => 'success update merchant'
+            ]);
+        }catch (\Exception $e){
+            dd($e);
+           return response()->json([
+            'message' => 'error update merchant'
+           ]);
+        }
+    }
+
     public function getMerchant($id)
     {
-        $data = Merchant::find($id);
+        $data = Merchant::with(['vendor', 'company'])->where('merchant_id', $id)->first();
         return response()->json($data);
     }
 }

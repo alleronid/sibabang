@@ -14,8 +14,12 @@ class Merchant extends Model
 
     protected $appends = ['id_hash'];
 
+    protected $primaryKey = 'merchant_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
     public function getIdHashAttribute(){
-        return Crypt::encrypt($this->id);
+        return Crypt::encrypt($this->merchant_id);
     }
 
     public function scopeDecrypt($query, $id_hash){
@@ -25,5 +29,9 @@ class Merchant extends Model
 
     public function company(){
         return $this->belongsTo(RegisterCompany::class, 'company_id', 'company_id');
+    }
+
+    public function vendor(){
+        return $this->belongsTo(MtVendor::class, 'vendor_id', 'id');
     }
 }
