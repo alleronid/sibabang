@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayEase - Solusi Pembayaran Modern</title>
+    <title>sibabang - Solusi Pembayaran Modern</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -24,7 +24,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <span class="text-indigo-600 text-xl font-bold">Pay<span class="text-purple-600">Ease</span></span>
+                        <span class="text-indigo-600 text-xl font-bold">SI<span class="text-purple-600">BABANG</span></span>
                     </div>
                     <div class="hidden md:ml-6 md:flex md:space-x-8">
                         <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center">
-                    <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                    <a href="{{route('app.login')}}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                         Masuk
                     </a>
                     <a href="#" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
@@ -107,7 +107,7 @@
                             Solusi Pembayaran <span class="text-indigo-600">Modern</span> untuk Bisnis Anda
                         </h1>
                         <p class="mt-6 text-xl text-gray-500">
-                            PayEase memudahkan proses pembayaran digital dengan aman, cepat, dan terpercaya. Tingkatkan konversi penjualan dengan solusi pembayaran terbaik.
+                            sibabang memudahkan proses pembayaran digital dengan aman, cepat, dan terpercaya. Tingkatkan konversi penjualan dengan solusi pembayaran terbaik.
                         </p>
                         <div class="mt-8 flex flex-col sm:flex-row">
                             <div class="inline-flex rounded-md shadow">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
                     <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <img src="/api/placeholder/600/400" alt="App dashboard" class="w-full rounded-lg">
+                        <img src="{{asset('/assets/payment.png')}}" alt="App dashboard" class="w-full rounded-lg">
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@
                             <div class="block mt-2">
                                 <p class="text-xl font-semibold text-gray-900">Tingkat Konversi Meningkat</p>
                                 <p class="mt-3 text-base text-gray-500">
-                                    "Sejak menggunakan PayEase, tingkat konversi toko online kami meningkat 35%. Checkout yang lebih cepat dan banyak pilihan pembayaran sangat membantu."
+                                    "Sejak menggunakan sibabang, tingkat konversi toko online kami meningkat 35%. Checkout yang lebih cepat dan banyak pilihan pembayaran sangat membantu."
                                 </p>
                             </div>
                         </div>
@@ -448,7 +448,7 @@
                             <div class="block mt-2">
                                 <p class="text-xl font-semibold text-gray-900">Keamanan Terjamin</p>
                                 <p class="mt-3 text-base text-gray-500">
-                                    "Keamanan adalah prioritas utama untuk bisnis kami. Dengan PayEase, kami merasa nyaman dan pelanggan kami juga merasa aman dengan sistem pembayaran yang terpercaya."
+                                    "Keamanan adalah prioritas utama untuk bisnis kami. Dengan sibabang, kami merasa nyaman dan pelanggan kami juga merasa aman dengan sistem pembayaran yang terpercaya."
                                 </p>
                             </div>
                         </div>
@@ -483,7 +483,7 @@
                     Siap Tingkatkan Bisnis Anda?
                 </p>
                 <p class="mt-4 max-w-2xl text-xl text-indigo-200 lg:mx-auto">
-                    Bergabunglah dengan ribuan bisnis yang telah menggunakan PayEase
+                    Bergabunglah dengan ribuan bisnis yang telah menggunakan sibabang
                 </p>
                 <div class="mt-8 flex justify-center">
                     <div class="inline-flex rounded-md shadow">
