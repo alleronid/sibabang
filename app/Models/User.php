@@ -52,4 +52,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function role(){
+        return $this->hasOne(MtRole::class, 'id', 'role_id');
+    }
 }
