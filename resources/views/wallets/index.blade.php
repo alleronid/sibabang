@@ -28,7 +28,7 @@
                                     <td>Rp. {{$item->avail_balance}}</td>
                                     <td>Rp. {{$item->total_balance}}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-primary" style="float: right;">Request Disbursement</a>
+                                        <a href="{{route('wallet.disbursement')}}" class="btn btn-sm btn-primary" style="float: right;">Request Disbursement</a>
                                     </td>
                                 </tr>
                             @endforeach

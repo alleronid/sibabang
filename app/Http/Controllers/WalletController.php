@@ -13,4 +13,8 @@ class WalletController extends Controller
         $data = Wallet::where('company_id', Auth::user()->company_id)->get();
         return view('wallets.index', compact('data'));
     }
+
+    public function createDisbursement(){
+        return view('wallets.disbursement');
+    }
 }

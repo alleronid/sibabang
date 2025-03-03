@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
 
     Route::group(['prefix' => 'wallet', 'as' => 'wallet.'], function(){
         Route::get('/', [WalletController::class, 'index'])->name('index');
+        Route::get('/disbursement', [WalletController::class, 'createDisbursement'])->name('disbursement');
     });
 
 });
