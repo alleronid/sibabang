@@ -12,7 +12,7 @@ use App\Http\Controllers\WalletController;
 use App\Models\Merchant;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'merchant'])->name('dashboard.merchant');
+    Route::get('/dashboard', [DashboardController::class, 'merchant'])->name('dashboard');
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function(){
         Route::get('/', [TransactionController::class, 'index'])->name('index');

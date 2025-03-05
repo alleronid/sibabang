@@ -9,4 +9,7 @@ class DashboardController extends Controller
     public function merchant(){
         return view('dashboard.merchant');
     }
+    public function admin(){
+        return view('dashboard.admin');
+    }
 }

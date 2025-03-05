@@ -28,9 +28,9 @@ class AuthController extends Controller
             if(Auth::attempt($login)){
                 $user = Auth::user();
                 if($user->role->role_name === 'admin'){
-                    return redirect(route('dashboard.admin'))->with('toast_success', 'Login Success');
+                    return redirect(route('admin.dashboard'))->with('toast_success', 'Login Success');
                 }else{
-                    return redirect(route('dashboard.merchant'))->with('toast_success', 'Login Success');
+                    return redirect(route('dashboard'))->with('toast_success', 'Login Success');
                 }
             }else{
                 return redirect(route('login'))->with('toast_error', 'Login Failed  / Email or Password is incorrect');

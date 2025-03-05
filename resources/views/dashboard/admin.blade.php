@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Dashboard</h1>
+    <h1>Admin Dashboard</h1>
     <div class="row">
         <div class="col-md-3">
             <div class="card card-custom">

@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Models\User;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+        Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+
         Route::group(['prefix' => 'user', 'as' => 'user.'], function(){
             Route::get('/', [UserController::class, 'index_admin'])->name('index');
             Route::get('/create', [UserController::class, 'create_admin'])->name('create');
