@@ -1,0 +1,84 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <!-- begin::Card-->
+    <div class="card card-custom overflow-hidden">
+        <div class="card-body p-0">
+            <!-- begin: Invoice-->
+            <!-- begin: Invoice header-->
+            <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style="background-image: url({{asset('assets/media/bg/bg-6.jpg')}});">
+                <div class="col-md-9">
+                    <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
+                        <h1 class="display-4 text-white font-weight-boldest mb-10">INVOICE</h1>
+
+                        <!-- New QRIS Barcode Section -->
+                        <div class="text-center mb-5">
+                            {{-- {!! QrCode::size(150)->generate($qrisData) !!} --}}
+                            <img src="" alt="">
+                        </div>
+
+                        <div class="d-flex flex-column align-items-md-end px-0">
+                            <!--begin::Logo-->
+                            <h4 class="text-white">MERCHANT NAME</h4>
+                            <!--end::Logo-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: Invoice header-->
+
+            <!-- Rest of the invoice template remains the same -->
+            <!-- begin: Invoice footer-->
+            <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0">
+                <div class="col-md-9">
+                    <div class="d-flex justify-content-between flex-column flex-md-row font-size-lg">
+                        <div class="d-flex flex-column mb-10 mb-md-0">
+                            <div class="font-weight-bolder font-size-lg mb-3">QRIS</div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="mr-15 font-weight-bold">Tanggal Transaksi :</span>
+                                <span class="text-right">{{$data->created_at}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="mr-15 font-weight-bold">Nomor Transaksi :</span>
+                                <span class="text-right">{{$data->trx_id}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="mr-15 font-weight-bold">Fullname :</span>
+                                <span class="text-right">{{$data->fullname}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="mr-15 font-weight-bold">Email :</span>
+                                <span class="text-right">{{$data->email}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="mr-15 font-weight-bold">Phone Number :</span>
+                                <span class="text-right">{{$data->phone_number}}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column text-md-right">
+                            <span class="font-size-lg font-weight-bolder mb-1">TOTAL PAYMENT</span>
+                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">Rp. {{number_format($data->amount, 0, ',', '.')}}</span>
+                            <span>Taxes Included</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: Invoice footer-->
+
+            <!-- begin: Invoice action-->
+            <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+                <div class="col-md-9">
+                    <div class="d-flex justify-content-between">
+                        {{-- <button type="button" class="btn btn-light-primary font-weight-bold" onclick="window.print();">Download Invoice</button> --}}
+                        {{-- <button type="button" class="btn btn-primary font-weight-bold" onclick="window.print();">Print Invoice</button> --}}
+                    </div>
+                </div>
+            </div>
+            <!-- end: Invoice action-->
+            <!-- end: Invoice-->
+        </div>
+    </div>
+    <!-- end::Card-->
+</div>
+@endsection

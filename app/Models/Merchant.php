@@ -34,4 +34,8 @@ class Merchant extends Model
     public function vendor(){
         return $this->belongsTo(MtVendor::class, 'vendor_id', 'id');
     }
+
+    public function payment(){
+        return $this->hasOne(MerchantPayment::class, 'merchant_id', 'merchant_id');
+    }
 }

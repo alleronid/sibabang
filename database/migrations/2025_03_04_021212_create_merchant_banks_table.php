@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trx_disbursements', function (Blueprint $table) {
+        Schema::create('merchant_banks', function (Blueprint $table) {
             $table->id();
-            $table->string('no_trx');
-            $table->unsignedInteger('merchant_bank');
-            $table->decimal('nominal');
-            $table->enum('status', ['PENDING', 'SUCCESS', 'CANCEL'])->default('PENDING');
+            $table->unsignedBigInteger('bank_id');
+            $table->string('bank_name');
+            $table->string('account_name');
+            $table->string('account_number');
+            $table->boolean('is_active')->default(0);
+            $table->date('approved_date')->nullable();
+            $table->unsignedBigInteger('approved_by')->nullable();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('merchant_id');
-            $table->unsignedBigInteger('approved_by')->nullable();
-            $table->date('proccess_date')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trx_disbursements');
+        Schema::dropIfExists('merchant_banks');
     }
 };

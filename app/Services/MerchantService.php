@@ -6,6 +6,7 @@ use App\Models\Merchant;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MerchantService{
 
@@ -18,6 +19,7 @@ class MerchantService{
 
     public function save(Request $request)
     {
+        DB::beginTransaction();
         $data  = new Merchant();
         $data->company_id = Auth::user()->company_id;
         $data->merchant_name = $request->merchant_name;
@@ -32,9 +34,12 @@ class MerchantService{
         $wallet->company_id = $data->company_id;
         $wallet->merchant_id = $data->merchant_id;
         $wallet->save();
+
+        DB::commit();
     }
 
     public function edit(Request $request){
+        DB::beginTransaction();
         $data = Merchant::where('merchant_id', $request->merchant_id)->first();
         $data->merchant_name = $request->merchant_name;
         $data->status = $request->status;
@@ -43,5 +48,6 @@ class MerchantService{
         $wallet = Wallet::where('merchant_id', $data->merchant_id)->first();
         $wallet->merchant_name = $data->merchant_name;
         $wallet->save();
+        DB::commit();
     }
 }

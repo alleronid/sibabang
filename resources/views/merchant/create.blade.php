@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="font-weight">Form Role</h5>
+            <h5 class="font-weight">Merchant</h5>
         </div>
         <div class="card-body">
             <form action="{{route('merchant.save')}}" method="POST">
