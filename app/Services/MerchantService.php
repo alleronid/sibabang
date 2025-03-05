@@ -16,6 +16,21 @@ class MerchantService{
         $this->utilityService = $utilityService;
     }
 
+    public function find($id)
+    {
+        $data = Merchant::where(['merchant_id' => $id])->first();
+        return $data;
+    }
+
+    public function all($request = array())
+    {
+        $data = Merchant::query();
+        if($request){
+            $data->where($request);
+        }
+        return $data->get();
+    }
+
     public function save(Request $request)
     {
         $data  = new Merchant();
