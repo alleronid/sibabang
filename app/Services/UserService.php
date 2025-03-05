@@ -28,7 +28,7 @@ class UserService{
         $user->save();
     }
 
-    public function edit(Request $request)
+    public function update(Request $request)
     {
         $user = User::find($request->user_id);
 
@@ -47,18 +47,4 @@ class UserService{
 
     }
 
-    public function updated(Request $request)
-    {
-        DB::beginTransaction();
-
-        $data = User::find($request->id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->password = Hash::make($request->password);
-        $data->merchant_id = $request->merchant_id;
-        $data->company_id = Auth::user()->company_id;
-        $data->save();
-
-        DB::commit();
-    }
 }
