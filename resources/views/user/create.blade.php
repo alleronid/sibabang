@@ -7,7 +7,7 @@
                 <h5 class="font-weight">Form User</h5>
             </div>
             <div class="card-body">
-                <form action="{{route('user.save')}}" method="POST">
+                <form action="{{route('admin.user.save')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label class="control-label">Nama</label>

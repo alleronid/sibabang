@@ -5,7 +5,7 @@
         <h2>User</h2>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">
+                <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary">
                     <i class="flaticon-plus"></i>
                     Tambah User
                 </a>
@@ -169,7 +169,7 @@
             var status  = $('#statusEdit').val()
 
             $.ajax({
-                url: "{{route('user.update')}}",
+                url: "{{route('admin.user.update')}}",
                 type: "POST",
                 data: {
                     id : id,

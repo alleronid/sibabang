@@ -21,6 +21,7 @@ class UserController extends Controller
         $this->merchantService = $merchantService;
     }
 
+    // admin menu
     public function index_admin(Request $request){
         $data = User::with(['role','merchant','company'])->where('company_id', Auth::user()->company_id)->get();
         return view('user.index', compact('data'));
@@ -36,12 +37,28 @@ class UserController extends Controller
     {
         try{
             $this->userService->save($request);
-            return redirect(route('user.index'))->with('toast_success', 'Create User Successfully');
+            return redirect(route('admin.user.index'))->with('toast_success', 'Create User Successfully');
         }catch (\Exception $e){
-            return redirect(route('user.index'))->with('toast_error', 'Create User Failed');
+            dd($e->getMessage());
+            return redirect(route('admin.user.index'))->with('toast_error', 'Create User Failed');
         }
     }
 
+    public function update_admin(Request $request){
+        try{
+            $this->userService->update($request);
+            return response()->json([
+                'message' => 'success update user'
+            ]);
+        }catch (\Exception $e){
+            dd($e);
+            return response()->json([
+                'message' => 'error update user'
+            ]);
+        }
+    }
+
+    // merchants menu
     public function index()
     {
         $data = User::where('company_id', Auth::user()->company_id)->get();
@@ -54,19 +71,6 @@ class UserController extends Controller
         return view('users.create', compact('merchant', 'roles'));
     }
 
-    public function update_admin(Request $request){
-        try{
-            $this->userService->edit($request);
-            return response()->json([
-                'message' => 'success update user'
-            ]);
-        }catch (\Exception $e){
-            dd($e);
-            return response()->json([
-                'message' => 'error update user'
-            ]);
-        }
-    }
 
     public function getUser($id)
     {
@@ -94,7 +98,7 @@ class UserController extends Controller
 
     public function update(Request $request){
         try{
-            $this->userService->updated($request);
+            $this->userService->update($request);
             return redirect(route('user.index'))->with('toast_success', 'Update User Successfully');
         }catch (\Exception $e){
             return redirect(route('user.index'))->with('toast_error', 'Update User Failed');

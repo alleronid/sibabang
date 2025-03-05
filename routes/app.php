@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
         Route::post('/store', [UserController::class, 'store'])->name('save');
         Route::get('/edit/{idHash}', [UserController::class, 'edit'])->name('edit');
         Route::post('/update', [UserController::class, 'update'])->name('update');
+        Route::get('/show/{id}', [UserController::class, 'getUser'])->name('getUser');
     });
 
 });
