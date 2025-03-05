@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
 
 class User extends Authenticatable
 {
@@ -13,6 +14,17 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $guarded = [];
+
+    protected $appends = ['id_hash'];
+
+    public function getIdHashAttribute(){
+        return Crypt::encrypt($this->id);
+    }
+
+    public function scopeDecrypt($query, $id_hash){
+        $id = Crypt::decrypt($id_hash);
+        return $id;
+    }
 
     /**
      * The attributes that are mass assignable.

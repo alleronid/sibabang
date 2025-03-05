@@ -42,7 +42,6 @@ class MerchantController extends Controller
                 'message' => 'success update merchant'
             ]);
         }catch (\Exception $e){
-            dd($e);
            return response()->json([
             'message' => 'error update merchant'
            ]);
