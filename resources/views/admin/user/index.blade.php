@@ -172,7 +172,7 @@
                 url: "{{route('admin.user.update')}}",
                 type: "POST",
                 data: {
-                    id : id,
+                    user_id : id,
                     name: name,
                     status : status,
                     _token: "{{ csrf_token() }}"
@@ -185,6 +185,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    location.reload()
                 },
             })
         })
