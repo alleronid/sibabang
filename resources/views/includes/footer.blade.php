@@ -39,18 +39,10 @@
                             <span class="navi-text text-muted text-hover-primary"></span>
                         </span>
                     </a>
-                    @if (Auth::user()->username ?? '')
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</button>
                     </form>
-                    @else
-                    {{-- <form action="{{route('logout.merchant')}}" method="POST"> --}}
-                    </form>
-                        @csrf
-                        <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</button>
-                    </form>
-                    @endif
                 </div>
             </div>
         </div>
