@@ -37,4 +37,10 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function logout(Request $request){
+        session()->flush();
+        Auth::logout();
+        return redirect(route('index'))->with('toast_success', 'Successfully logged out !');
+    }
 }
