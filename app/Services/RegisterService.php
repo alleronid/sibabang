@@ -33,7 +33,7 @@ class RegisterService{
         $data->save();
 
         $merchant = new Merchant();
-        $merchant->company_id = $data->id;
+        $merchant->company_id = $data->company_id;
         $merchant->merchant_name = $data->merchant_name;
         $merchant->status = 'PENDING';
         $merchant->token = self::token();
@@ -45,14 +45,14 @@ class RegisterService{
         $user->name = $data->fullname;
         $user->email = $data->email;
         $user->merchant_id = $merchant->merchant_id;
-        $user->company_id = $data->id;
+        $user->company_id = $data->company_id;
         $user->password = Hash::make($data->password);
         $user->save();
 
         $wallet = new Wallet();
-        $wallet->merchant_name = $data->merchant_name;
+        $wallet->merchant_name = $merchant->merchant_name;
         $wallet->company_id = $data->company_id;
-        $wallet->merchant_id = $data->merchant_id;
+        $wallet->merchant_id = $merchant->merchant_id;
         $wallet->save();
 
         DB::commit();

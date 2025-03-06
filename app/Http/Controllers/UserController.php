@@ -23,14 +23,14 @@ class UserController extends Controller
 
     // admin menu
     public function index_admin(Request $request){
-        $data = User::with(['role','merchant','company'])->where('company_id', Auth::user()->company_id)->get();
-        return view('user.index', compact('data'));
+        $data = User::with(['role','merchant','company'])->get();
+        return view('admin.user.index', compact('data'));
     }
 
     public function create_admin(){
         $roles = MtRole::get();
         $merchants = $this->merchantService->all();
-        return view('user.create', compact('roles', 'merchants'));
+        return view('admin.user.create', compact('roles', 'merchants'));
     }
 
     public function store_admin(Request $request)

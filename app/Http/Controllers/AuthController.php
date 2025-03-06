@@ -24,7 +24,7 @@ class AuthController extends Controller
         if ($validators->fails()) {
             return redirect(route('login'))->with('toast_error', 'Login Failed');
         }else{
-            $login = ['email' => $request->email, 'password' => $request->password];
+            $login = ['email' => $request->email, 'password' => $request->password, 'status' => 'ACTIVE'];
             if(Auth::attempt($login)){
                 $user = Auth::user();
                 if($user->role->role_name === 'admin'){

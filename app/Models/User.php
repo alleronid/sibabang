@@ -65,6 +65,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function isAdmin(){
+        return strtoupper($this->role->role_name) == 'ADMIN';
+    }
+
     public function role(){
         return $this->hasOne(MtRole::class, 'id', 'role_id');
     }

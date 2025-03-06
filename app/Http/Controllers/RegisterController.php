@@ -27,9 +27,8 @@ class RegisterController extends Controller
             $this->registerService->save($request);
             return redirect('/')->with('success', 'Pendaftaran berhasil silakan login');
         }catch (\Exception $e) {
-            dd($e);
-            return redirect(route('register'))->with('error', 'Pendaftaran gagal silakan coba lagi');
             DB::rollBack();
+            return redirect(route('register'))->with('error', 'Pendaftaran gagal silakan coba lagi');
         }
     }
 
