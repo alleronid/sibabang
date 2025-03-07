@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="font-weight">Merchant</h5>
+            <h5 class="font-weight">Add Merchant</h5>
         </div>
         <div class="card-body">
             <form action="{{route('merchant.save')}}" method="POST">
@@ -12,7 +12,13 @@
                 <div class="form-group">
                     <label class="control-label">Perusahaan</label>
                     <select name="company_id" class="form-control">
-                        <option value="{{Auth::user()->company_id}}">{{Auth::user()->company_id}}</option>
+                        @if(Auth::user()->isAdmin())
+                            @foreach($companies as $company)
+                                <option value="{{ $company->company_id }}">{{$company->merchant_name}}</option>
+                            @endforeach
+                        @else
+                            <option value="{{Auth::user()->company_id}}">{{Auth::user()->company->merchant_name}}</option>
+                        @endif
                     </select>
                 </div>
                 <div class="form-group">

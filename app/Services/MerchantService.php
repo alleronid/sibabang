@@ -19,13 +19,25 @@ class MerchantService{
 
     public function find($id)
     {
-        $data = Merchant::where(['merchant_id' => $id])->first();
+        $data = Merchant::with(['company'])->where(['merchant_id' => $id])->first();
         return $data;
     }
 
     public function all($request = array())
     {
-        $data = Merchant::query();
+        $data = Merchant::with(['company']);
+        if($request){
+            $data->where($request);
+        }
+        return $data->get();
+    }
+
+    public function allByCompany($company_id = null, $request = array())
+    {
+        $company_id = $company_id ?? Auth::user()->company_id;
+
+        $data = Merchant::with(['company'])->where('company_id', $company_id);
+
         if($request){
             $data->where($request);
         }

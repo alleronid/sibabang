@@ -21,7 +21,7 @@ class TransactionService{
         $data->email = $request->email ?? self::generateRandomEmail($name);
         $data->phone_number = $request->phone_number ?? self::generatePhoneNumber();
         $data->merchant_id = $request->merchant_id;
-        $data->company_id = Auth::user()->company_id;
+        $data->company_id = $request->company_id ?? Auth::user()->company_id;
         $data->save();
         DB::commit();
     }

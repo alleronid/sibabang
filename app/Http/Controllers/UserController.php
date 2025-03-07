@@ -10,6 +10,7 @@ use App\Models\Merchant;
 use App\Models\MtRole;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -51,7 +52,7 @@ class UserController extends Controller
                 'message' => 'success update user'
             ]);
         }catch (\Exception $e){
-            dd($e);
+            DB::rollBack();
             return response()->json([
                 'message' => 'error update user'
             ]);

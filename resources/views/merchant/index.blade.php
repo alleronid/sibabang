@@ -2,12 +2,31 @@
 
 @section('content')
     <div class="container">
+        <h1>List Merchants</h1>
+
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <a href="{{ route('merchant.create') }}" class="btn btn-sm btn-primary">
-                    <i class="flaticon-plus"></i>
-                    Tambah Merchant
-                </a>
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+
+            @if(Auth::user()->isAdmin())
+                <div class="row">
+                    <div class="form-group">
+                        <label for="filterCompany">Filter by Company:</label>
+                        <select id="filterCompany" class="form-control">
+                            <option value="">All Companies</option>
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->company_id }}">{{ $company->merchant_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @endif
+
+                <div class="text-right">
+                    <a href="{{ route('merchant.create') }}" class="btn btn-sm btn-primary mb-3">
+                        <i class="flaticon-plus"></i>
+                        Add Merchant
+                    </a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -146,6 +165,20 @@
 
 @push('addon-script')
     <script>
+        $(document).ready(function() {
+            var table = $('#dataTable').DataTable();
+            var isAdmin = @json(Auth::user()->isAdmin());
+
+            if (isAdmin){
+                // Filter based on company
+                $('#filterCompany').change(function() {
+                    var selectedCompany = $('#filterCompany :selected').text();
+                    console.log(selectedCompany)
+
+                    table.column(1).search(selectedCompany != 'All Companies' ? '^' + selectedCompany + '$' : '', true, false).draw();
+                });
+            }
+        });
         function getMerchant(id) {
             $.get('/app/merchant/show/' + id, function(data) {
                 console.log(data);
