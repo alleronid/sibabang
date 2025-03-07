@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Merchant;
 use App\Models\TrxPayment;
 use App\Models\Wallet;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -22,7 +24,15 @@ class DashboardController extends Controller
     public function getDetailWallet($merchantId)
     {
         $wallet = Wallet::where('merchant_id', $merchantId)->first();
-        return response()->json($wallet);
+        $thisMonth = DB::table('trx_payments')
+        ->where('company_id', Auth::user()->company_id)
+        ->where('created_at', '>=', Carbon::now()->subMonth())
+        ->where('status', 'PAID')
+        ->sum('amount');
+        return response()->json([
+            'wallet' => $wallet,
+            'thisMonth' => $thisMonth
+        ]);
     }
 
     public function admin(){
