@@ -9,13 +9,13 @@
             <!-- begin: Invoice header-->
             <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style="background-image: url({{asset('assets/media/bg/bg-6.jpg')}});">
                 <div class="col-md-9">
-                    <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
+                    <div class="d-flex justify-content-between flex-column flex-md-row">
                         <h1 class="display-4 text-white font-weight-boldest mb-10">INVOICE</h1>
 
                         <!-- New QRIS Barcode Section -->
-                        <div class="text-center mb-5">
-                            {{-- {!! QrCode::size(150)->generate($qrisData) !!} --}}
-                            <img src="" alt="">
+                        <div class="text-center">
+                            <h4 class="text-white">SCAN THIS QRIS</h4>
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=00020101021226740025ID.CO.BANKNEOCOMMERCE.WWW011893600490800004640302120005001326890303UBE51550025ID.CO.BANKNEOCOMMERCE.WWW0215ID20253709970120303UBE5204581853033605405201805802ID5909Codequest6009TANGERANG6105158106233012230018898907301071216650703A01630480D6&size=200x200" alt="">
                         </div>
 
                         <div class="d-flex flex-column align-items-md-end px-0">
