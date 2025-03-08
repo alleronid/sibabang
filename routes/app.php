@@ -1,19 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MerchantBankController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\MerchantPaymentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
-use App\Models\Merchant;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
     Route::get('/dashboard', [DashboardController::class, 'merchant'])->name('dashboard');
     Route::get('/detail-wallet/{mId}', [DashboardController::class, 'getDetailWallet'])->name('dashboard.wallet');
+
+    Route::group(['prefix'=> 'company', 'as' => 'company.'], function(){
+        Route::get('/', [CompanyController::class, 'index'])->name('index');
+        Route::post('/update-personal', [CompanyController::class, 'personalData'])->name('update.personal');
+        Route::get('/get-kota/{id}', [CompanyController::class, 'getCity'])->name('get.city');
+        Route::get('/get-kecamatan/{id}', [CompanyController::class, 'getDistrict'])->name('get.district');
+        Route::get('/get-kelurahan/{id}', [CompanyController::class, 'getSubdistrict'])->name('get.subdistrict');
+    });
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function(){
         Route::get('/', [TransactionController::class, 'index'])->name('index');
