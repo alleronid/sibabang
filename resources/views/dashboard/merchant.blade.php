@@ -22,7 +22,7 @@
                     <div class="mt-2 d-flex align-items-center">
                         <span class="badge badge-pill py-1 px-2 mr-2"
                             style="background-color: rgba(255,255,255,0.1); font-size: 12px;">
-                            <span style="color: #4ade80;">+$2,904</span>
+                            <span style="color: #4ade80;" id="thisMonth"></span>
                         </span>
                         <span class="text-white-50" style="font-size: 13px;">this month</span>
                     </div>
@@ -233,7 +233,8 @@
                     url: '/app/detail-wallet/' + merchantId,
                     method: 'GET',
                     success: function(response) {
-                        $('#TotalBalance').text('$' + response.avail_balance);
+                        $('#TotalBalance').text('Rp. ' + response.wallet.avail_balance);
+                        $('#thisMonth').text('Rp. ' + response.thisMonth);
 
                     },
                     error: function(error) {
