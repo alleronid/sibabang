@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
     Route::get('/detail-wallet/{mId}', [DashboardController::class, 'getDetailWallet'])->name('dashboard.wallet');
 
     Route::group(['prefix'=> 'company', 'as' => 'company.'], function(){
-        Route::get('/', [CompanyController::class, 'index'])->name('index');
+        Route::get('/', [CompanyController::class, 'index_profile'])->name('index');
         Route::post('/update-personal', [CompanyController::class, 'personalData'])->name('update.personal');
         Route::post('/update-company', [CompanyController::class, 'companyData'])->name('update.company');
         Route::get('/get-kota/{id}', [CompanyController::class, 'getCity'])->name('get.city');

@@ -9,20 +9,24 @@ use App\Models\MtProvince;
 use App\Models\MtSubDistrict;
 use App\Models\RegisterCompany;
 use App\Services\CompanyService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\RegisterService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CompanyController extends Controller
 {
 
-    private $companyService;
+    private $companyService, $registerService;
 
-    public function __construct(CompanyService $companyService)
+    public function __construct(CompanyService $companyService, RegisterService $registerService)
     {
         $this->companyService = $companyService;
+        $this->registerService = $registerService;
     }
 
-    public function index(){
+    public function index_profile(){
         $data = RegisterCompany::where('company_id', Auth::user()->company_id)->first();
         $province = MtProvince::all();
         $detail = DetailCompany::with(['propinsi', 'kota_kabupaten', 'kecamatan', 'desa_kelurahan'])
@@ -61,4 +65,42 @@ class CompanyController extends Controller
         $data = MtSubDistrict::where('kode_kecamatan', $id)->get();
         return response()->json($data);
     }
+
+    public function index(){
+        $companies = Company::get();
+        return view('admin.company.index', compact('companies'));
+    }
+
+    public function update(Request $request){
+        try{
+            $this->registerService->update($request);
+            return response()->json([
+                'message' => 'success update user'
+            ]);
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response()->json([
+                'message' => 'error update user'
+            ]);
+        }
+    }
+
+    public function getCompany($id)
+    {
+        $data = Company::where('company_id', $id)->first();
+        return response()->json($data);
+    }
+
+    public function checkKTP($ktp)
+    {
+        $exists = Company::where('nationality_id', $ktp)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
+        return response()->json(['exists' => $exists]);
+    }
+
+    public function checkEmail($email)
+    {
+        $exists = Company::where('email', $email)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
+        return response()->json(['exists' => $exists]);
+    }
+
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CompanyController;
 use App\Models\User;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
@@ -15,6 +16,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
             Route::get('/create', [UserController::class, 'create_admin'])->name('create');
             Route::post('/save', [UserController::class, 'store_admin'])->name('save');
             Route::post('/update', [UserController::class, 'update_admin'])->name('update');
+        });
+
+        Route::group(['prefix' => 'company', 'as' => 'company.'], function(){
+            Route::get('/', [CompanyController::class, 'index'])->name('index');
+            Route::post('/update', [CompanyController::class, 'update'])->name('update');
+            Route::get('/show/{id}', [CompanyController::class, 'getCompany'])->name('getCompany');
         });
     });
 });

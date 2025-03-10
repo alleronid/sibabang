@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="font-weight">Merchant</h5>
+            <h5 class="font-weight">Add Transaction</h5>
         </div>
         <div class="card-body">
             <form action="{{route('transaction.save')}}" method="POST">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Jumlah</label>
-                            <input type="text" class="form-control" name="amount" placeholder="Masukan Nama Merchant" required/>
+                            <input type="text" class="form-control" name="amount" placeholder="Masukan Jumlah Transaksi" required/>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email <sup>*)</sup></label>

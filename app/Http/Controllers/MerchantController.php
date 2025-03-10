@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchant;
 use App\Services\MerchantService;
+use App\Services\RegisterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -11,19 +12,33 @@ use Illuminate\Support\Facades\Crypt;
 class MerchantController extends Controller
 {
 
-    private $merchantService;
+    private $merchantService, $registerService;
 
-    public function __construct(MerchantService $merchantService) {
+    public function __construct(MerchantService $merchantService, RegisterService $registerService) {
         $this->merchantService = $merchantService;
+        $this->registerService = $registerService;
     }
 
     public function index(Request $request){
-        $data = Merchant::with(['company'])->where('company_id', Auth::user()->company_id)->get();
-        return view('merchant.index', compact('data'));
+        $arr = [];
+
+        if (Auth::user()->isAdmin()) {
+            $data = $this->merchantService->all() ?? null;
+            $arr['companies'] = $this->registerService->all() ?? null;
+        }else{
+            $data = $this->merchantService->allByCompany() ?? null;
+        }
+        $arr['data'] = $data;
+
+        return view('merchant.index', $arr);
     }
 
     public function create(){
-        return view('merchant.create');
+        $arr = [];
+        if (Auth::user()->isAdmin()) {
+            $arr['companies'] = $this->registerService->all();
+        }
+        return view('merchant.create', $arr);
     }
 
     public function store(Request $request){
