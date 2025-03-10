@@ -3,8 +3,11 @@
 namespace App\Services;
 
 use App\Models\DetailCompany;
+use App\Models\RegisterCompany;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CompanyService{
 
@@ -35,11 +38,11 @@ class CompanyService{
     public function company_data(Request $request)
     {
         $data = DetailCompany::where('company_id', Auth::user()->company_id)->first();
-        if(!$data){
+        if(empty($data)){
             $data = new DetailCompany();
         }
         $data->merchant_name = $request->merchant_name;
-        $data->mechant_amount = $request->merchant_amount;
+        $data->merchant_amount = $request->merchant_amount;
         $data->merchant_address = $request->merchant_address;
         $data->merchant_province_id = $request->merchant_province_id;
         $data->merchant_city_id = $request->merchant_city_id;
@@ -52,5 +55,36 @@ class CompanyService{
         $data->account_name = $request->account_name;
         $data->company_id = Auth::user()->company_id;
         $data->save();
+    }
+
+    public function company_file(Request $request)
+    {
+        $data = DetailCompany::where('company_id', Auth::user()->company_id)->first();
+        if(empty($data)){
+            $data = new DetailCompany();
+        }
+        $data->file_ktp = $request->hasFile('file_ktp') ? $request->file('file_ktp')->store('company/file_ktp', 'public') : '';
+        $data->file_rekening = $request->hasFile('file_rekening') ? $request->file('file_rekening')->store('company/file_rekening', 'public') : '';
+        $data->file_tempat_usaha = $request->hasFile('file_tempat_usaha') ? $request->file('file_tempat_usaha')->store('company/file_tempat_usaha', 'public') : '';
+        $data->file_npwp = $request->hasFile('file_npwp') ? $request->file('file_npwp')->store('company/file_npwp', 'public') : '';
+        $data->file_siup = $request->hasFile('file_siup') ? $request->file('file_siup')->store('company/file_siup', 'public') : '';
+        $data->file_nib = $request->hasFile('file_nib') ? $request->file('file_nib')->store('company/file_nib', 'public') : '';
+        $data->file_akta_pendirian = $request->hasFile('file_akta_pendirian') ? $request->file('file_akta_pendirian')->store('company/file_akta_pendirian', 'public') : '';
+        $data->file_akta_perubahan = $request->hasFile('file_akta_perubahan') ? $request->file('file_akta_perubahan')->store('company/file_akta_perubahan', 'public') : '';
+        $data->save();
+    }
+
+    public function company_submit()
+    {
+        DB::beginTransaction();
+        $data = RegisterCompany::where('company_id', Auth::user()->company_id)->first();
+        $data->status = 'NOT VERIFY';
+        $data->applicant_date = Carbon::now();
+        $data->save();
+
+        $detail = DetailCompany::where('company_id', Auth::user()->company_id)->first();
+        $detail->submit_date = Carbon::now();
+        $detail->save();
+        DB::commit();
     }
 }
