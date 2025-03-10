@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('client_no_kk')->nullable();
             $table->string('client_npwp')->nullable();
             $table->string('merchant_name')->nullable();
-            $table->string('mechant_amount')->nullable();
+            $table->string('merchant_amount')->nullable();
             $table->string('merchant_address')->nullable();
             $table->integer('merchant_province_id')->nullable();
             $table->integer('merchant_city_id')->nullable();
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('account_number')->nullable();
             $table->string('account_name')->nullable();
             $table->text('file_ktp')->nullable();
-            $table->text('file_rekeninig')->nullable();
+            $table->text('file_rekening')->nullable();
             $table->text('file_tempat_usaha')->nullable();
             $table->text('file_npwp')->nullable();
             $table->text('file_siup')->nullable();

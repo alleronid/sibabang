@@ -29,7 +29,7 @@ class CompanyController extends Controller
     public function index_profile(){
         $data = RegisterCompany::where('company_id', Auth::user()->company_id)->first();
         $province = MtProvince::all();
-        $detail = DetailCompany::with(['propinsi', 'kota_kabupaten', 'kecamatan', 'desa_kelurahan'])
+        $detail = DetailCompany::with(['propinsi', 'kota_kabupaten', 'kecamatan', 'desa_kelurahan', 'merchant_propinsi', 'merchant_kota', 'merchant_kecamatan', 'merchant_kelurahan'])
                 ->where('company_id', Auth::user()->company_id)->first();
         return view('company.profile', compact('data', 'province', 'detail'));
     }
@@ -46,9 +46,23 @@ class CompanyController extends Controller
     public function companyData(Request $request){
         try{
             $this->companyService->company_data($request);
+            return redirect(route('company.index'))->with('toast_success', 'Successfully update personal data');
         }catch (\Exception $e){
             return redirect(route('company.index'))->with('toast_error', 'failed update company data');
         }
+    }
+
+    public function companyFile(Request $request){
+        try{
+            $this->companyService->company_file($request);
+            return redirect(route('company.index'))->with('toast_success', 'Successfully update personal data');
+        }catch (\Exception $e){
+            return redirect(route('company.index'))->with('toast_error', 'failed update company data');
+        }
+    }
+
+    public function companySubmit(){
+
     }
 
     public function getCity($id){
@@ -67,7 +81,7 @@ class CompanyController extends Controller
     }
 
     public function index(){
-        $companies = Company::get();
+        $companies = RegisterCompany::get();
         return view('admin.company.index', compact('companies'));
     }
 
@@ -87,19 +101,19 @@ class CompanyController extends Controller
 
     public function getCompany($id)
     {
-        $data = Company::where('company_id', $id)->first();
+        $data = RegisterCompany::where('company_id', $id)->first();
         return response()->json($data);
     }
 
     public function checkKTP($ktp)
     {
-        $exists = Company::where('nationality_id', $ktp)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
+        $exists = RegisterCompany::where('nationality_id', $ktp)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
         return response()->json(['exists' => $exists]);
     }
 
     public function checkEmail($email)
     {
-        $exists = Company::where('email', $email)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
+        $exists = RegisterCompany::where('email', $email)->whereIn('status', ['SUBMIT', 'APPROVED'])->exists();
         return response()->json(['exists' => $exists]);
     }
 

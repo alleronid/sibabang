@@ -17,41 +17,48 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Nama Perusahaan</label>
-                            <input type="text" class="form-control" name="merchant_name" value="{{$detail->merchant_name}}"/>
+                            <input type="text" class="form-control" name="merchant_name" value="{{$detail->merchant_name ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Alamat Sesuai KTP</label>
-                            <input type="text" class="form-control" name="merchant_address" value="{{$detail->merchant_address}}"/>
+                            <input type="text" class="form-control" name="merchant_address" value="{{$detail->merchant_address ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Kota/Kabupaten</label>
                             <select class="form-control" name="merchant_city_id" id="merchantCity">
+                                @if (!empty($detail))
+                                <option value="{{$detail->merchant_city_id}}">{{$detail->merchant_kota->nama_kab_kota ?? ''}}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan/Desa</label>
-                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan"></select>
+                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan">
+                                @if (!empty($detail))
+                                <option value="{{$detail->merchant_kel_desa_id}}">{{$detail->merchant_kelurahan->nama_desa_kelurahan ?? ''}}</option>
+                                @endif
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kode Pos</label>
-                            <input type="number" class="form-control" name="merchant_postcode" value="{{$detail->merchant_postcode}}"/>
+                            <input type="number" class="form-control" name="merchant_postcode" value="{{$detail->merchant_postcode ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Nama Bank</label>
-                            <input type="text" class="form-control" name="bank_name" value="{{$detail->bank_name}}"/>
+                            <input type="text" class="form-control" name="bank_name" value="{{$detail->bank_name ?? ''}}"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Jumlah Cabang Merchant</label>
-                            <input type="number" class="form-control" name="mechant_amount" value="{{$detail->mechant_amount}}"/>
+                            <input type="number" class="form-control" name="merchant_amount" value="{{$detail->merchant_amount ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Propinsi</label>
                             <select class="form-control" name="merchant_province_id" id="merchantProv">
                                 <option value="">Pilih Propinsi</option>
                                 @foreach ($province as $p)
-                                    <option value="{{$p->kode_provinsi}}" @if ($p->kode_provinsi == $detail->merchant_province_id)
+                                    <option value="{{$p->kode_provinsi}}" @if ($p->kode_provinsi == ($detail->merchant_province_id ?? ''))
                                         selected
                                     @endif>{{$p->nama_provinsi}}</option>
                                 @endforeach
@@ -60,19 +67,22 @@
                         <div class="form-group">
                             <label for="">Kecamatan</label>
                             <select class="form-control" name="merchant_kecamatan_id" id="merchantKecamatan">
+                                @if (!empty($detail))
+                                <option value="{{$detail->merchant_kecamatan_id}}">{{$detail->merchant_kecamatan->nama_kecamatan ?? ''}}</option>
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">RT/RW</label>
-                            <input type="text" class="form-control" name="merchant_rt_rw" value="{{$detail->merchant_rt_rw}}"/>
+                            <input type="text" class="form-control" name="merchant_rt_rw" value="{{$detail->merchant_rt_rw ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">No Rekening</label>
-                            <input type="number" class="form-control" name="account_number" value="{{$detail->account_number}}"/>
+                            <input type="number" class="form-control" name="account_number" value="{{$detail->account_number ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Nama Pemilik Rekening</label>
-                            <input type="text" class="form-control" name="account_name" value="{{$detail->account_name}}"/>
+                            <input type="text" class="form-control" name="account_name" value="{{$detail->account_name ?? ''}}"/>
                         </div>
                     </div>
                 </div>

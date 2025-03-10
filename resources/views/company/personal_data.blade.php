@@ -17,21 +17,21 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="client_name" value="{{$detail->client_name}}"/>
+                            <input type="text" class="form-control" name="client_name" value="{{$detail->client_name ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">No KTP</label>
-                            <input type="text" class="form-control" name="client_no_ktp" value="{{$detail->client_no_ktp}}"/>
+                            <input type="text" class="form-control" name="client_no_ktp" value="{{$detail->client_no_ktp ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Alamat Sesuai KTP</label>
-                            <input type="text" class="form-control" name="client_address" value="{{$detail->client_address}}"/>
+                            <input type="text" class="form-control" name="client_address" value="{{$detail->client_address ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Kota/Kabupaten</label>
                             <select class="form-control" name="client_city_id" id="kabKota">
                                 @if (!empty($detail))
-                                <option value="{{$detail->client_city_id}}">{{$detail->kota_kabupaten->nama_kab_kota}}</option>
+                                <option value="{{$detail->client_city_id}}">{{$detail->kota_kabupaten->nama_kab_kota ?? ''}}</option>
                                 @endif
                             </select>
                         </div>
@@ -39,34 +39,34 @@
                             <label for="">Kelurahan/Desa</label>
                             <select class="form-control" name="client_kel_desa_id" id="kelDesa">
                                 @if (!empty($detail))
-                                <option value="{{$detail->client_kel_desa_id}}">{{$detail->desa_kelurahan->nama_desa_kelurahan}}</option>
+                                <option value="{{$detail->client_kel_desa_id}}">{{$detail->desa_kelurahan->nama_desa_kelurahan ?? ''}}</option>
                                 @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kode Post</label>
-                            <input type="number" class="form-control" name="client_postcode" value="{{$detail->client_postcode}}"/>
+                            <input type="number" class="form-control" name="client_postcode" value="{{$detail->client_postcode ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">No NPWP <sup>*)</sup></label>
-                            <input type="number" class="form-control" name="client_npwp" value="{{$detail->client_npwp}}"/>
+                            <input type="number" class="form-control" name="client_npwp" value="{{$detail->client_npwp ?? ''}}"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" name="client_email" value="{{$detail->client_email}}"/>
+                            <input type="text" class="form-control" name="client_email" value="{{$detail->client_email ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">No HP</label>
-                            <input type="number" class="form-control" name="client_phone_number" value="{{$detail->client_phone_number}}"/>
+                            <input type="number" class="form-control" name="client_phone_number" value="{{$detail->client_phone_number ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">Propinsi</label>
                             <select name="client_province_id" id="propinsi" class="form-control">
                                 <option value="">Pilih Propinsi</option>
                                 @foreach ($province as $p)
-                                    <option value="{{$p->kode_provinsi}}" @if ($p->kode_provinsi == $detail->client_province_id)
+                                    <option value="{{$p->kode_provinsi}}" @if ($p->kode_provinsi == ($detail->client_province_id ?? ''))
                                         selected
                                     @endif>{{$p->nama_provinsi}}</option>
                                 @endforeach
@@ -76,17 +76,17 @@
                             <label for="">Kecamatan</label>
                            <select class="form-control" id="kecamatan" name="client_kecamatan_id">
                             @if (!empty($detail))
-                            <option value="{{$detail->client_kecamatan_id}}">{{$detail->kecamatan->nama_kecamatan}}</option>
+                            <option value="{{$detail->client_kecamatan_id}}">{{$detail->kecamatan->nama_kecamatan ?? ''}}</option>
                             @endif
                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">RT/RW</label>
-                            <input type="text" class="form-control" name="client_rt_rw" value="{{$detail->client_rt_rw}}"/>
+                            <input type="text" class="form-control" name="client_rt_rw" value="{{$detail->client_rt_rw ?? ''}}"/>
                         </div>
                         <div class="form-group">
                             <label for="">No KK <sup>*)</sup></label>
-                            <input type="text" class="form-control" name="client_no_kk" value="{{$detail->client_no_kk}}"/>
+                            <input type="text" class="form-control" name="client_no_kk" value="{{$detail->client_no_kk ?? ''}}"/>
                         </div>
                     </div>
                     <p><sup>*)</sup>Optional</p>
