@@ -8,8 +8,8 @@
                 <!--begin::Header Nav-->
                 <ul class="menu-nav">
                     <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active" aria-haspopup="true">
-                        <a href="{{route('company.index')}}" class="menu-link menu-toggle">
-                            <span class="menu-text">Profile</span>
+                        <a href="{{route('company.index')}}" class="menu-link">
+                            <span class="menu-text">Profile Perusahaan</span>
                             <i class="menu-arrow"></i>
                         </a>
                     </li>

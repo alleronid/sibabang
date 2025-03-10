@@ -45,6 +45,8 @@
                         type="button" role="tab" aria-controls="v-pills-personal" aria-selected="false">Data Personal</ul>
                         <ul class="nav-link" id="v-pills-company-tab" data-toggle="pill" data-target="#v-pills-company"
                         type="button" role="tab" aria-controls="v-pills-company" aria-selected="false">Data Perusahaan</ul>
+                        <ul class="nav-link" id="v-pills-files-tab" data-toggle="pill" data-target="#v-pills-files"
+                        type="button" role="tab" aria-controls="v-pills-files" aria-selected="false">Upload Berkas</ul>
                         <ul class="nav-link" id="v-pills-settings-tab" data-toggle="pill" data-target="#v-pills-settings"
                         type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</ul>
                     </div>
@@ -66,6 +68,9 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-company" role="tabpanel" aria-labelledby="v-pills-company-tab">
                     @include('company.company_data')
+                </div>
+                <div class="tab-pane fade" id="v-pills-files" role="tabpanel" aria-labelledby="v-pills-files-tab">
+                    @include('company.company_file')
                 </div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
               </div>

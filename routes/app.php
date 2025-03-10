@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
     Route::group(['prefix'=> 'company', 'as' => 'company.'], function(){
         Route::get('/', [CompanyController::class, 'index'])->name('index');
         Route::post('/update-personal', [CompanyController::class, 'personalData'])->name('update.personal');
+        Route::post('/update-company', [CompanyController::class, 'companyData'])->name('update.company');
         Route::get('/get-kota/{id}', [CompanyController::class, 'getCity'])->name('get.city');
         Route::get('/get-kecamatan/{id}', [CompanyController::class, 'getDistrict'])->name('get.district');
         Route::get('/get-kelurahan/{id}', [CompanyController::class, 'getSubdistrict'])->name('get.subdistrict');
