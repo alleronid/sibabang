@@ -157,20 +157,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-sm font-weight-bolder text-dark">Akta Pendirian <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="Akta Pendirian" name="akta" hidden/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="text-sm font-weight-bolder text-dark">NIB <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="NIB" name="nib" hidden/>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="text-sm font-weight-bolder text-dark">Password<span
                                                 class="text-danger">*</span></label>
                                         <input type="password" class="form-control" placeholder="Password"
                                             name="password" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-sm font-weight-bolder text-dark">NPWP<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="NPWP"
+                                            name="tax_number" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -180,18 +176,17 @@
                                         <textarea class="form-control" name="address" rows="5"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label class="text-sm font-weight-bolder text-dark">NPWP<span
+                                        <label class="text-sm font-weight-bolder text-dark">Akta Pendirian <span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="NPWP"
-                                            name="tax_number" />
+                                        <input type="file" class="form-control" placeholder="Akta Pendirian" name="akta" hidden/>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="text-sm font-weight-bolder text-dark">SIUP<span
+                                        <label class="text-sm font-weight-bolder text-dark">NIB/SIUP/TDP<span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="SIUP"
-                                            name="siup" hidden/>
+                                        <input type="text" class="form-control" placeholder="NIB" name="nib" hidden/>
                                     </div>
+
                                 </div>
                             </div>
                             {{-- @include('components.term-condition') --}}
@@ -216,10 +211,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailHasError = false;
 
     const businessTypeSelect = document.querySelector('select[name="business_type"]');
-    const siupInput = document.querySelector('input[name="siup"]');
+    // const siupInput = document.querySelector('input[name="siup"]');
     const nibInput = document.querySelector('input[name="nib"]');
     const aktaInput = document.querySelector('input[name="akta"]');
-    const siupFormGroup = siupInput.closest('.form-group');
+    // const siupFormGroup = siupInput.closest('.form-group');
     const nibFormGroup = nibInput.closest('.form-group');
     const aktaFormGroup = aktaInput.closest('.form-group');
 
@@ -322,22 +317,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const shouldHide = selectedValue === '1' || selectedValue === '';
 
         if (shouldHide) {
-            siupInput.closest('.form-group').style.display = 'none';
+            // siupInput.closest('.form-group').style.display = 'none';
             nibInput.closest('.form-group').style.display = 'none';
             aktaInput.closest('.form-group').style.display = 'none';
 
-            siupInput.value = '';
+            // siupInput.value = '';
             nibInput.value = '';
             aktaInput.value = '';
-            siupInput.setAttribute('hidden', 'true');
+            // siupInput.setAttribute('hidden', 'true');
             nibInput.setAttribute('hidden', 'true');
             aktaInput.setAttribute('hidden', 'true');
         } else {
-            siupInput.closest('.form-group').style.display = 'block';
+            // siupInput.closest('.form-group').style.display = 'block';
             nibInput.closest('.form-group').style.display = 'block';
             aktaInput.closest('.form-group').style.display = 'block';
 
-            siupInput.removeAttribute('hidden');
+            // siupInput.removeAttribute('hidden');
             nibInput.removeAttribute('hidden');
             aktaInput.removeAttribute('hidden');
         }

@@ -44,7 +44,7 @@ class RegisterService{
         $data->address = $request->address;
         $data->nib = $request->nib ?? '';
         $data->siup = $request->siup ?? '';
-        $data->akta = $request->akta ?? '';
+        $data->akta = $request->hasFile('akta') ? $request->file('akta')->store('register/akta_pendirian', 'public') : '';
         $data->referall = $request->referall ?? '';
         $data->password = $request->password;
         $data->file_ktp = $request->hasFile('file_ktp') ? $request->file('file_ktp')->store('register/file_ktp', 'public') : '';
