@@ -27,14 +27,18 @@ class DisbursementService{
         DB::beginTransaction();
         $data = TrxDisbursement::where('no_trx', $request->no_trx)->first();
         if($request->status == "SUCCESS"){
-            $data->status = $request->status;
             $wallet = Wallet::where('merchant_id', $data->merchant_id)->first();
-            $wallet->avail_balance = $wallet->avail_balance - $data->nominal;
-            $wallet->approved_by = Auth::user()->id;
-            $wallet->proccess_date = Carbon::now();
+            $avail_balance = $wallet->avail_balance - $data->nominal;
+
+            $wallet->avail_balance = $avail_balance;
+            $wallet->total_balance = $avail_balance + $wallet->pending_balance;
             $wallet->save();
+
+            $data->status = $request->status;
+            $data->approved_by = Auth::user()->id;
+            $data->proccess_date = Carbon::now();
         }else{
-            $data->status == $request->status;
+            $data->status = $request->status;
         }
         $data->save();
 
