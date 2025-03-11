@@ -27,8 +27,8 @@
                                     <td>Rp. {{$item->pending_balance}}</td>
                                     <td>Rp. {{$item->avail_balance}}</td>
                                     <td>Rp. {{$item->total_balance}}</td>
-                                    <td>
-                                        <a href="{{route('wallet.disbursement', base64_encode($item->merchant_id))}}" class="btn btn-sm btn-primary" style="float: right;">Request Disbursement</a>
+                                    <td class="text-center">
+                                        <a href="{{route('wallet.disbursement', base64_encode($item->merchant_id))}}" class="btn btn-sm btn-primary">Request Disbursement</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -39,4 +39,12 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+@endpush
 

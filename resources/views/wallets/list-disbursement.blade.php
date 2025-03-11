@@ -36,3 +36,11 @@
     </div>
 @endsection
 
+@push('addon-script')
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+@endpush
+
