@@ -30,4 +30,8 @@ class RegisterCompany extends Model
     public function merchants(){
         return $this->hasMany(Merchant::class, 'merchant_id', 'merchant_id');
     }
+
+    public function detail(){
+        return $this->hasOne(DetailCompany::class, 'company_id','company_id');
+    }
 }

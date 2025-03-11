@@ -64,13 +64,38 @@
                     @include('company.detail')
                 </div>
                 <div class="tab-pane fade" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
-                    @include('company.personal_data')
+                    <div class="card card-custom">
+                            <div class="card-header py-3">
+                                <div class="card-title align-items-start flex-column">
+                                    <h3 class="card-label font-weight-bolder text-dark">Kelengkapan Data Pribadi</h3>
+                                    <span class="text-muted font-weight-bold font-size-sm mt-1">Harap lengkapi data</span>
+                                </div>
+                            </div>
+                        @include('company.personal_data')
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-company" role="tabpanel" aria-labelledby="v-pills-company-tab">
-                    @include('company.company_data')
+                    <div class="card card-custom">
+                        <div class="card-header py-3">
+                            <div class="card-title align-items-start flex-column">
+                                <h3 class="card-label font-weight-bolder text-dark">Kelengkapan Data Perusahaan</h3>
+                                <span class="text-muted font-weight-bold font-size-sm mt-1">Harap lengkapi data</span>
+                            </div>
+                        </div>
+                        @include('company.company_data')
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-files" role="tabpanel" aria-labelledby="v-pills-files-tab">
-                    @include('company.company_file')
+                    <div class="card card-custom">
+                        <!--begin::Header-->
+                        <div class="card-header py-3">
+                            <div class="card-title align-items-start flex-column">
+                                <h3 class="card-label font-weight-bolder text-dark">Kelengkapan Data Perusahaan</h3>
+                                <span class="text-muted font-weight-bold font-size-sm mt-1">Harap lengkapi data</span>
+                            </div>
+                        </div>
+                        @include('company.company_file')
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
               </div>

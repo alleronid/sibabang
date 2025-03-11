@@ -1,14 +1,4 @@
 <div class="flex-row-fluid ml-lg-8">
-    <!--begin::Card-->
-    <div class="card card-custom">
-        <!--begin::Header-->
-        <div class="card-header py-3">
-            <div class="card-title align-items-start flex-column">
-                <h3 class="card-label font-weight-bolder text-dark">Kelengkapan Data Perusahaan</h3>
-                <span class="text-muted font-weight-bold font-size-sm mt-1">Harap lengkapi data</span>
-            </div>
-        </div>
-        <!--end::Header-->
         <!--begin::Form-->
         <form action="{{route('company.update.file')}}" class="form" method="POST" enctype="multipart/form-data">
             @csrf
@@ -22,7 +12,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->surat_permohonan)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $data->file_ktp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 KTP</a>
                         </div>
@@ -127,8 +117,6 @@
             </div>
         </form>
         <!--end::Form-->
-    </div>
-    <!--end::Card-->
 </div>
 
 

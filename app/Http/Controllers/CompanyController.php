@@ -63,6 +63,7 @@ class CompanyController extends Controller
 
     public function companySubmit(){
 
+        // status company jadi not verify 'a'
     }
 
     public function getCity($id){
@@ -82,7 +83,10 @@ class CompanyController extends Controller
 
     public function index(){
         $companies = RegisterCompany::get();
-        return view('admin.company.index', compact('companies'));
+        $province = MtProvince::all();
+        $detail = DetailCompany::with(['propinsi', 'kota_kabupaten', 'kecamatan', 'desa_kelurahan', 'merchant_propinsi', 'merchant_kota', 'merchant_kecamatan', 'merchant_kelurahan'])
+            ->where('company_id', Auth::user()->company_id)->first();
+        return view('admin.company.index', compact('companies','province'));
     }
 
     public function update(Request $request){
@@ -101,7 +105,7 @@ class CompanyController extends Controller
 
     public function getCompany($id)
     {
-        $data = RegisterCompany::where('company_id', $id)->first();
+        $data = RegisterCompany::with('detail','detail.kota_kabupaten')->where('company_id', $id)->first();
         return response()->json($data);
     }
 

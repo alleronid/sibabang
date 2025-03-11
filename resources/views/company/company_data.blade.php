@@ -1,14 +1,5 @@
 <div class="flex-row-fluid ml-lg-8">
     <!--begin::Card-->
-    <div class="card card-custom">
-        <!--begin::Header-->
-        <div class="card-header py-3">
-            <div class="card-title align-items-start flex-column">
-                <h3 class="card-label font-weight-bolder text-dark">Kelengkapan Data Perusahaan</h3>
-                <span class="text-muted font-weight-bold font-size-sm mt-1">Harap lengkapi data</span>
-            </div>
-        </div>
-        <!--end::Header-->
         <!--begin::Form-->
         <form action="{{route('company.update.company')}}" class="form" method="POST">
             @csrf
@@ -26,18 +17,12 @@
                         <div class="form-group">
                             <label for="">Kota/Kabupaten</label>
                             <select class="form-control" name="merchant_city_id" id="merchantCity">
-                                @if (!empty($detail))
-                                <option value="{{$detail->merchant_city_id}}">{{$detail->merchant_kota->nama_kab_kota ?? ''}}</option>
-                                @endif
+                            <label for="">Kota/Kabupaten</label>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan/Desa</label>
-                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan">
-                                @if (!empty($detail))
-                                <option value="{{$detail->merchant_kel_desa_id}}">{{$detail->merchant_kelurahan->nama_desa_kelurahan ?? ''}}</option>
-                                @endif
-                            </select>
+                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan"></select>
                         </div>
                         <div class="form-group">
                             <label for="">Kode Pos</label>
@@ -58,7 +43,7 @@
                             <select class="form-control" name="merchant_province_id" id="merchantProv">
                                 <option value="">Pilih Propinsi</option>
                                 @foreach ($province as $p)
-                                    <option value="{{$p->kode_provinsi}}" @if ($p->kode_provinsi == ($detail->merchant_province_id ?? ''))
+                                    <option value="{{$p->kode_provinsi}}" @if (!empty($detail) && $p->kode_provinsi == $detail->merchant_province_id)
                                         selected
                                     @endif>{{$p->nama_provinsi}}</option>
                                 @endforeach
@@ -94,8 +79,6 @@
             </div>
         </form>
         <!--end::Form-->
-    </div>
-    <!--end::Card-->
 </div>
 
 

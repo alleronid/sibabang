@@ -53,39 +53,31 @@
                     <button type="button" class="btn btn-sm btn-warning" id="toggleEdit">Edit</button>
                 </div>
                 <div class="modal-body">
-                    <form id="editCompanyForm">
                         <input type="hidden" name="company_id" id="companyId">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group"><label>Company Name</label><input type="text" class="form-control" id="companyName" readonly /></div>
-                            <div class="form-group"><label>Email</label><input type="text" class="form-control" id="email" readonly /></div>
-                            <div class="form-group"><label>Phone Number</label><input type="text" class="form-control" id="phone_number" readonly /></div>
-                            <div class="form-group"><label>Merchant Name</label><input type="text" class="form-control" id="merchant_name" readonly /></div>
-                            <div class="form-group"><label>Nationality ID</label><input type="text" class="form-control" id="nationality_id" readonly /></div>
-                            <div class="form-group"><label>Tax Number</label><input type="text" class="form-control" id="tax_number" readonly /></div>
-                            <div class="form-group"><label>Business Type</label><input type="text" class="form-control" id="business_type" readonly /></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group"><label>Address</label><textarea class="form-control" id="address" readonly></textarea></div>
-                            <div class="form-group"><label>NIB</label><input type="text" class="form-control" id="nib" readonly /></div>
-                            <div class="form-group"><label>SIUP</label><input type="text" class="form-control" id="siup" readonly /></div>
-                            <div class="form-group"><label>AKTA</label><input type="text" class="form-control" id="akta" readonly /></div>
-                            <div class="form-group"><label>Status</label><input type="text" class="form-control" id="status" readonly /></div>
-                            <div class="form-group"><label>Referral</label><input type="text" class="form-control" id="referall" readonly /></div>
-                            <div class="form-group"><label>Applicant Date</label><input type="text" class="form-control" id="applicant_date" readonly /></div>
-                            <div class="form-group">
-                                <label>KTP </label>
-                                <div>
-                                    <img id="fileKtpPreview" src="" alt="KTP Image" class="img-fluid rounded" style="max-width: 200px; display: none;">
-                                </div>
-                            </div>
+                        <div class="nav nav-pills active" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <ul class="nav-link active" id="v-pills-personal-tab" data-toggle="pill" data-target="#v-pills-personal"
+                                type="button" role="tab" aria-controls="v-pills-personal" aria-selected="false">Data Personal</ul>
+                            <ul class="nav-link" id="v-pills-company-tab" data-toggle="pill" data-target="#v-pills-company"
+                                type="button" role="tab" aria-controls="v-pills-company" aria-selected="false">Data Perusahaan</ul>
+                            <ul class="nav-link" id="v-pills-files-tab" data-toggle="pill" data-target="#v-pills-files"
+                                type="button" role="tab" aria-controls="v-pills-files" aria-selected="false">Upload Berkas</ul>
                         </div>
 
-                    </div>
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                                @include('company.personal_data')
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-company" role="tabpanel" aria-labelledby="v-pills-company-tab">
+                                @include('company.company_data')
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-files" role="tabpanel" aria-labelledby="v-pills-files-tab">
+                                @include('company.company_file')
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" id="submitEdit" style="display: none;">Save changes</button>
-                </div>>
+                </div>
             </div>
         </div>
     </div>
@@ -152,35 +144,38 @@
 
         function getCompany(id) {
             $.get('/app/admin/company/show/' + id, function(data) {
-                console.log(data);
-                $("#companyName").val(data.merchant_name)
-                $("#email").val(data.email)
-                $("#merchantName").val(data.merchant_name)
-                $("#phoneNumber").val(data.phone_number)
-                $('#status').val(data.status)
-                $('#detailCompany').modal("toggle")
+                let detail = data.detail
+                $("#company_id").val(detail.id);
+                $("#client_name").val(detail.client_name);
+                $("#client_no_ktp").val(detail.client_no_ktp);
+                $("#client_address").val(detail.client_address);
+                $("#client_postcode").val(detail.client_postcode);
+                $("#client_npwp").val(detail.client_npwp);
+                $("#client_email").val(detail.client_email);
+                $("#client_phone_number").val(detail.client_phone_number);
+                $("#client_rt_rw").val(detail.client_rt_rw);
+                $("#client_no_kk").val(detail.client_no_kk);
 
-                $("#fullname").val(data.fullname);
-                $("#email").val(data.email);
-                $("#phone_number").val(data.phone_number);
-                $("#merchant_name").val(data.merchant_name);
-                $("#nationality_id").val(data.nationality_id);
-                $("#tax_number").val(data.tax_number);
-                $("#business_type").val(data.business_type);
-                $("#address").val(data.address);
-                $("#nib").val(data.nib);
-                $("#siup").val(data.siup);
-                $("#akta").val(data.akta);
-                $("#status").val(data.status);
-                $("#referall").val(data.referall);
-                $("#applicant_date").val(data.applicant_date);
+                // Populate province dropdown
+                $("#propinsi").val(detail.client_province_id).trigger("change");
 
-                // Display KTP image if available
-                if (data.file_ktp) {
-                    $('#fileKtpPreview').attr("src", "/storage/" + data.file_ktp).show();
-                } else {
-                    $('#fileKtpPreview').hide();
+                // Populate Kota/Kabupaten dropdown
+                if (detail.client_city_id) {
+                    $("#kabKota").html(`<option value="${detail.client_city_id}" selected>${detail.kota_kabupaten?.nama_kab_kota ?? ''}</option>`);
+                    //$("#kabKota").val(detail.client_city_id).trigger("change");
                 }
+
+                // Populate Kecamatan dropdown
+                if (detail.client_kecamatan_id) {
+                    $("#kecamatan").html(`<option value="${detail.client_kecamatan_id}" selected>${detail.kecamatan?.nama_kecamatan ?? ''}</option>`);
+                }
+
+                // Populate Kelurahan/Desa dropdown
+                if (detail.client_kel_desa_id) {
+                    $("#kelDesa").html(`<option value="${detail.client_kel_desa_id}" selected>${detail.desa_kelurahan?.nama_desa_kelurahan ?? ''}</option>`);
+                }
+
+                $('#detailCompany').modal("toggle")
             })
         }
 

@@ -14,7 +14,7 @@ class CompanyService{
 
     public function personal_data(Request $request)
     {
-        $data = DetailCompany::where('company_id', Auth::user()->company_id)->first();
+        $data = DetailCompany::where('company_id', ($request->company_id ?? Auth::user()->company_id))->first();
         if(!$data){
             $data = new DetailCompany();
         }
@@ -37,7 +37,7 @@ class CompanyService{
 
     public function company_data(Request $request)
     {
-        $data = DetailCompany::where('company_id', Auth::user()->company_id)->first();
+        $data = DetailCompany::where('company_id', ($request->company_id ?? Auth::user()->company_id))->first();
         if(empty($data)){
             $data = new DetailCompany();
         }
@@ -63,14 +63,14 @@ class CompanyService{
         if(empty($data)){
             $data = new DetailCompany();
         }
-        $data->file_ktp = $request->hasFile('file_ktp') ? $request->file('file_ktp')->store('company/file_ktp', 'public') : '';
-        $data->file_rekening = $request->hasFile('file_rekening') ? $request->file('file_rekening')->store('company/file_rekening', 'public') : '';
-        $data->file_tempat_usaha = $request->hasFile('file_tempat_usaha') ? $request->file('file_tempat_usaha')->store('company/file_tempat_usaha', 'public') : '';
-        $data->file_npwp = $request->hasFile('file_npwp') ? $request->file('file_npwp')->store('company/file_npwp', 'public') : '';
-        $data->file_siup = $request->hasFile('file_siup') ? $request->file('file_siup')->store('company/file_siup', 'public') : '';
-        $data->file_nib = $request->hasFile('file_nib') ? $request->file('file_nib')->store('company/file_nib', 'public') : '';
-        $data->file_akta_pendirian = $request->hasFile('file_akta_pendirian') ? $request->file('file_akta_pendirian')->store('company/file_akta_pendirian', 'public') : '';
-        $data->file_akta_perubahan = $request->hasFile('file_akta_perubahan') ? $request->file('file_akta_perubahan')->store('company/file_akta_perubahan', 'public') : '';
+        $data->file_ktp = $request->hasFile('file_ktp') ? $request->file('file_ktp')->store('company/file_ktp', 'public') : ($data->file_ktp ?? null);
+        $data->file_rekening = $request->hasFile('file_rekening') ? $request->file('file_rekening')->store('company/file_rekening', 'public') : ($data->file_rekening ?? null);
+        $data->file_tempat_usaha = $request->hasFile('file_tempat_usaha') ? $request->file('file_tempat_usaha')->store('company/file_tempat_usaha', 'public') : ($data->file_tempat_usaha ?? null);
+        $data->file_npwp = $request->hasFile('file_npwp') ? $request->file('file_npwp')->store('company/file_npwp', 'public') : ($data->file_npwp ?? null);
+        $data->file_siup = $request->hasFile('file_siup') ? $request->file('file_siup')->store('company/file_siup', 'public') : ($data->file_siup ?? null);
+        $data->file_nib = $request->hasFile('file_nib') ? $request->file('file_nib')->store('company/file_nib', 'public') : ($data->file_nib ?? null);
+        $data->file_akta_pendirian = $request->hasFile('file_akta_pendirian') ? $request->file('file_akta_pendirian')->store('company/file_akta_pendirian', 'public') : ($data->file_akta_pendirian ?? null);
+        $data->file_akta_perubahan = $request->hasFile('file_akta_perubahan') ? $request->file('file_akta_perubahan')->store('company/file_akta_perubahan', 'public') : ($data->file_akta_perubahan ?? null);
         $data->save();
     }
 
