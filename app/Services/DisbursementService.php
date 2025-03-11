@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\TrxDisbursement;
+use App\Models\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +20,24 @@ class DisbursementService{
         $data->company_id = Auth::user()->company_id;
         $data->merchant_id = $request->merchant_id;
         $data->save();
+        DB::commit();
+    }
+
+    public function process(Request $request){
+        DB::beginTransaction();
+        $data = TrxDisbursement::where('no_trx', $request->no_trx)->first();
+        if($request->status == "SUCCESS"){
+            $data->status = $request->status;
+            $wallet = Wallet::where('merchant_id', $data->merchant_id)->first();
+            $wallet->avail_balance = $wallet->avail_balance - $data->nominal;
+            $wallet->approved_by = Auth::user()->id;
+            $wallet->proccess_date = Carbon::now();
+            $wallet->save();
+        }else{
+            $data->status == $request->status;
+        }
+        $data->save();
+
         DB::commit();
     }
 

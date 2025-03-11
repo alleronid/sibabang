@@ -28,7 +28,11 @@ class WalletController extends Controller
     }
 
     public function listDisbursement(){
-        $data = TrxDisbursement::with(['bank'])->where('company_id', Auth::user()->company_id)->get();
+        if (Auth::user()->isAdmin()) {
+            $data = TrxDisbursement::all();
+        }else{
+            $data = TrxDisbursement::with(['bank'])->where('company_id', Auth::user()->company_id)->get();
+        }
         return view('wallets.list-disbursement', compact('data'));
     }
 
@@ -47,6 +51,28 @@ class WalletController extends Controller
         }catch (\Exception $e){
             DB::rollback();
             return redirect(route('wallet.disbursement', base64_encode($request->merchant_id)))->with('toast_error', 'Create Disbursement Failed');
+        }
+    }
+
+    public function getDisbursement($id){
+        $data = TrxDisbursement::with(['bank'])->find($id);
+        return response()->json($data);
+    }
+
+    public function processDisbursement(Request $request)
+    {
+        try{
+            $this->disbursementService->process($request);
+            return response()->json([
+                'status' => 200,
+                'message' => "successfully process Disbursement"
+            ]);
+        }catch (\Exception $e){
+            DB::rollback();
+            return response()->json([
+                'status' => 400,
+                'message' => "failed process Disbursement"
+            ]);
         }
     }
 }

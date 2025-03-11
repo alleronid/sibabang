@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\WalletController;
 use App\Models\User;
 
 Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
@@ -22,6 +23,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
             Route::get('/', [CompanyController::class, 'index'])->name('index');
             Route::post('/update', [CompanyController::class, 'update'])->name('update');
             Route::get('/show/{id}', [CompanyController::class, 'getCompany'])->name('getCompany');
+        });
+
+        Route::group(['prefix' => 'disbursement', 'as' => 'disbursement.'], function(){
+            Route::get('/detail/{id}', [WalletController::class, 'getDisbursement'])->name('list');
+            Route::post('/update', [WalletController::class, 'processDisbursement'])->name('process');
         });
     });
 });

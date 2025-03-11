@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_trx');
             $table->unsignedInteger('merchant_bank');
             $table->decimal('nominal');
-            $table->enum('status', ['PENDING', 'SUCCESS', 'CANCEL'])->default('PENDING');
+            $table->enum('status', ['PENDING', 'SUCCESS', 'CANCEL', 'PROCESS'])->default('PENDING');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('merchant_id');
             $table->unsignedBigInteger('approved_by')->nullable();
