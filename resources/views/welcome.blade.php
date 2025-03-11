@@ -103,7 +103,7 @@
             <div class="lg:grid lg:grid-cols-12 lg:gap-8">
                 <div class="lg:col-span-6">
                     <div class="text-base max-w-prose mx-auto lg:max-w-none">
-                        <h1 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                        <h1 class="mt-2 text-3xl leading-12 font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
                             Solusi Pembayaran <span class="text-indigo-600">Modern</span> untuk Bisnis Anda
                         </h1>
                         <p class="mt-6 text-xl text-gray-500">
@@ -124,8 +124,8 @@
                     </div>
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
-                    <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                        <img src="{{asset('/assets/payment.png')}}" alt="App dashboard" class="w-full rounded-lg">
+                    <div class="relative mx-auto w-full lg:max-w-md">
+                        <img src="{{asset('/assets/payment-1.png')}}" alt="App dashboard" class="w-full rounded-lg">
                     </div>
                 </div>
             </div>
@@ -215,8 +215,111 @@
         </div>
     </section>
 
-    <!-- Pricing -->
+    {{-- !how to works --}}
     <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Cara Kerja</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Bagaimana SIBABANG Bekerja
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Proses sederhana untuk memulai pembayaran digital dengan SIBABANG
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+                <!-- Step 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                            <span class="text-xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Daftar Akun</h3>
+                        <p class="text-base text-gray-500 mb-4">
+                            Buat akun SIBABANG Anda hanya dalam beberapa menit melalui proses pendaftaran yang cepat dan aman.
+                        </p>
+                        <div class="mt-4 h-48 bg-gray-200 rounded-lg overflow-hidden">
+                            <img src="{{asset('assets/custom/1.jpg')}}" alt="Daftar akun SIBABANG" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                            <span class="text-xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Hubungkan Rekening Bank</h3>
+                        <p class="text-base text-gray-500 mb-4">
+                            Hubungkan rekening bank Anda dengan aman atau tambahkan kartu kredit untuk memulai transaksi.
+                        </p>
+                        <div class="mt-4 h-48 bg-gray-200 rounded-lg overflow-hidden">
+                            <img src="{{asset('assets/custom/2.jpg')}}" alt="Hubungkan rekening bank" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                            <span class="text-xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Mulai Bertransaksi</h3>
+                        <p class="text-base text-gray-500 mb-4">
+                            Kirim, terima, dan kelola uang Anda dengan mudah. Nikmati pembayaran instan dan aman.
+                        </p>
+                        <div class="mt-4 h-48 bg-gray-200 rounded-lg overflow-hidden">
+                            <img src="{{asset('assets/custom/3.jpg')}}" alt="Mulai bertransaksi" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional info -->
+            <div class="mt-12 bg-indigo-50 rounded-lg p-6">
+                <div class="md:flex md:items-center">
+                    <div class="md:w-2/3">
+                        <h3 class="text-xl font-semibold text-gray-900">Integrasi yang Mudah</h3>
+                        <p class="mt-2 text-gray-600">
+                            SIBABANG dapat diintegrasikan dengan mudah ke website atau aplikasi Anda melalui API yang lengkap dan dokumentasi yang jelas. Tim dukungan kami siap membantu proses integrasi.
+                        </p>
+                        <div class="mt-4">
+                            <a href="#" class="text-indigo-600 font-medium hover:text-indigo-500 flex items-center">
+                                Lihat dokumentasi API
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-6 md:mt-0 md:w-1/3 md:pl-8">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="font-mono text-sm text-gray-800 bg-gray-100 p-3 rounded">
+                                <code>
+                                    // Contoh kode integrasi<br>
+                                    const sibabang = new Sibabang({<br>
+                                    &nbsp;&nbsp;apiKey: 'YOUR_API_KEY',<br>
+                                    &nbsp;&nbsp;mode: 'production'<br>
+                                    });<br><br>
+                                    sibabang.createPayment({<br>
+                                    &nbsp;&nbsp;amount: 150000,<br>
+                                    &nbsp;&nbsp;description: 'Order #12345'<br>
+                                    });
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- enddd --}}
+
+    <!-- Pricing -->
+    {{-- <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
                 <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Harga</h2>
@@ -350,7 +453,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Testimonials -->
     <section class="py-12 bg-gray-50">
