@@ -83,12 +83,12 @@
             <div class="pt-4 pb-3 border-t border-gray-200">
                 <div class="flex items-center px-4">
                     <div class="flex-shrink-0">
-                        <a href="#" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                        <a href="{{route('login')}}" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                             Masuk
                         </a>
                     </div>
                     <div class="ml-3">
-                        <a href="#" class="block w-full px-5 py-3 text-center font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        <a href="{{route('register')}}" class="block w-full px-5 py-3 text-center font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                             Daftar
                         </a>
                     </div>
