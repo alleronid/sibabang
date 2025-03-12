@@ -6,15 +6,25 @@ use App\Models\TrxPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Enums\AyolinxEnums;
+
 
 class TransactionService{
+
+    private $ayolinxService;
+
+    public function __construct(AyolinxService $ayolinxService)
+    {
+        $this->ayolinxService = $ayolinxService;
+    }
 
     public function save(Request $request)
     {
         DB::beginTransaction();
         $name = self::generateRandomName();
+        $noTrx = self::noTrx($request->merchant_id);
         $data = new TrxPayment();
-        $data->trx_id = self::noTrx($request->merchant_id);
+        $data->trx_id = $noTrx;
         $data->amount = $request->amount;
         $data->method = $request->method;
         $data->fullname = $request->fullname ?? $name;
@@ -22,6 +32,29 @@ class TransactionService{
         $data->phone_number = $request->phone_number ?? self::generatePhoneNumber();
         $data->merchant_id = $request->merchant_id;
         $data->company_id = $request->company_id ?? Auth::user()->company_id;
+
+        $body = [
+            "partnerReferenceNo" => $noTrx,
+            "amount" => [
+                "currency" => "IDR",
+                "value" => $request->amount
+            ],
+            "additionalInfo" => [
+                "channel" => AyolinxEnums::QRIS,
+                // "subMerchantId" => "000580132685"
+            ]
+        ];
+
+        $result =  $this->ayolinxService->generateQris($body);
+        $result = json_decode($result, true);
+        if($result){
+            if($result['responseCode'] == AyolinxEnums::SUCCESS_QRIS){
+                $data->payment_code = $result['qrContent'];
+            }else{
+                throw new Exception("Failed to generate QRIS");
+            }
+        }
+        $data->data_raw = json_decode($result);
         $data->save();
         DB::commit();
     }
