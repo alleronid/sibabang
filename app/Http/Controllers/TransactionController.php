@@ -37,7 +37,7 @@ class TransactionController extends Controller
     }
 
     public function detail($noTrx){
-        $data = TrxPayment::where('trx_id', $noTrx)->first();
+        $data = TrxPayment::with(['merchant'])->where('trx_id', $noTrx)->first();
         return view('transaction.detail', compact('data'));
     }
 

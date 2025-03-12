@@ -14,8 +14,8 @@ class AyolinxService
     public function __construct()
     {
         $this->timestamp = date('c');
-        $this->keySB = AppSetting::where('key', 'ayolinx_key_sb')->first();
-        $this->secretSB = AppSetting::where('key', 'ayolinx_secret_sb')->first();
+        $this->keySB = AppSetting::where('key', 'ayolinx_key_sb')->first()->value;
+        $this->secretSB = AppSetting::where('key', 'ayolinx_secret_sb')->first()->value;
     }
 
     public function signature()
@@ -23,7 +23,7 @@ class AyolinxService
         $clientKey = $this->secretSB;
         $requestTimestamp = $this->timestamp;
         $string_to_sign = $clientKey . '|' . $requestTimestamp;
-        $private_key = file_get_contents('../keys/private_key.pem');
+        $private_key = file_get_contents('/home/alleroni/keys/private_key.pem');
 
         try {
             openssl_sign($string_to_sign, $signature, $private_key, OPENSSL_ALGO_SHA256);

@@ -15,13 +15,12 @@
                         <!-- New QRIS Barcode Section -->
                         <div class="text-center">
                             <h4 class="text-white">SCAN THIS QRIS</h4>
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=00020101021226740025ID.CO.BANKNEOCOMMERCE.WWW011893600490800004640302120005001326890303UBE51550025ID.CO.BANKNEOCOMMERCE.WWW0215ID20253709970120303UBE5204581853033605405201805802ID5909Codequest6009TANGERANG6105158106233012230018898907301071216650703A01630480D6&size=200x200" alt="">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{$data->payment_code}}&size=200x200" alt="">
                         </div>
 
                         <div class="d-flex flex-column align-items-md-end px-0">
-                            <!--begin::Logo-->
-                            <h4 class="text-white">MERCHANT NAME</h4>
-                            <!--end::Logo-->
+                            <h4 class="text-white">{{$data->merchant->merchant_name ?? ''}}</h4>
+                            <p class="text-white">{{$data->merchant->address ?? ''}}</p>
                         </div>
                     </div>
                 </div>
