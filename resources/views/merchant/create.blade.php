@@ -26,6 +26,10 @@
                     <input type="text" class="form-control" name="merchant_name" placeholder="Masukan Nama Merchant" required/>
                 </div>
                 <div class="form-group">
+                    <label class="control-label">Alamat Merchant</label>
+                    <textarea class="form-control" name="address" rows="5"></textarea>
+                </div>
+                <div class="form-group">
                     <label class="control-label">Soundbox</label>
                     <select class="form-control" name="soundbox" required>
                         <option value="0">Tidak</option>

@@ -140,7 +140,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control" name="status" id="statusEdit">
+                                    <select class="form-control" name="status" id="statusEdit" readonly>
                                         <option value="PENDING">PENDING</option>
                                         <option value="ACTIVE">ACTIVE</option>
                                         <option value="DEACTIVE">DEACTIVE</option>
@@ -152,7 +152,14 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <input type="text" class="form-control" name="address" id="addressEdit">
+                                </div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Save changes</button>
@@ -181,7 +188,6 @@
         });
         function getMerchant(id) {
             $.get('/app/merchant/show/' + id, function(data) {
-                console.log(data);
                 $("#merchantName").val(data.merchant_name)
                 $("#env").val(data.env)
                 $('#status').val(data.status)
@@ -199,6 +205,7 @@
                 $("#envEdit").val(data.env)
                 $('#statusEdit').val(data.status)
                 $('#vendorEdit').val(data.vendor.vendor_name)
+                $('#addressEdit').val(data.address)
                 $('#editMerchant').modal("toggle")
             })
         }
@@ -208,6 +215,7 @@
             var id = $('#merchantIdEdit').val()
             var name = $('#merchantNameEdit').val()
             var status  = $('#statusEdit').val()
+            var address = $('#addressEdit').val()
 
             $.ajax({
                 url: "{{route('merchant.update')}}",
@@ -216,6 +224,7 @@
                     merchant_id : id,
                     merchant_name: name,
                     status : status,
+                    address : address,
                     _token: "{{ csrf_token() }}"
                 },
                 success: function(res) {

@@ -50,6 +50,7 @@ class MerchantService{
         $data  = new Merchant();
         $data->company_id = Auth::user()->company_id;
         $data->merchant_name = $request->merchant_name;
+        $data->address = $request->address;
         $data->status = 'PENDING';
         $data->token = $this->utilityService->token();
         $data->api_key_sb = $this->utilityService->generateKey('api_key', 'SB');
@@ -70,6 +71,7 @@ class MerchantService{
         $data = Merchant::where('merchant_id', $request->merchant_id)->first();
         $data->merchant_name = $request->merchant_name;
         $data->status = $request->status;
+        $data->address = $request->address;
         $data->save();
 
         $wallet = Wallet::where('merchant_id', $data->merchant_id)->first();
