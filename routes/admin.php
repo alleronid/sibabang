@@ -6,9 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\WalletController;
+use App\Http\Middleware\IsAdmin;
 use App\Models\User;
 
-Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'app'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
 
@@ -30,4 +31,4 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
             Route::post('/update', [WalletController::class, 'processDisbursement'])->name('process');
         });
     });
-});
+})->middleware(IsAdmin::class);
