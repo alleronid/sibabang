@@ -40,7 +40,7 @@ class WalletController extends Controller
         $merchant_id = base64_decode($idHash);
         $merchant = Merchant::where('merchant_id', $merchant_id)->first();
         $wallet = Wallet::where('merchant_id', $merchant_id)->first();
-        $banks = MerchantBank::where('merchant_id', $merchant_id)->get();
+        $banks = MerchantBank::usable($merchant_id)->get();
         return view('wallets.disbursement', compact('banks','merchant', 'wallet'));
     }
 

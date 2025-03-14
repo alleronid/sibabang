@@ -19,7 +19,7 @@
                         </select>
                     </div>
                 </div>
-                @endif
+            @endif
 
                 <div class="text-right">
                     <a href="{{ route('merchant.create') }}" class="btn btn-sm btn-primary mb-3">

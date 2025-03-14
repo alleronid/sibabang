@@ -61,7 +61,7 @@
                             @foreach ($data as $item)
                             <tr>
                                 @if(Auth::user()->isAdmin())
-                                    <th>{{$item->company->fullname}}</th>
+                                    <th>{{$item->company->merchant_name}}</th>
                                     <th>{{$item->merchant->merchant_name}}</th>
                                 @endif
                                 <td>{{$item->trx_id}}</td>

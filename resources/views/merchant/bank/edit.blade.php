@@ -9,6 +9,13 @@
             <div class="card-body">
                 <form action="{{ route('merchant-bank.update') }}" method="POST">
                     @csrf
+                    @if(Auth::user()->isAdmin())
+                        <div class="form-group">
+                            <label class="control-label">Company</label>
+                            <input type="text" class="form-control" name="company_name" placeholder="Masukan Nama Pemilik"
+                                                                                        value="{{$data->company->merchant_name}}" disabled />
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label class="control-label">Merchant</label>
                         <select name="merchant_id" class="form-control">
@@ -43,6 +50,23 @@
                         <input type="text" class="form-control" name="account_name" placeholder="Masukan Nama Pemilik"
                          value="{{$data->account_name}}" required />
                     </div>
+                    @if(Auth::user()->isAdmin())
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+                        <select name="status" class="form-control" id="status">
+                            <option value="PENDING" {{$data->status == 'PENDING' ? 'selected' : '' }} >PENDING</option>
+                            <option value="VERIFIED" {{$data->status == 'VERIFIED' ? 'selected' : '' }}>VERIFIED</option>
+                            <option value="REJECT" {{$data->status == 'REJECT' ? 'selected' : '' }}>REJECT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Active Status</label>
+                        <select name="is_active" class="form-control" id="is_active">
+                            <option value="1" {{$data->is_active == '1' ? 'selected' : '' }} >ACTIVE</option>
+                            <option value="0" {{$data->is_active == '0' ? 'selected' : '' }}> INACTIVE</option>
+                        </select>
+                    </div>
+                @endif
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </div>
