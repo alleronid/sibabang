@@ -16,7 +16,7 @@ class AyolinxService
         $this->timestamp = date('c');
         $this->keySB = AppSetting::where('key', 'ayolinx_key_sb')->first()->value;
         $this->secretSB = AppSetting::where('key', 'ayolinx_secret_sb')->first()->value;
-        $this->secretApp = AppSetting::where('key', 'sibabang_secret')->first()->value();
+        $this->secretApp = AppSetting::where('key', 'sibabang_secret')->first()->value;
     }
 
     public function signature()
