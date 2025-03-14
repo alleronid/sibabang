@@ -68,4 +68,8 @@ class MerchantController extends Controller
         $data = Merchant::with(['vendor', 'company'])->where('merchant_id', $id)->first();
         return response()->json($data);
     }
+
+    public function fee(){
+        return view('merchant.fee');
+    }
 }
