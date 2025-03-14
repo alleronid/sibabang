@@ -216,11 +216,14 @@
     </div>
 @endsection
 
+
+
 @push('addon-script')
     <script>
         $(document).ready(function() {
             let merchantId = $('#merchant_id').val();
             fetchWalletDetails(merchantId);
+            updateLinks(merchantId)
 
             $('#merchant_id').on('change', function() {
                 let selectedMerchantId = $(this).val();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Enums\AyolinxEnums;
+use Exception;
 
 
 class TransactionService{
@@ -91,7 +92,11 @@ class TransactionService{
             "Vega", "Widya", "Xia", "Yanto", "Zahira", "Asih", "Bambang", "Cempaka", "Dina", "Endang",
             "Fitri", "Gilang", "Hana", "Irfan", "Junaidi", "Kartika", "Lestari", "Mei", "Naila", "Ovan",
             "Putera", "Qanita", "Ratu", "Sakti", "Tia", "Ujang", "Vino", "Windi", "Xaverius", "Yessi",
-            "Zulkarnain"
+            "Zulkarnain", "Yuan", "Gang", "Hao", "Yu", "Bo", "Xian", "Tian", "Han", "Cheng", "Shou",
+            "Lu", "Zhong", "An", "Qiu", "Yao", "Ping", "Shan", "Wei", "Jie", "Guo",
+            "Jiang", "Xuan", "Rui", "Yi", "Zhao", "Luo", "Xin", "Fei", "Ding", "Teng",
+            "Shuo", "Mo", "Wen", "Jian", "Chao", "Su", "Cai", "Shuang", "Heng", "Lai",
+            "Qian", "Lei", "Zhuang", "Qiu", "Lin", "Chen", "Jian", "Yi", "Mu", "Fan"
         ];
 
         $lastNames = [
@@ -103,7 +108,12 @@ class TransactionService{
             "Oktaviani", "Pangestu", "Qasim", "Rahayu", "Suharto", "Triana", "Umaro", "Vicky", "Wirasakti", "Xenos",
             "Yusman", "Zaenal", "Adityawarman", "Basuki", "Cakrawala", "Darmadi", "Endrawan", "Febrianto", "Gatot", "Hardiman",
             "Irwansyah", "Jatmiko", "Krisna", "Lukito", "Mulyono", "Nadim", "Okta", "Prasetyo", "Qadri", "Ramadhan",
-            "Suhendi", "Tirta", "Utomo", "Virgiawan", "Widjaja", "Xavier", "Yusran", "Zulkarnain", "Aditama", "Bakri"
+            "Suhendi", "Tirta", "Utomo", "Virgiawan", "Widjaja", "Xavier", "Yusran", "Zulkarnain", "Aditama", "Bakri",
+            "Tian", "Du", "Dong", "Ren", "Chang", "Fu", "Wu", "Xie", "Cui", "Qin",
+            "Cheng", "Kang", "Yuan", "Lian", "Bai", "Qiao", "Meng", "Shang", "Fang", "Lai",
+            "Guan", "Jin", "Xiong", "Hao", "Pei", "Xian", "Dai", "Gong", "Huangfu", "Ouyang",
+            "Zuo", "Yan", "Shou", "Liu", "Hong", "Mo", "Du", "Xun", "Tan", "Ai",
+            "Wan", "Mi", "Shao", "Fang", "Zhuang", "Lei", "Qiu", "Ruan", "Pu", "Geng"
         ];
 
         $randomFirstName = $firstNames[array_rand($firstNames)];
