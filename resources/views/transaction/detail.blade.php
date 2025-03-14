@@ -8,17 +8,21 @@
             <!-- begin: Invoice-->
             <!-- begin: Invoice header-->
             <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style="background-image: url({{asset('assets/media/bg/bg-6.jpg')}});">
-                <div class="col-md-9">
-                    <div class="d-flex justify-content-between flex-column flex-md-row">
-                        <h1 class="display-4 text-white font-weight-boldest mb-10">INVOICE</h1>
-
-                        <!-- New QRIS Barcode Section -->
-                        <div class="text-center">
-                            <h4 class="text-white">SCAN THIS QRIS</h4>
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{$data->payment_code}}&size=200x200" alt="">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <!-- Left section: Invoice title -->
+                        <div class="col-md-3">
+                            <h1 class="display-4 text-white font-weight-boldest mb-10 ml-5">INVOICE</h1>
                         </div>
 
-                        <div class="d-flex flex-column align-items-md-end px-0">
+                        <!-- Middle section: QR Code -->
+                        <div class="col-md-6 text-center">
+                            <h4 class="text-white">SCAN THIS QRIS</h4>
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{$data->payment_code}}&size=200x200" alt="QRIS Code">
+                        </div>
+
+                        <!-- Right section: Business details -->
+                        <div class="col-md-3 text-right">
                             <h4 class="text-white">{{$data->merchant->merchant_name ?? ''}}</h4>
                             <p class="text-white">{{$data->merchant->address ?? ''}}</p>
                         </div>
@@ -34,6 +38,10 @@
                     <div class="d-flex justify-content-between flex-column flex-md-row font-size-lg">
                         <div class="d-flex flex-column mb-10 mb-md-0">
                             <div class="font-weight-bolder font-size-lg mb-3">QRIS</div>
+                            <div class="d-flex justify-content-between">
+                                <span class="mr-15 font-weight-bold">Status :</span>
+                                <span class="text-right">{{$data->status}}</span>
+                            </div>
                             <div class="d-flex justify-content-between mb-3">
                                 <span class="mr-15 font-weight-bold">Tanggal Transaksi :</span>
                                 <span class="text-right">{{$data->created_at}}</span>
@@ -54,6 +62,7 @@
                                 <span class="mr-15 font-weight-bold">Phone Number :</span>
                                 <span class="text-right">{{$data->phone_number}}</span>
                             </div>
+
                         </div>
                         <div class="d-flex flex-column text-md-right">
                             <span class="font-size-lg font-weight-bolder mb-1">TOTAL PAYMENT</span>
