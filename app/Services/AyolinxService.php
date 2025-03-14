@@ -7,7 +7,7 @@ use App\Models\AppSetting;
 
 class AyolinxService
 {
-    private $timestamp;
+    private $timestamp, $secretApp;
     private $keySB;
     private $secretSB;
 
@@ -16,6 +16,7 @@ class AyolinxService
         $this->timestamp = date('c');
         $this->keySB = AppSetting::where('key', 'ayolinx_key_sb')->first()->value;
         $this->secretSB = AppSetting::where('key', 'ayolinx_secret_sb')->first()->value;
+        $this->secretApp = AppSetting::where('key', 'sibabang_secret')->first()->value();
     }
 
     public function signature()
@@ -155,4 +156,64 @@ class AyolinxService
         $number = strval(rand(11111111111 ,99999999999));
         return $number;
     }
+
+    //callback
+
+    public function generateAccessToken()
+    {
+        $timestamp = $_SERVER['HTTP_X_TIMESTAMP'];
+        $client_key = $_SERVER['HTTP_X_CLIENT_KEY'];
+        $signature = $_SERVER['HTTP_X_SIGNATURE'];
+        $body_raw = file_get_contents('php://input');
+
+        // $public_key_ayo_path = '../keys/public_key_notify_itg_sand.pem';
+        // $public_key_ayo = file_get_contents($public_key_ayo_path);
+        $clientKey = $this->secretApp;
+
+        if ($client_key != $clientKey) {
+            return ['responseCode' => AyolinxEnums::ERR_AYOLINK_PAYMENT_BAD_REQ, 'responseMessage' => 'Unauthorized client key!'];
+        }
+
+        if (empty($signature)) {
+            return['responseCode' => AyolinxEnums::ERR_AYOLINK_PAYMENT_INVALID_SIGN, 'responseMessage' => 'Empty Signature!'];
+        }
+
+        // if (!file_exists($public_key_ayo_path)) {
+        //     return ['responseCode' => AyolinxEnums::ERR_AYOLINK_PAYMENT_BAD_REQ, 'responseMessage' => 'Internal Server Error, Public Key File Not Exist'];
+        // }
+
+        // if (empty($public_key_ayo)) {
+        //     return ['responseCode' => AyolinxEnums::ERR_AYOLINK_PAYMENT_BAD_REQ, 'responseMessage' => 'Internal Server Error, Public Key Empty'];
+        // }
+
+        $data = $client_key.'|'.$timestamp;
+        $sign = base64_decode($signature);
+        // $sign_check = openssl_verify($data, $sign, $public_key_ayo, OPENSSL_ALGO_SHA256);
+
+        // if (!$sign_check) {
+        //     return ['responseCode' => AyolinxEnums::ERR_AYOLINK_PAYMENT_INVALID_SIGN, 'responseMessage' => ' Invalid Signature'];
+        // }
+
+        // Generate token (e99a18c428cb38d5f260853678922e03b20e8f5c5b8a3f0a1b2c3d4e5f6a7b8c9)
+        $token_key = 'ayo_token_%s_%s';
+        $time_val = microtime(true);
+        $token_str = sprintf($token_key, $time_val, uniqid(true));
+        $access_token = hash('sha256', $token_str);
+
+        $ret = [
+            'responseCode' => AyolinxEnums::SUCCESS_GET_TOKENVA,
+            'responseMessage' => 'Successful',
+            'accessToken' => $access_token,
+            'tokenType' => 'Bearer',
+            'expiresIn' => '3600',
+        ];
+
+        $json_ret = json_encode($ret, JSON_PRETTY_PRINT);
+
+
+        header('Content-Type: application/json');
+
+        return $ret;
+    }
+
 }
