@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
+
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register-save', [RegisterController::class, 'store'])->name('register.save');
