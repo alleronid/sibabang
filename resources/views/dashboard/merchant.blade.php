@@ -217,7 +217,6 @@
 @endsection
 
 
-
 @push('addon-script')
     <script>
         $(document).ready(function() {
@@ -247,11 +246,11 @@
             }
 
             function updateLinks(merchantId) {
-                let disbursementBaseUrl = $('#disbursementLink').attr('href');
-                let reportBaseUrl = $('#reportLink').attr('href');
+                let disbursementBaseUrl = "{{ route('wallet.disbursement', ['id_hash' => '__MERCHANT_ID__']) }}";
+                let reportBaseUrl = "{{ route('wallet.list.disbursement', ['id_hash' => '__MERCHANT_ID__']) }}";
 
                 disbursementBaseUrl = disbursementBaseUrl.replace('__MERCHANT_ID__', btoa(merchantId));
-                reportBaseUrl = reportBaseUrl.replace('__MERCHANT_ID__', merchantId);
+                reportBaseUrl = reportBaseUrl.replace('__MERCHANT_ID__', btoa(merchantId));
 
                 $('#disbursementLink').attr('href', disbursementBaseUrl);
                 $('#reportLink').attr('href', reportBaseUrl);
