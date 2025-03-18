@@ -54,7 +54,7 @@ class DashboardService{
                 COUNT(CASE WHEN status = 'APPROVED' THEN company_id ELSE NULL END) AS count_companies,
                 COUNT(CASE WHEN status = 'APPROVED' and created_at BETWEEN ? AND ? THEN company_id ELSE NULL END) AS current_month_companies
                 COUNT(CASE WHEN status = 'APPROVED' and created_at BETWEEN ? AND ? THEN company_id ELSE NULL END) AS last_month_companies
-            ", [$currentMonthEnd, $currentMonthEnd, $lastMonthStart, $lastMonthEnd])
+            ", [$currentMonthStart, $currentMonthEnd, $lastMonthStart, $lastMonthEnd])
             ->first();
 
         return [
