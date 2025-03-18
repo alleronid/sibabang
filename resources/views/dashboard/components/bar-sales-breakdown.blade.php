@@ -1,11 +1,11 @@
 
 <div class="card card-custom">
     <div class="card-header">
-        <h3 class="card-title">Sales Breakdown</h3>
+        <h3 class="card-title">Transaction Breakdown</h3>
     </div>
     <div class="card-body">
         <h2 class="mb-3">$<span id="totalSalesDisplay">0</span> <span class="trend-indicator trend-up ml-2">+<span id="totalSalesGrowthDisplay">0</span>%</span></h2>
-        <p class="text-muted">All time sales</p>
+        <p class="text-muted">Transactions</p>
 
         <div class="sales-chart">
             <div id="metronicBar" class="sales-metronic"></div>
@@ -16,15 +16,15 @@
         <div class="d-flex justify-content-between mt-3">
             <div class="d-flex align-items-center">
                 <span class="mr-2" style="width: 10px; height: 10px; background-color: #1bc5bd; display: inline-block; border-radius: 50%;"></span>
-                <span>Metronic (<span id="metronicPercent">0</span>%)</span>
+                <span>Success (<span id="metronicPercent">0</span>%)</span>
             </div>
             <div class="d-flex align-items-center">
                 <span class="mr-2" style="width: 10px; height: 10px; background-color: #f64e60; display: inline-block; border-radius: 50%;"></span>
-                <span>Bundle (<span id="bundlePercent">0</span>%)</span>
+                <span>Cancel/Expired (<span id="bundlePercent">0</span>%)</span>
             </div>
             <div class="d-flex align-items-center">
                 <span class="mr-2" style="width: 10px; height: 10px; background-color: #8950fc; display: inline-block; border-radius: 50%;"></span>
-                <span>MetronicNest (<span id="nestPercent">0</span>%)</span>
+                <span>Pending (<span id="nestPercent">0</span>%)</span>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
                     <div class="channel-icon">
                         <i class="fas fa-store text-muted"></i>
                     </div>
-                    <span>Online Store</span>
+                    <span>QRIS</span>
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="font-weight-bold mr-2">$<span id="onlineSalesDisplay">0</span></span>
@@ -52,7 +52,7 @@
                     <div class="channel-icon">
                         <i class="fab fa-facebook-f text-primary"></i>
                     </div>
-                    <span>Facebook</span>
+                    <span>DANA E-Wallet</span>
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="font-weight-bold mr-2">$<span id="facebookSalesDisplay">0</span></span>
@@ -68,7 +68,23 @@
                     <div class="channel-icon">
                         <i class="fab fa-instagram text-danger"></i>
                     </div>
-                    <span>Instagram</span>
+                    <span>BNI VA</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="font-weight-bold mr-2">$<span id="instagramSalesDisplay">0</span></span>
+                    <span class="trend-indicator trend-up">+<span id="instagramGrowthDisplay">0</span>%</span>
+                </div>
+            </div>
+            <div class="progress">
+                <div id="instagramProgress" class="progress-bar progress-bar-instagram" role="progressbar" style="width: 0%"></div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="d-flex align-items-center">
+                    <div class="channel-icon">
+                        <i class="fab fa-instagram text-danger"></i>
+                    </div>
+                    <span>MANDIRI VA</span>
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="font-weight-bold mr-2">$<span id="instagramSalesDisplay">0</span></span>

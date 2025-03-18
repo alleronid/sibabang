@@ -137,14 +137,15 @@
 
                     /*** TOTAL REVENUE ***/
                     let totalRevenue = parseFloat(response.total_revenue);
+                    let currentWeekRevenue = parseFloat(response.current_week_revenue);
                     let lastWeekRevenue = parseFloat(response.last_week_revenue);
-                    let revenueDifference = Math.abs(totalRevenue - lastWeekRevenue);
+                    let revenueDifference = Math.abs(lastWeekRevenue - currentWeekRevenue);
                     let formatDifference = formatRupiah(revenueDifference);
                     let percentageChange = lastWeekRevenue > 0 ? ((revenueDifference / lastWeekRevenue) * 100).toFixed(1) : 0;
 
                     $("#total-revenue").text(`${formatRupiah(response.total_revenue)}`);
 
-                    if (totalRevenue > lastWeekRevenue) {
+                    if (currentWeekRevenue > lastWeekRevenue) {
                         $("#total-revenue-lastweek")
                             .removeClass("text-danger")
                             .addClass("text-success")
@@ -154,7 +155,7 @@
                             .removeClass("text-danger")
                             .addClass("text-success")
                             .text(`↑ ${percentageChange}%`);
-                    } else if (totalRevenue < lastWeekRevenue) {
+                    } else if (currentWeekRevenue < lastWeekRevenue) {
                         $("#total-revenue-lastweek")
                             .removeClass("text-success")
                             .addClass("text-danger")
@@ -177,14 +178,15 @@
 
                     /*** TOTAL TRANSACTIONS ***/
                     let totalTransactions = parseInt(response.count_transactions);
+                    let currentWeekTransactions = parseInt(response.current_week_transactions);
                     let lastWeekTransactions = parseInt(response.last_week_transactions);
-                    let transactionDifference = Math.abs(totalTransactions - lastWeekTransactions);
+                    let transactionDifference = Math.abs(lastWeekTransactions - currentWeekTransactions);
                     let formatDifferenceTransactions = formatNumber(transactionDifference);
                     let percentageChangeTransactions = lastWeekTransactions > 0 ? ((transactionDifference / lastWeekTransactions) * 100).toFixed(1) : 0;
 
                     $("#total-transactions").text(`${formatNumber(response.count_transactions)}`);
 
-                    if (totalTransactions > lastWeekTransactions) {
+                    if (currentWeekTransactions > lastWeekTransactions) {
                         $("#total-transactions-lastweek")
                             .removeClass("text-danger")
                             .addClass("text-success")
@@ -194,7 +196,7 @@
                             .removeClass("text-danger")
                             .addClass("text-success")
                             .text(`↑ ${percentageChangeTransactions}%`);
-                    } else if (totalTransactions < lastWeekTransactions) {
+                    } else if (currentWeekTransactions < lastWeekTransactions) {
                         $("#total-transactions-lastweek")
                             .removeClass("text-success")
                             .addClass("text-danger")
@@ -218,14 +220,15 @@
 
                     /*** TOTAL REGISTERED COMPANIES ***/
                     let totalRegistered = parseInt(response.count_companies);
+                    let currentMonthRegistered = parseInt(response.current_month_companies);
                     let lastMonthRegistered = parseInt(response.last_month_companies);
-                    let registeredDifference = Math.abs(totalRegistered - lastMonthRegistered);
+                    let registeredDifference = Math.abs(lastMonthRegistered - currentMonthRegistered);
                     let formatDifferenceRegistered = formatNumber(registeredDifference);
                     let percentageChangeRegistered = lastMonthRegistered > 0 ? ((registeredDifference / lastMonthRegistered) * 100).toFixed(1) : 0;
 
                     $("#total-registered").text(`${formatNumber(response.count_companies)}`);
 
-                    if (totalRegistered > lastMonthRegistered) {
+                    if (currentMonthRegistered > lastMonthRegistered) {
                         $("#total-registered-lastmonth")
                             .removeClass("text-danger")
                             .addClass("text-success")
@@ -235,7 +238,7 @@
                             .removeClass("text-danger")
                             .addClass("text-success")
                             .text(`↑ ${percentageChangeRegistered}%`);
-                    } else if (totalRegistered < lastMonthRegistered) {
+                    } else if (currentMonthRegistered < lastMonthRegistered) {
                         $("#total-registered-lastmonth")
                             .removeClass("text-success")
                             .addClass("text-danger")
@@ -260,17 +263,20 @@
                     /*** SUCCESS RATE ***/
                     let successTransactions = parseInt(response.count_success_transactions);
                     let counttotalTransactions = parseInt(response.count_all_transactions);
+                    let currentWeekSuccessTransactions = parseInt(response.current_week_success_transactions);
                     let lastWeekSuccessTransactions = parseInt(response.last_week_success_transactions);
+                    let currentWeekTotalTransactions = parseInt(response.current_week_all_transactions);
                     let lastWeekTotalTransactions = parseInt(response.last_week_all_transactions);
 
                     let successRate = calculateSuccessRate(successTransactions, counttotalTransactions);
+                    let currentWeekSuccessRate = calculateSuccessRate(currentWeekSuccessTransactions, currentWeekTotalTransactions);
                     let lastWeekSuccessRate = calculateSuccessRate(lastWeekSuccessTransactions, lastWeekTotalTransactions);
-                    let successRateDifference = Math.abs(successRate - lastWeekSuccessRate);
+                    let successRateDifference = Math.abs(lastWeekSuccessRate - currentWeeksuccessRate);
                     let percentageChangeSuccessRate = lastWeekSuccessRate > 0 ? ((successRateDifference / lastWeekSuccessRate) * 100).toFixed(1) : 0;
 
                     $("#success-rate").text(`${successRate}%`);
 
-                    if (successRate > lastWeekSuccessRate) {
+                    if (currentWeekSuccessRate > lastWeekSuccessRate) {
                         $("#success-rate-lastweek")
                             .removeClass("text-danger")
                             .addClass("text-success")
@@ -302,7 +308,6 @@
                             .text('');
                     }
                 },
-
                 error: function () {
                     console.error("Failed to fetch dashboard statistics.");
                 }
