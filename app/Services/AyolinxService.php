@@ -157,8 +157,6 @@ class AyolinxService
         return $number;
     }
 
-    //callback
-
     public function generateAccessToken()
     {
         $timestamp = $_SERVER['HTTP_X_TIMESTAMP'];

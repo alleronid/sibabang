@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Enums\AyolinxEnums;
+use App\Models\Merchant;
 use Exception;
 
 
@@ -34,17 +35,31 @@ class TransactionService{
         $data->merchant_id = $request->merchant_id;
         $data->company_id = $request->company_id ?? Auth::user()->company_id;
 
-        $body = [
-            "partnerReferenceNo" => $noTrx,
-            "amount" => [
-                "currency" => "IDR",
-                "value" => $request->amount
-            ],
-            "additionalInfo" => [
-                "channel" => AyolinxEnums::QRIS,
-                // "subMerchantId" => "000580132685"
-            ]
-        ];
+        if(Auth()->isAdmin()){
+            $body = [
+                "partnerReferenceNo" => $noTrx,
+                "amount" => [
+                    "currency" => "IDR",
+                    "value" => $request->amount
+                ],
+                "additionalInfo" => [
+                    "channel" => AyolinxEnums::QRIS,
+                ]
+            ];
+        }else{
+            $merchant = Merchant::find($request->merchant_id);
+            $body = [
+                "partnerReferenceNo" => $noTrx,
+                "amount" => [
+                    "currency" => "IDR",
+                    "value" => $request->amount
+                ],
+                "additionalInfo" => [
+                    "channel" => AyolinxEnums::QRIS,
+                    "subMerchantId" => $merchant->mid_qris
+                ]
+            ];
+        }
 
         $result =  $this->ayolinxService->generateQris($body);
         $result = json_decode($result, true);
