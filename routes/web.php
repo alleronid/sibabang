@@ -10,6 +10,8 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
+Route::get('/testimonial', [HomeController::class, 'testi'])->name('testimonial');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register-save', [RegisterController::class, 'store'])->name('register.save');
