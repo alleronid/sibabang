@@ -44,7 +44,7 @@
         <div class="d-flex flex-column-auto flex-column pt-15 px-30">
             <!--begin::Aside header-->
             <a href="#" class="login-logo py-6">
-                SIBABANG
+                <img src="{{asset('sibabang-logo.png')}}" width="450" alt="">
             </a>
             <!--end::Aside header-->
             <!--begin: Wizard Nav-->
@@ -72,7 +72,7 @@
         <!--end::Aside Top-->
         <!--begin::Aside Bottom-->
         <div class="aside-img-wizard d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center pt-2 pt-lg-5"
-            style="background-position-y: calc(100% + 3rem); background-image: url(assets/media/svg/illustrations/features.svg)">
+            style="background-position-y: calc(100% + 3rem); background-image: url({{asset('assets/media/svg/illustrations/features.svg')}})">
         </div>
         <!--end::Aside Bottom-->
     </div>
