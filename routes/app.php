@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
         Route::get('/create', [MerchantController::class, 'create'])->name('create');
         Route::post('/save', [MerchantController::class, 'store'])->name('save');
         Route::post('/update', [MerchantController::class, 'update'])->name('update');
-        Route::get('/show/{id}', [MerchantController::class, 'getMerchantt'])->name('getMerchant');
+        Route::get('/show/{id}', [MerchantController::class, 'getMerchant'])->name('getMerchant');
         Route::get('/list-payment', [MerchantPaymentController::class, 'qris'])->name('qris');
         Route::get('/fee', [MerchantController::class, 'fee'])->name('fee');
     });

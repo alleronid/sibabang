@@ -11,7 +11,11 @@ use App\Models\User;
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'app'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-        Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+        Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
+            Route::get('/', [DashboardController::class, 'admin'])->name('index');
+            Route::post('/summary', [DashboardController::class, 'getSummaryData'])->name('summary');
+        });
+        // Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function(){
             Route::get('/', [UserController::class, 'index_admin'])->name('index');
