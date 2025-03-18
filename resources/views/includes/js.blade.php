@@ -16,4 +16,5 @@
         <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
         <script src="{{asset('assets/js/pages/crud/datatables/basic/paginations.js')}}"></script>
         <script src="{{asset('js/custom.js')}}"></script>
+        <script src="{{asset('assets/js/pages/features/charts/apexcharts.js')}}"></script>
 		<!--end::Page Scripts-->
