@@ -180,7 +180,9 @@
         <i class="fa fa-bar-chart" aria-hidden="true"></i>
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="h-96 w-full">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5828.606269737052!2d119.51623415917433!3d-8.601997767755183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db4567cf6bd1967%3A0x9f2eb4aca51c5fd0!2sPink%20Beach!5e0!3m2!1sen!2sid!4v1742267792673!5m2!1sen!2sid"
+                {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5828.606269737052!2d119.51623415917433!3d-8.601997767755183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db4567cf6bd1967%3A0x9f2eb4aca51c5fd0!2sPink%20Beach!5e0!3m2!1sen!2sid!4v1742267792673!5m2!1sen!2sid"
+                class="w-full h-full object-cover" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
+                <iframe src="https://www.google.com/maps/embed?pb=!4v1742288164862!6m8!1m7!1sA91t6Kly8NdcvIoE0wtAlg!2m2!1d-8.585371777064926!2d116.1155712113694!3f316.3586957730886!4f-4.209155086145657!5f0.8181364777277049"
                 class="w-full h-full object-cover" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="p-6">

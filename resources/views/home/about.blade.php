@@ -7,7 +7,7 @@
         <!-- Header -->
         <div class="text-center mb-16">
             <div class="flex justify-center mb-2">
-                <img src="{{asset('/assets/logo.png')}}" alt="SIBABANG Logo" class="h-16">
+                <img src="{{asset('sibabang-logo.png')}}" alt="SIBABANG Logo" class="h-16">
             </div>
             <p class="text-purple-600 font-medium uppercase tracking-wide">TENTANG SIBABANG</p>
             <h2 class="mt-2 text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
@@ -79,7 +79,7 @@
 
         <!-- Logo at bottom -->
         <div class="mt-20 flex justify-end">
-            <img src="{{asset('/assets/logo-alt.png')}}" alt="SIBABANG Logo" class="h-20">
+            <img src="{{asset('sibabang-logo.png')}}" alt="SIBABANG Logo" class="h-20">
         </div>
     </div>
 </section>
