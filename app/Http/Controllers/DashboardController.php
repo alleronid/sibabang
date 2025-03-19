@@ -25,23 +25,15 @@ class DashboardController extends Controller
         $merchants = Merchant::where('company_id', Auth::user()->company_id)->get();
         $transactions = TrxPayment::where('company_id', Auth::user()->company_id)
                         ->orderBy('id', 'desc')
-                        ->limit(5)
+                        ->limit(8)
                         ->get();
         return view('dashboard.merchant', compact('merchants', 'transactions'));
     }
 
     public function getDetailWallet($merchantId)
     {
-        $wallet = Wallet::where('merchant_id', $merchantId)->first();
-        $thisMonth = DB::table('trx_payments')
-        ->where('company_id', Auth::user()->company_id)
-        ->where('created_at', '>=', Carbon::now()->subMonth())
-        ->where('status', 'PAID')
-        ->sum('amount');
-        return response()->json([
-            'wallet' => $wallet,
-            'thisMonth' => $thisMonth
-        ]);
+        $data  = $this->dashboardService->getSummaryMerchant($merchantId);
+        return response()->json($data);
     }
 
     public function admin(){

@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\TrxPayment;
 use App\Models\RegisterCompany;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Wallet;
+use App\Models\Merchant;
 
 class DashboardService{
 
@@ -73,6 +76,29 @@ class DashboardService{
             'count_companies' => (int) $companies->count_companies ?? 0,
             'current_month_companies' => (int) $companies->current_month_companies ?? 0,
             'last_month_companies' => (int) $companies->last_month_companies ?? 0
+        ];
+    }
+
+    public function getSummaryMerchant($merchantId){
+        $wallet = Wallet::where('merchant_id', $merchantId)->first();
+        $thisMonth = DB::table('trx_payments')
+                    ->where('merchant_id', $merchantId)
+                    ->where('created_at', '>=', Carbon::now()->subMonth())
+                    ->where('status', 'PAID')
+                    ->sum('amount');
+
+        $transactions = DB::table('trx_payments')
+                    ->selectRaw("DATE_FORMAT(created_at, '%M') AS bulan, COUNT(id) AS total_trx, DATE_FORMAT(created_at, '%m') AS bulan_angka")
+                    ->where('merchant_id', $merchantId)
+                    ->where('status', 'PAID')
+                    ->groupBy('bulan', 'bulan_angka')
+                    ->orderBy('bulan_angka')
+                    ->get();
+
+        return [
+            'wallet' => $wallet,
+            'thisMonth' => $thisMonth,
+            'transactions' => $transactions
         ];
     }
 
