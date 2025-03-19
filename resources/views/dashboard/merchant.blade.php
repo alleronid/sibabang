@@ -169,11 +169,10 @@
                         $('#TotalBalance').text(formatRupiah(response.wallet.avail_balance));
                         $('#thisMonth').text(formatRupiah(response.thisMonth));
 
-                        // Extract chart data
                         let chartData = response.transactions.map(trx => trx.total_trx);
                         let chartCategories = response.transactions.map(trx => trx.bulan);
 
-                        updateChart(chartData, chartCategories); // Update chart with new data
+                        updateChart(chartData, chartCategories);
                     },
                     error: function(error) {
                         console.error('Error fetching wallet details:', error);
@@ -182,6 +181,7 @@
             }
 
             function formatRupiah(value) {
+                value = Math.floor(value); // Remove decimal part
                 return 'Rp. ' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             }
 
