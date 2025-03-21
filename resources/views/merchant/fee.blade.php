@@ -2,18 +2,32 @@
 
 @section('content')
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <h2 class="mb-0">List Merchant Fee</h2>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h4>List MDR Merchant</h4>
             </div>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by merchant...">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Mechant</th>
+                                <th>MDR QRIS</th>
+                                <th>MDR Dana</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $item)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$item->merchant_name}}</td>
+                                <td>{{$item->mdr_rate}}%</td>
+                                <td>{{$item->mdr_rate}}%</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -23,10 +37,6 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="d-flex align-items-center mb-3">
-                            <h5 class="mb-0 mr-2">Biaya Merchant:</h5>
-                            <span class="badge badge-primary p-2">0.7%</span>
-                        </div>
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0 mr-2">Biaya Admin:</h5>
                             <span class="badge badge-info p-2">0 - 5000 Rupiah</span>
@@ -51,3 +61,11 @@
         </div>
     </div>
 @endsection
+
+@push('addon-script')
+    <script>
+        $(document).ready(function() {
+            var table = $('#dataTable').DataTable();
+        });
+    </script>
+@endpush

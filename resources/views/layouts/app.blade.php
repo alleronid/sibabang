@@ -24,8 +24,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="index.html" class="brand-logo">
-							{{-- <img alt="Logo" src="assets/media/logos/logo-light.png" /> --}}
-                            <h3 class="text-white">SIBABANG</h3>
+							<img alt="Logo" src="{{asset('sibabang-logo.png')}}" style="width:128px;"/>
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

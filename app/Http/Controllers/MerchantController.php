@@ -70,6 +70,7 @@ class MerchantController extends Controller
     }
 
     public function fee(){
-        return view('merchant.fee');
+        $data = Merchant::with(['vendor', 'company'])->where('company_id', Auth::user()->company_id)->get();
+        return view('merchant.fee', compact('data'));
     }
 }
