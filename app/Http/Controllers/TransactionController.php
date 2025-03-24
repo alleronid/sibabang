@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Merchant;
+use App\Models\RegisterCompany;
 use App\Models\TrxPayment;
 use App\Services\TransactionService;
 use App\Services\MerchantService;
@@ -42,8 +43,9 @@ class TransactionController extends Controller
     }
 
     public function create(){
+        $company = RegisterCompany::where('company_id', Auth::user()->company_id)->first();
         $merchants = Merchant::where('company_id', Auth::user()->company_id)->get();
-        return view('transaction.create', compact('merchants'));
+        return view('transaction.create', compact('merchants', 'company'));
     }
 
     public function store(Request $request)

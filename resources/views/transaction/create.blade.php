@@ -9,6 +9,14 @@
         <div class="card-body">
             <form action="{{route('transaction.save')}}" method="POST">
                 @csrf
+                @if ($company->status !== 'APPROVED')
+                    <div class="row">
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <span class="me-2">⚠️</span>
+                            <div>Akun anda belum terverifikasi tidak dapat membuat transaksi.</div>
+                        </div>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -51,9 +59,18 @@
                 <div class="row">
                     <p class="ml-4"><sup>*)</sup> Optional jika ada</p>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                @if ($company->status === 'APPROVED')
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                    </div>
+                @else
+                <div class="row">
+                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                        <span class="me-2">⚠️</span>
+                        <div>Akun anda belum terverifikasi tidak dapat membuat transaksi.</div>
+                    </div>
                 </div>
+                @endif
             </form>
         </div>
       </div>
