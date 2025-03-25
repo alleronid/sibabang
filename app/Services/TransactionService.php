@@ -35,7 +35,7 @@ class TransactionService{
         $data->merchant_id = $request->merchant_id;
         $data->company_id = $request->company_id ?? Auth::user()->company_id;
 
-        if(Auth()->isAdmin()){
+        if(Auth::user()->isAdmin()){
             $body = [
                 "partnerReferenceNo" => $noTrx,
                 "amount" => [
@@ -70,7 +70,7 @@ class TransactionService{
                 throw new Exception("Failed to generate QRIS");
             }
         }
-        $data->data_raw = json_decode($result);
+        $data->data_raw = json_encode($result);
         $data->save();
         DB::commit();
     }

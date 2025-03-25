@@ -10,7 +10,7 @@ class AyolinxService
     private $timestamp, $secretApp;
     private $keySB;
     private $secretSB;
-    private $keys_dir = '/home/work/tool/keys/';
+    private $keys_dir = '/var/keys/';
 
     public function __construct()
     {
