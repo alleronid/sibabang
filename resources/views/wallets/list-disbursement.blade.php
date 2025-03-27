@@ -24,6 +24,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
+                            <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->no_trx }}</td>
                                 <td>{{ $item->bank->bank_name }} - {{ $item->bank->account_name }}</td>
@@ -34,6 +35,7 @@
                                     <a href="javascript:void(0)" onclick="detailDisbursement({{ $item->id }})"
                                         class="btn btn-sm btn-primary">Detail</a>
                                 </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
