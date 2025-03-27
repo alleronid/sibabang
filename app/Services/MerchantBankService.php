@@ -23,7 +23,7 @@ class MerchantBankService
         $data->account_number = $request->account_number;
         $data->status = 'PENDING';
         $data->is_active = 1; // active
-        $data->company_id = $merchant->company->company_id;
+        $data->company_id = $request->company_id ?? $merchant->company->company_id;
         $data->save();
         DB::commit();
     }
@@ -33,14 +33,13 @@ class MerchantBankService
 
         DB::beginTransaction();
         $data = MerchantBank::find($request->id);
-        $data->bank_id = $request->bank_id;
-        $data->merchant_id = $request->merchant_id;
-        $data->bank_name = $request->bank_name;
-        $data->account_name =$request->account_name;
-        $data->account_number = $request->account_number;
+        $data->bank_id = $request->bank_id ?? data->bank_id;
+        $data->merchant_id = $request->merchant_id ?? $data->merchant_id;
+        $data->bank_name = $request->bank_name ?? $data->bank_name;
+        $data->account_name =$request->account_name ?? $data->account_name;
+        $data->account_number = $request->account_number ?? $data->account_number;
         $data->status = (!Auth::user()->isAdmin()) ? 'PENDING' : $request->status;
         $data->is_active = $request->is_active ?? 1;
-        $data->company_id = $merchant->company->company_id;
         $data->save();
 
         DB::commit();

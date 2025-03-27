@@ -9,13 +9,11 @@
             <div class="card-body">
                 <form action="{{ route('merchant-bank.update') }}" method="POST">
                     @csrf
-                    @if(Auth::user()->isAdmin())
-                        <div class="form-group">
-                            <label class="control-label">Company</label>
-                            <input type="text" class="form-control" name="company_name" placeholder="Masukan Nama Pemilik"
-                                                                                        value="{{$data->company->merchant_name}}" disabled />
-                        </div>
-                    @endif
+                    <div class="form-group">
+                        <label class="control-label">Company</label>
+                        <input type="text" class="form-control" name="company_name" placeholder="Masukan Nama Company"
+                                                                                    value="{{$data->company->merchant_name}}" disabled />
+                    </div>
                     <div class="form-group">
                         <label class="control-label">Merchant</label>
                         <select name="merchant_id" class="form-control">
