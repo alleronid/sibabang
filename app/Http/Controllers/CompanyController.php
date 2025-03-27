@@ -9,6 +9,7 @@ use App\Models\MtProvince;
 use App\Models\MtSubDistrict;
 use App\Models\RegisterCompany;
 use App\Services\CompanyService;
+use App\Services\LogService;
 use Illuminate\Support\Facades\Auth;
 use App\Services\RegisterService;
 use Illuminate\Http\Request;
@@ -18,12 +19,13 @@ use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
 {
 
-    private $companyService, $registerService;
+    private $companyService, $registerService, $logService;
 
-    public function __construct(CompanyService $companyService, RegisterService $registerService)
+    public function __construct(CompanyService $companyService, RegisterService $registerService, LogService $logService)
     {
         $this->companyService = $companyService;
         $this->registerService = $registerService;
+        $this->logService = $logService;
     }
 
     public function index_profile(){
@@ -39,6 +41,7 @@ class CompanyController extends Controller
             $this->companyService->personal_data($request);
             return redirect(route('company.index'))->with('toast_success', 'Successfully update personal data');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('company.index'))->with('toast_error', 'failed update personal data');
         }
     }
@@ -48,6 +51,7 @@ class CompanyController extends Controller
             $this->companyService->company_data($request);
             return redirect(route('company.index'))->with('toast_success', 'Successfully update personal data');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('company.index'))->with('toast_error', 'failed update company data');
         }
     }
@@ -57,6 +61,7 @@ class CompanyController extends Controller
             $this->companyService->company_file($request);
             return redirect(route('company.index'))->with('toast_success', 'Successfully update personal data');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('company.index'))->with('toast_error', 'failed update company data');
         }
     }
@@ -96,6 +101,7 @@ class CompanyController extends Controller
                 'message' => 'success update user'
             ]);
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             DB::rollBack();
             return response()->json([
                 'message' => 'error update user'

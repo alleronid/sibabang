@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Merchant;
 use App\Models\MtRole;
+use App\Services\LogService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,12 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
-    private $userService, $merchantService;
+    private $userService, $merchantService, $logService;
 
-    public function __construct(UserService $userService, MerchantService $merchantService) {
+    public function __construct(UserService $userService, MerchantService $merchantService, LogService $logService) {
         $this->userService = $userService;
         $this->merchantService = $merchantService;
+        $this->logService = $logService;
     }
 
     // admin menu
@@ -40,7 +42,7 @@ class UserController extends Controller
             $this->userService->save($request);
             return redirect(route('admin.user.index'))->with('toast_success', 'Create User Successfully');
         }catch (\Exception $e){
-            dd($e->getMessage());
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('admin.user.index'))->with('toast_error', 'Create User Failed');
         }
     }
@@ -52,6 +54,7 @@ class UserController extends Controller
                 'message' => 'success update user'
             ]);
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             DB::rollBack();
             return response()->json([
                 'message' => 'error update user'
@@ -85,6 +88,7 @@ class UserController extends Controller
             $this->userService->save($request);
             return redirect(route('user.index'))->with('toast_success', 'Create User Successfully');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('user.index'))->with('toast_error', 'Create User Failed');
         }
     }
@@ -102,6 +106,7 @@ class UserController extends Controller
             $this->userService->update($request);
             return redirect(route('user.index'))->with('toast_success', 'Update User Successfully');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('user.index'))->with('toast_error', 'Update User Failed');
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RegisterCompany;
+use App\Services\LogService;
 use App\Services\RegisterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,11 +11,12 @@ use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
 
-    private $registerService;
+    private $registerService, $logService;
 
-    public function __construct(RegisterService $registerService)
+    public function __construct(RegisterService $registerService, LogService $logService)
     {
         $this->registerService = $registerService;
+        $this->logService = $logService;
     }
 
     public function index(){
@@ -27,6 +29,7 @@ class RegisterController extends Controller
             $this->registerService->save($request);
             return redirect(route('login'))->with('success', 'Pendaftaran berhasil silakan login');
         }catch (\Exception $e) {
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             DB::rollBack();
             return redirect(route('register'))->with('error', 'Pendaftaran gagal silakan coba lagi');
         }

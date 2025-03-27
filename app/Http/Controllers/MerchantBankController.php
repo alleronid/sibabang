@@ -5,23 +5,30 @@ namespace App\Http\Controllers;
 use App\Models\Merchant;
 use App\Models\MerchantBank;
 use App\Models\MtBank;
+use App\Services\LogService;
 use App\Services\MerchantBankService;
 use App\Services\MerchantService;
 use App\Services\RegisterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class MerchantBankController extends Controller
 {
 
-    private $merchantbankService, $registerService, $merchantService;
+    private $merchantbankService, $registerService, $merchantService, $logService;
 
-    public function __construct(MerchantBankService $merchantbankService, RegisterService $registerService, MerchantService $merchantService)
+    public function __construct(
+        MerchantBankService $merchantbankService,
+        RegisterService $registerService,
+        MerchantService $merchantService,
+        LogService $logService)
     {
         $this->merchantbankService = $merchantbankService;
         $this->registerService = $registerService;
         $this->merchantService = $merchantService;
+        $this->logService = $logService;
     }
 
     public function index(){
@@ -52,7 +59,8 @@ class MerchantBankController extends Controller
             $this->merchantbankService->save($request);
             return redirect(route('merchant-bank.index'))->with('toast_success', 'Create Merchant Bank Successfully');
         }catch (\Exception $e){
-            dd($e->getMessage());
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
+            DB::rollback();
             return redirect(route('merchant-bank.index'))->with('toast_error', 'Create Merchant Bank Failed');
         }
     }
@@ -71,6 +79,7 @@ class MerchantBankController extends Controller
             $this->merchantbankService->updated($request);
             return redirect(route('merchant-bank.index'))->with('toast_success', 'Update Merchant Bank Successfully');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('merchant-bank.index'))->with('toast_error', 'Update Merchant Bank Failed');
         }
     }

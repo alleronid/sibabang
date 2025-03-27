@@ -9,16 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MerchantBank;
 use App\Models\TrxDisbursement;
 use App\Services\DisbursementService;
+use App\Services\LogService;
 use Illuminate\Support\Facades\DB;
 
 class WalletController extends Controller
 {
 
-    private $disbursementService;
+    private $disbursementService, $logService;
 
-    public function __construct(DisbursementService $disbursementService)
+    public function __construct(DisbursementService $disbursementService, LogService $logService)
     {
         $this->disbursementService = $disbursementService;
+        $this->logService = $logService;
     }
 
     public function index()
@@ -50,6 +52,7 @@ class WalletController extends Controller
             return redirect(route('wallet.index'));
         }catch (\Exception $e){
             DB::rollback();
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('wallet.disbursement', base64_encode($request->merchant_id)))->with('toast_error', 'Create Disbursement Failed');
         }
     }
@@ -68,6 +71,7 @@ class WalletController extends Controller
                 'message' => "successfully process Disbursement"
             ]);
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             DB::rollback();
             return response()->json([
                 'status' => 400,

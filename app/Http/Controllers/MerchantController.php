@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Merchant;
+use App\Services\LogService;
 use App\Services\MerchantService;
 use App\Services\RegisterService;
 use Illuminate\Http\Request;
@@ -12,11 +13,12 @@ use Illuminate\Support\Facades\Crypt;
 class MerchantController extends Controller
 {
 
-    private $merchantService, $registerService;
+    private $merchantService, $registerService, $logService;
 
-    public function __construct(MerchantService $merchantService, RegisterService $registerService) {
+    public function __construct(MerchantService $merchantService, RegisterService $registerService, LogService $logService) {
         $this->merchantService = $merchantService;
         $this->registerService = $registerService;
+        $this->logService = $logService;
     }
 
     public function index(Request $request){
@@ -46,6 +48,7 @@ class MerchantController extends Controller
             $this->merchantService->save($request);
             return redirect(route('merchant.index'))->with('toast_success', 'Create Merchant Successfully');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('merchant.index'))->with('toast_error', 'Create Merchant Failed');
         }
     }
@@ -57,6 +60,7 @@ class MerchantController extends Controller
                 'message' => 'success update merchant'
             ]);
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
            return response()->json([
             'message' => 'error update merchant'
            ]);

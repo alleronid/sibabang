@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merchant;
 use App\Models\RegisterCompany;
 use App\Models\TrxPayment;
+use App\Services\LogService;
 use App\Services\TransactionService;
 use App\Services\MerchantService;
 use App\Services\RegisterService;
@@ -13,13 +14,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-    private $transactionService, $registerService, $merchantService;
+    private $transactionService, $registerService, $merchantService, $logService;
 
-    public function __construct(TransactionService $transactionService,RegisterService $registerService, MerchantService $merchantService)
+    public function __construct(TransactionService $transactionService,
+    RegisterService $registerService,
+    MerchantService $merchantService,
+    LogService $logService)
     {
         $this->transactionService = $transactionService;
         $this->registerService = $registerService;
         $this->merchantService = $merchantService;
+        $this->logService = $logService;
     }
 
     public function index(){
@@ -61,6 +66,7 @@ class TransactionController extends Controller
             $this->transactionService->save($request);
             return redirect(route('transaction.index'))->with('toast_success', 'Create Transaction Successfully');
         }catch (\Exception $e){
+            $this->logService->store('error', $request, $e->getMessage(), url()->current());
             return redirect(route('transaction.index'))->with('toast_error', 'Create Transaction Failed');
         }
     }
