@@ -39,7 +39,7 @@ class MerchantBankService
         $data->account_name =$request->account_name;
         $data->account_number = $request->account_number;
         $data->status = (!Auth::user()->isAdmin()) ? 'PENDING' : $request->status;
-        $data->is_active = $request->is_active;
+        $data->is_active = $request->is_active ?? 1;
         $data->company_id = $merchant->company->company_id;
         $data->save();
 
