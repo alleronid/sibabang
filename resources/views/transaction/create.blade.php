@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Email <sup>*)</sup></label>
-                            <input type="text" class="form-control" name="email" placeholder="Masukan Nama Merchant"/>
+                            <input type="text" class="form-control" name="email" placeholder="Masukan Nama Email"/>
                         </div>
                     </div>
                     <div class="col-md-6">
