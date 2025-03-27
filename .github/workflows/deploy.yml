@@ -30,7 +30,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # Replace with your SSH username
           key: ${{ secrets.SSH_PRIVATE_KEY }} # Replace with your private SSH key
           port: 22 # Default SSH port
-          script: |
-						cd /var/www/sibabang # Path to your Laravel app on the server
-            git pull # Pull the latest changes from the main branch
-            php artisan optimize
+          script: cd /var/www/sibabang && git pull && php artisan optimize
