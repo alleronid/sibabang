@@ -24,7 +24,8 @@
                                     <td>{{ $item->merchant_name }}</td>
                                     <td>{{ $item->payment->process_date ?? '-' }}</td>
                                     <td>
-                                        <a href="">File link</a>
+
+                                        <a href="{{$item->payment_link}}" target="_blank">File link</a>
                                     </td>
                                 </tr>
                             @endforeach
