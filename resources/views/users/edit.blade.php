@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label class="control-label">Nama</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name}}" required/>
-                    <input type="text" class="form-control" name="id" value="{{$data->id}}" hidden/>
+                    <input type="text" class="form-control" name="user_id" value="{{$data->id}}" hidden/>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Email</label>
