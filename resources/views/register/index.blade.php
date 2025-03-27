@@ -107,7 +107,7 @@
                                                 required />
                                             <div class="spinner" id="email-spinner"></div>
                                         </div>
-                                        <div class="error-message" id="email-error"></div>
+                                        <div class="error-message" id="email-error" style="color: red;"></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-sm font-weight-bolder text-dark">Nama Usaha <span
@@ -126,7 +126,7 @@
                                                 onkeypress="return this.value.length < 16" required />
                                             <div class="spinner" id="ktp-spinner"></div>
                                         </div>
-                                        <div class="error-message" id="ktp-error"></div>
+                                        <div class="error-message" id="ktp-error" style="color: red;"></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="text-sm font-weight-bolder text-dark">KTP<span
