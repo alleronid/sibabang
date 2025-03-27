@@ -90,6 +90,10 @@
                                 <label>Api Key Sandbox</label>
                                 <input type="text" class="form-control" name="api_key_sb" id="ApiKeySB" readonly />
                             </div>
+                            <div class="form-group">
+                                <label for="">Api Key Production</label>
+                                <input type="text" class="form-control" name="api_key_prod" id="ApiKeyProd" readonly />
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -101,8 +105,8 @@
                                 <input type="text" class="form-control" name="vendor" id="vendor" readonly />
                             </div>
                             <div class="form-group">
-                                <label>Callback Sandbox</label>
-                                <input type="text" class="form-control" name="cb_key_sb" id="CbKeySB"
+                                <label>Secret Token</label>
+                                <input type="text" class="form-control" name="secret_token" id="secretToken"
                                     readonly />
                             </div>
                         </div>
@@ -132,20 +136,8 @@
                                         required />
                                     <input type="text" class="form-control" name="merchant_id" id="merchantIdEdit" hidden />
                                 </div>
-                                <div class="form-group">
-                                    <label>Environment</label>
-                                    <input type="text" class="form-control" name="env" id="envEdit" readonly />
-                                </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <select class="form-control" name="status" id="statusEdit" readonly>
-                                        <option value="PENDING">PENDING</option>
-                                        <option value="ACTIVE">ACTIVE</option>
-                                        <option value="DEACTIVE">DEACTIVE</option>
-                                    </select>
-                                </div>
                                 <div class="form-group">
                                     <label>Vendor</label>
                                     <input type="text" class="form-control" name="vendor" id="vendorEdit" readonly />
@@ -177,7 +169,6 @@
             var isAdmin = @json(Auth::user()->isAdmin());
 
             if (isAdmin){
-                // Filter based on company
                 $('#filterCompany').change(function() {
                     var selectedCompany = $('#filterCompany :selected').text();
                     console.log(selectedCompany)
@@ -193,7 +184,8 @@
                 $('#status').val(data.status)
                 $('#vendor').val(data.vendor.vendor_name)
                 $('#ApiKeySB').val(data.api_key_sb)
-                $('#CbKeySB').val(data.cb_key_sb)
+                $('#ApiKeyProd').val(data.api_key_prod)
+                $('#secretToken').val(data.token)
                 $('#detailMerchant').modal("toggle")
             })
         }
@@ -202,8 +194,6 @@
             $.get('/app/merchant/show/' + id, function(data) {
                 $("#merchantNameEdit").val(data.merchant_name)
                 $("#merchantIdEdit").val(data.merchant_id)
-                $("#envEdit").val(data.env)
-                $('#statusEdit').val(data.status)
                 $('#vendorEdit').val(data.vendor.vendor_name)
                 $('#addressEdit').val(data.address)
                 $('#editMerchant').modal("toggle")
@@ -235,6 +225,7 @@
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    location.reload()
                 },
             })
 
