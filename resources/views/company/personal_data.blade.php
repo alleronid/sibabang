@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="client_postcode">Kode Post</label>
+                            <label for="client_postcode">Kode Pos</label>
                             <input type="number" class="form-control" id="client_postcode" name="client_postcode" value="{{$detail->client_postcode ?? ''}}"/>
                         </div>
                         <div class="form-group">
