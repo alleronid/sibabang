@@ -23,7 +23,7 @@
 					<!--begin::Brand-->
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
-						<a href="index.html" class="brand-logo">
+						<a href="{{route('dashboard')}}" class="brand-logo">
 							<img alt="Logo" src="{{asset('sibabang-logo.png')}}" style="width:128px;"/>
 						</a>
 						<!--end::Logo-->
