@@ -1,7 +1,7 @@
 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
     <!--begin::Menu Nav-->
     <ul class="menu-nav">
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('dashboard') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('dashboard')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
@@ -26,7 +26,7 @@
             <h4 class="menu-text">Application</h4>
             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
         </li>
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('transaction.*') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('transaction.index')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
@@ -47,7 +47,7 @@
                 <span class="menu-text">Transactions</span>
             </a>
         </li>
-        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+        <li class="menu-item menu-item-submenu {{ Route::is('merchant.*') ? 'menu-item-active' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
             <a href="javascript:;" class="menu-link menu-toggle">
                 <span class="svg-icon menu-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -69,7 +69,7 @@
                             <span class="menu-text">Merchant</span>
                         </span>
                     </li>
-                    <li class="menu-item" aria-haspopup="true">
+                    <li class="menu-item {{ Route::is('merchant.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                         <a href="{{route('merchant.index')}}" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
@@ -77,7 +77,7 @@
                             <span class="menu-text">List Merchant</span>
                         </a>
                     </li>
-                    <li class="menu-item" aria-haspopup="true">
+                    <li class="menu-item {{ Route::is('merchant.qris') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                         <a href="{{route('merchant.qris')}}" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
@@ -85,7 +85,7 @@
                             <span class="menu-text">QRIS</span>
                         </a>
                     </li>
-                    <li class="menu-item" aria-haspopup="true">
+                    <li class="menu-item {{ Route::is('merchant-bank.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                         <a href="{{route('merchant-bank.index')}}" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
@@ -96,7 +96,7 @@
                 </ul>
             </div>
         </li>
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('wallet.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('wallet.index')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
@@ -117,7 +117,7 @@
                 <span class="menu-text">Wallet</span>
             </a>
         </li>
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('wallet.list.disbursement') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('wallet.list.disbursement')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
@@ -138,7 +138,7 @@
                 <span class="menu-text">Disbursement</span>
             </a>
         </li>
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('user.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('user.index')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
@@ -163,7 +163,7 @@
             <h4 class="menu-text">Settings</h4>
             <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
         </li>
-        <li class="menu-item menu-item" aria-haspopup="true">
+        <li class="menu-item {{ Route::is('merchant.fee') ? 'menu-item-active' : '' }}" aria-haspopup="true">
             <a href="{{route('merchant.fee')}}" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:public/assets/media/svg/icons/Design/Layers.svg-->
