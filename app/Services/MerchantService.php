@@ -70,7 +70,7 @@ class MerchantService{
         DB::beginTransaction();
         $data = Merchant::where('merchant_id', $request->merchant_id)->first();
         $data->merchant_name = $request->merchant_name;
-        $data->status = $request->status;
+        $data->status = $request->status ?? $data->status;
         $data->address = $request->address;
         $data->save();
 
