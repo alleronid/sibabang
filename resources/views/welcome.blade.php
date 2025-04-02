@@ -29,7 +29,7 @@
                 </div>
                 <div class="mt-12 lg:mt-0 lg:col-span-6">
                     <div class="relative mx-auto w-full lg:max-w-md">
-                        <img src="{{asset('/assets/payment-1.png')}}" alt="App dashboard" class="w-full rounded-lg">
+                        <img src="{{asset('omnibayar_hero_hd_nobg.png')}}" alt="App dashboard" class="w-full rounded-lg ">
                     </div>
                 </div>
             </div>
@@ -322,7 +322,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-6 flex items-center">    
+                        <div class="mt-6 flex items-center">
                             <div class="flex-shrink-0">
                                 <span class="sr-only">Agus Wijaya</span>
                                 <div class="h-10 w-10 rounded-full bg-indigo-200 flex items-center justify-center">
