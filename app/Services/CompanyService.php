@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\DetailCompany;
+use App\Models\MerchantBank;
 use App\Models\RegisterCompany;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,6 +42,7 @@ class CompanyService{
         if(empty($data)){
             $data = new DetailCompany();
         }
+        DB::beginTransaction();
         $data->merchant_name = $request->merchant_name;
         $data->merchant_amount = $request->merchant_amount;
         $data->merchant_address = $request->merchant_address;
@@ -55,6 +57,8 @@ class CompanyService{
         $data->account_name = $request->account_name;
         $data->company_id = Auth::user()->company_id;
         $data->save();
+
+        DB::commit();
     }
 
     public function company_file(Request $request)
