@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merchant;
 use App\Models\MerchantBank;
 use App\Models\MtBank;
+use App\Models\RegisterCompany;
 use App\Services\LogService;
 use App\Services\MerchantBankService;
 use App\Services\MerchantService;
@@ -49,8 +50,9 @@ class MerchantBankController extends Controller
     public function create()
     {
         $banks = MtBank::all();
-        $merchant = Merchant::where('company_id', Auth::user()->company_id)->get();
-        return view('merchant.bank.create', compact('banks', 'merchant'));
+        $companies = RegisterCompany::get();
+        $merchant = Auth::user()->isAdmin() ? Merchant::get() : Merchant::where('company_id', Auth::user()->company_id)->get();
+        return view('merchant.bank.create', compact('banks','companies', 'merchant'));
     }
 
     public function store(Request $request)
@@ -69,7 +71,7 @@ class MerchantBankController extends Controller
         $id = Crypt::decrypt($idHash);
         $data = MerchantBank::with(['merchant','company'])->find($id);
         $banks = MtBank::all();
-        $merchant = Merchant::where('company_id', Auth::user()->company_id)->get();
+        $merchant = Merchant::where('company_id', $data->company_id)->get();
         return view('merchant.bank.edit', compact('data', 'banks','merchant'));
     }
 

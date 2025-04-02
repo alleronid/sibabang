@@ -9,6 +9,17 @@
             <div class="card-body">
                 <form action="{{ route('merchant-bank.save') }}" method="POST">
                     @csrf
+                    @if(Auth::user()->isAdmin())
+                        <div class="form-group">
+                            <label class="control-label">Company</label>
+                            <select name="company_id" class="form-control">
+                                <option value="">Pilih company</option>
+                                @foreach ($companies as $item)
+                                    <option value="{{ $item->company_id }}">{{ $item->merchant_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label class="control-label">Merchant</label>
                         <select name="merchant_id" class="form-control">

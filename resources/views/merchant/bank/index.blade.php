@@ -95,7 +95,7 @@
                     var selectedMerchant = $('#filterMerchant :selected').text();
                     console.log(selectedCompany)
 
-                    table.column(0).search(selectedCompany != 'All Companies' ? '^' + selectedCompany + '$' : '', true, false).draw();
+                    table.column(1).search(selectedCompany != 'All Companies' ? '^' + selectedCompany + '$' : '', true, false).draw();
                     table.search(selectedMerchant != 'All Merchants' ? selectedMerchant : '', true, false).draw();
                 });
             }

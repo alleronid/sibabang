@@ -1,0 +1,25 @@
+name: Deploy Laravel Application
+
+on:
+  push:
+    branches:
+      - main # Trigger deployment on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 4: Deploy to remote server via SSH
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }} # Replace with your server's hostname or IP
+          username: ${{ secrets.SSH_USERNAME }} # Replace with your SSH username
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # Replace with your private SSH key
+          port: 22 # Default SSH port
+          script: cd /var/www/sibabang && git pull && php artisan optimize
