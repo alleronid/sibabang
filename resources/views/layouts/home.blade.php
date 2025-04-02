@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sibabang - Solusi Pembayaran Modern</title>
+    <title>Omnibayar - Solusi Pembayaran Modern</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -24,7 +24,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <img src="{{asset('sibabang-logo.png')}}" alt="Sibabang" class="h-8">
+                        <img src="{{asset('omnibayar_hero_hd_nobg.png')}}" alt="Sibabang" class="h-30">
                     </div>
                     <div class="hidden md:ml-6 md:flex md:space-x-8">
                         <a href="{{ route('index') }}" class="{{ request()->is('/') ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
