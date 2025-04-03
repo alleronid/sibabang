@@ -22,4 +22,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # Replace with your SSH username
           key: ${{ secrets.SSH_PRIVATE_KEY }} # Replace with your private SSH key
           port: 22 # Default SSH port
-          script: cd ~/omnibayar && git pull && php artisan optimize && chown -R www-data:www-data ~/omnibayar/storage ~/omnibayar/bootstrap/cache
+          script: cd ~/omnibayar && git pull && php artisan optimize && sudo chown -R www-data:www-data ~/omnibayar/storage ~/omnibayar/bootstrap/cache
