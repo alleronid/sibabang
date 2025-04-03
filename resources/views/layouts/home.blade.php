@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omnibayar - Solusi Pembayaran Modern</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -108,175 +108,78 @@
     @yield('content')
 
     <!-- footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
+    <footer class="bg-gray-900 text-gray-400 pt-16 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Logo and certifications -->
-                <div class="space-y-6">
-                    <div>
-                        <span class="text-white text-xl font-bold">SI<span class="text-purple-400">BABANG</span></span>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-                    <!-- Certification logos -->
-                    <div class="flex flex-wrap gap-3">
-                        <div class="bg-white p-2 rounded-md w-32">
-                            <img src="{{asset('/assets/logo-kominfo.png')}}" alt="Terdaftar Kominfo" class="h-8">
-                        </div>
-                        <div class="bg-white p-2 rounded-md w-32">
-                            <img src="{{asset('/assets/logo-kominfo-sikasir.png')}}" alt="Kominfo Sikasir" class="h-8">
-                        </div>
+                <div class="space-y-4">
+                    <a href="/" class="inline-block">
+                        <span class="text-white text-2xl font-bold">SI<span class="text-blue-400">BABANG</span></span>
+                    </a>
+                    <p class="text-sm max-w-xs">
+                        Solusi pembayaran digital modern untuk memberdayakan bisnis Anda.
+                    </p>
+                    <div class="space-y-1 text-sm">
+                        <p>
+                            <a href="mailto:support@sibabang.id" class="hover:text-white transition-colors duration-200">support@sibabang.id</a>
+                        </p>
+                        <p>
+                            <a href="tel:+6221999988" class="hover:text-white transition-colors duration-200">+62 21 9999 88</a>
+                        </p>
+                         <p class="pt-1">
+                            {{\App\Models\AppSetting::where('key', 'app_address')->first()->value ?? 'Gedung Cyber 1, Lt. 8, Jakarta'}}
+                         </p>
                     </div>
-
-                    <div class="flex flex-wrap gap-3">
-                        <div class="bg-white p-2 rounded-md w-32">
-                            <img src="{{asset('/assets/logo-pse.png')}}" alt="PSE KOMINFO" class="h-8">
-                        </div>
-                        <div class="bg-white p-2 rounded-md w-32">
-                            <img src="{{asset('/assets/logo-sectigo.png')}}" alt="Secured by Sectigo" class="h-8">
-                        </div>
-                    </div>
+                     <div class="flex space-x-4 pt-2">
+                         <a href="#" class="text-gray-500 hover:text-white transition-colors duration-200">
+                             <span class="sr-only">Facebook</span>
+                             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                         </a>
+                          <a href="#" class="text-gray-500 hover:text-white transition-colors duration-200">
+                              <span class="sr-only">Twitter</span>
+                              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.255 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                          </a>
+                           <a href="#" class="text-gray-500 hover:text-white transition-colors duration-200">
+                              <span class="sr-only">LinkedIn</span>
+                              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                          </a>
+                     </div>
                 </div>
 
-                <!-- Navigation -->
                 <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Produk</h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Beranda
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Tentang Kami
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Dokumentasi API
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Layanan Kami
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Kontak
-                            </a>
-                        </li>
+                    <h3 class="text-base font-medium text-white mb-4">Navigasi</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="/" class="hover:text-white transition-colors duration-200">Beranda</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Fitur</a></li>
+                        <li><a href="/about-us" class="hover:text-white transition-colors duration-200">Tentang Kami</a></li>
+                        <li><a href="/testimonial" class="hover:text-white transition-colors duration-200">Testimoni</a></li>
+                        <li><a href="/contact" class="hover:text-white transition-colors duration-200">Kontak</a></li>
                     </ul>
                 </div>
 
-                <!-- Help Center -->
                 <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Pusat Bantuan</h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Bantuan
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Syarat & Ketentuan
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Pernyataan Pengguna
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Kebijakan Privasi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                Testimoni
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-gray-400 hover:text-white flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                                FAQ
-                            </a>
-                        </li>
-                        <li class="flex items-center text-green-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            All services are online
-                        </li>
+                    <h3 class="text-base font-medium text-white mb-4">Legal & Bantuan</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Dokumentasi API</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Pusat Bantuan (FAQ)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Karir</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Kontak</h3>
-                    <div class="space-y-3">
-                        <p class="flex flex-col">
-                            <span>Email:</span>
-                            <a href="mailto:web-support@sibabang.co.id" class="text-gray-400 hover:text-white">web-support@sibabang.co.id</a>
-                        </p>
-                        <p class="flex flex-col">
-                            <span>No Telp:</span>
-                            <a href="tel:+622127899129" class="text-gray-400 hover:text-white">+6221999988</a>
-                        </p>
-                        <p class="text-gray-400">
-                            {{\App\Models\AppSetting::where('key', 'app_address')->first()->value}}
-                        </p>
-
-                        <!-- Social Media -->
-                        <div class="mt-4">
-                            <a href="#" class="inline-block bg-gray-700 rounded-full p-2 hover:bg-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Copyright -->
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-sm">
-                <p>©copyright 2025 PT. KU PT KAMU. all rights reserved</p>
-            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center">
+                 <p class="text-xs text-gray-500 order-2 sm:order-1 mt-4 sm:mt-0">
+                     &copy; {{ date('Y') }} PT. KU PT KAMU. Seluruh hak cipta dilindungi.
+                 </p>
+                 <div class="flex items-center space-x-5 order-1 sm:order-2">
+                      <img src="/path/to/your/logo-kominfo-grayscale.png" alt="Kominfo Terdaftar" title="Kominfo Terdaftar" class="h-6 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                      <img src="/path/to/your/logo-pse-grayscale.png" alt="PSE Kominfo" title="PSE Kominfo" class="h-6 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                      <img src="/path/to/your/logo-sectigo-grayscale.png" alt="Sectigo Secured" title="Sectigo Secured" class="h-6 opacity-60 hover:opacity-100 transition-opacity duration-200">
+                      </div>
+             </div>
         </div>
     </footer>
 </body>

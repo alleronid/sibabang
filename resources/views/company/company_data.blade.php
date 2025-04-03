@@ -17,12 +17,18 @@
                         <div class="form-group">
                             <label for="">Kota/Kabupaten</label>
                             <select class="form-control" name="merchant_city_id" id="merchantCity">
-                            <label for="">Kota/Kabupaten</label>
+                                @if (!empty($detail))
+                                <option value="{{$detail->merchant_city_id}}">{{$detail->merchant_kota?->nama_kab_kota ?? ''}}</option>
+                            @endif
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan/Desa</label>
-                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan"></select>
+                            <select class="form-control" name="merchant_kel_desa_id" id="merchantKelurahan">
+                                @if (!empty($detail))
+                                <option value="{{$detail->merchant_kel_desa_id}}">{{$detail->merchant_kelurahan?->nama_desa_kelurahan ?? ''}}</option>
+                            @endif
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kode Pos</label>
@@ -30,7 +36,15 @@
                         </div>
                         <div class="form-group">
                             <label for="">Nama Bank</label>
-                            <input type="text" class="form-control" name="bank_name" value="{{$detail->bank_name ?? ''}}"/>
+                            <select name="bank_id" class="form-control" id="banks">
+                                @foreach ($banks as $b)
+                                <option value="{{ $b->id }}" @if ($detail->bank_name === $b->bank_name)
+                                    selected
+                                @endif
+                                    >{{ $b->bank_name }}</option>
+                             @endforeach
+                            </select>
+                            <input type="text" class="form-control" name="bank_name" id="bank_name" value="{{$detail->bank_name}}" hidden/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -153,6 +167,20 @@
             })
         }
     })
+
+    $('#banks').change(function() {
+            var id = $(this).val()
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    url: "/app/merchant-bank/get-bank/"+id,
+                    dataType: 'JSON',
+                    success: function(res) {
+                        $('#bank_name').val(res.bank_name)
+                    }
+                })
+            }
+        })
 </script>
 @endpush
 

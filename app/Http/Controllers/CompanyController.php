@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\RegisterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\MtBank;
 
 
 class CompanyController extends Controller
@@ -31,9 +32,10 @@ class CompanyController extends Controller
     public function index_profile(){
         $data = RegisterCompany::where('company_id', Auth::user()->company_id)->first();
         $province = MtProvince::all();
+        $banks = MtBank::all();
         $detail = DetailCompany::with(['propinsi', 'kota_kabupaten', 'kecamatan', 'desa_kelurahan', 'merchant_propinsi', 'merchant_kota', 'merchant_kecamatan', 'merchant_kelurahan'])
                 ->where('company_id', Auth::user()->company_id)->first();
-        return view('company.profile', compact('data', 'province', 'detail'));
+        return view('company.profile', compact('data', 'province', 'detail', 'banks'));
     }
 
     public function personalData(Request $request){
@@ -69,6 +71,10 @@ class CompanyController extends Controller
     public function companySubmit(){
 
         // status company jadi not verify 'a'
+    }
+
+    public function aggrement(){
+        return view('company.pks');
     }
 
     public function getCity($id){

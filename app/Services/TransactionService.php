@@ -14,6 +14,8 @@ use Exception;
 class TransactionService{
 
     private $ayolinxService;
+    private const DAILY_LIMIT = 50000000; // 50 million IDR
+    private const YEARLY_LIMIT = 2000000000; // 2 billion IDR
 
     public function __construct(AyolinxService $ayolinxService)
     {
@@ -23,6 +25,19 @@ class TransactionService{
     public function save(Request $request)
     {
         DB::beginTransaction();
+
+        $dailyTotal = $this->checkDailyTransactionTotal($request->merchant_id);
+        if (($dailyTotal + $request->amount) > self::DAILY_LIMIT) {
+            DB::rollBack();
+            throw new Exception("Daily transaction limit of IDR 50,000,000 exceeded");
+        }
+        
+        $yearlyTotal = $this->checkYearlyTransactionTotal($request->merchant_id);
+        if (($yearlyTotal + $request->amount) > self::YEARLY_LIMIT) {
+            DB::rollBack();
+            throw new Exception("Yearly transaction limit of IDR 2,000,000,000 exceeded");
+        }
+
         $name = self::generateRandomName();
         $noTrx = self::noTrx($request->merchant_id);
         $data = new TrxPayment();
@@ -34,6 +49,8 @@ class TransactionService{
         $data->phone_number = $request->phone_number ?? self::generatePhoneNumber();
         $data->merchant_id = $request->merchant_id;
         $data->company_id = $request->company_id ?? Auth::user()->company_id;
+
+
 
         if(Auth::user()->isAdmin()){
             $body = [
@@ -90,6 +107,22 @@ class TransactionService{
         }
 
         return $noTrx;
+    }
+
+    private function checkDailyTransactionTotal($merchantId)
+    {
+        $today = now()->format('Y-m-d');
+        return TrxPayment::where('merchant_id', $merchantId)
+            ->whereDate('created_at', $today)
+            ->sum('amount');
+    }
+
+    private function checkYearlyTransactionTotal($merchantId)
+    {
+        $currentYear = now()->year;
+        return TrxPayment::where('merchant_id', $merchantId)
+            ->whereYear('created_at', $currentYear)
+            ->sum('amount');
     }
 
     function generateRandomName() {

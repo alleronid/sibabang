@@ -12,7 +12,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_ktp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_ktp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 KTP</a>
                         </div>
@@ -24,7 +24,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 Buku Rekening</a>
                         </div>
@@ -36,7 +36,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 Foto Tempat Usaha</a>
                         </div>
@@ -48,7 +48,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_npwp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_npwp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 NPWP</a>
                         </div>
@@ -62,7 +62,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_siup)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_siup)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 SIUP</a>
                         </div>
@@ -74,7 +74,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_nib)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_nib)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 NIB</a>
                         </div>
@@ -86,7 +86,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_akta_pendirian)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_akta_pendirian)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 Akta Pendirian</a>
                         </div>
@@ -98,7 +98,7 @@
                         </div>
                         @else
                         <div class="form-group">
-                            <a href="{{asset('storage/'. $data->file_akta_perubahan)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                            <a href="{{asset('storage/'. $detail->file_akta_perubahan)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
                                 <i class="flaticon-file"></i>
                                 Akta Perubahan</a>
                         </div>
