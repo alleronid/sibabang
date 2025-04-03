@@ -61,6 +61,10 @@
             padding-left: 20px;
             margin-bottom: 10px;
         }
+
+        ol[type="a"] {
+            list-style-type: lower-alpha;
+        }
     </style>
 </head>
 
@@ -113,7 +117,7 @@
                     International) Lt.17 Unit 2 & 5 JL. Lingkar Luar Barat No. 101 Rawa Buaya-Cengkareng, Jakarta Barat
                     11740, Indonesia, yang dalam hal ini diwakili oleh <strong>Hasungkoro Agni Soebekti</strong> dalam
                     kedudukannya selaku <strong>Direktur</strong> dan karenanya sah bertindak untuk dan atas nama serta
-                    mewakili PT. Digital Voucher Market Bersama (selanjutnya disebut <strong>"SIBAYAR"</strong>); dan
+                    mewakili PT. Digital Voucher Market Bersama (selanjutnya disebut <strong>"OMNIBAYAR"</strong>); dan
                 </p>
             </div>
             <div class="col-6">
@@ -122,7 +126,7 @@
                     International) Lt.17 Unit 2 & 5 JL. Lingkar Luar Barat No. 101 Rawa Buaya-Cengkareng, Jakarta Barat
                     11740, Indonesia, in this matter represented by <strong>Hasungkoro Agni Soebekti</strong> in his
                     capacity as <strong>Director</strong> and as such lawfully acting for and on behalf of as well as
-                    representing PT. Digital Voucher Market Bersama (hereinafter, the <strong>"SIBAYAR"</strong>); and
+                    representing PT. Digital Voucher Market Bersama (hereinafter, the <strong>"OMNIBAYAR"</strong>); and
                 </p>
             </div>
         </div>
@@ -148,11 +152,11 @@
         <!-- Parties Reference -->
         <div class="row party-details">
             <div class="col-6">
-                <p>(SIBAYAR dan Klien selanjutnya bersama-sama dapat disebut <strong>para pihak</strong>, atau
+                <p>(OMNIBAYAR dan Klien selanjutnya bersama-sama dapat disebut <strong>para pihak</strong>, atau
                     masing-masing disebut <strong>pihak</strong>).</p>
             </div>
             <div class="col-6">
-                <p>(SIBAYAR and Client hereinafter may collectively be referred to as the <strong>Parties</strong> or
+                <p>(OMNIBAYAR and Client hereinafter may collectively be referred to as the <strong>Parties</strong> or
                     individually referred to as <strong>"Party"</strong>).</p>
             </div>
         </div>
@@ -161,7 +165,7 @@
         <div class="row recitals">
             <div class="col-6">
                 <p class="recitals-header">Pendahuluan:</p>
-                <p>Bahwa, SIBAYAR adalah portal web/platform digital sebagai pihak ketiga yang
+                <p>Bahwa, OMNIBAYAR adalah portal web/platform digital sebagai pihak ketiga yang
                     mengintegrasikan sistem pembayaran bagi klien dan/atau merchant dalam satu platform
                     dengan penyedia jasa pembayaran dan/atau Bank di Indonesia dan/atau negara lain.</p>
                 <p>Bahwa, KLIEN adalah sebuah pribadi yang bergerak di bidang toko online/ rumah makan/ warung/
@@ -178,7 +182,7 @@
             </div>
             <div class="col-6">
                 <p class="recitals-header">Recitals:</p>
-                <p>Whereas, SIBAYAR is a web portal/digital platform acting as a third party that integrates payment
+                <p>Whereas, OMNIBAYAR is a web portal/digital platform acting as a third party that integrates payment
                     systems for clients and/or merchants within a single platform with payment service providers and/or
                     banks across the Indonesia and/or other countries.</p>
                 <p>Whereas, The CLIENT is an individual engaged in the Online shop/ restaurant/ grocery stall/ reselling
@@ -407,7 +411,7 @@
                         </tbody>
                     </table>
 
-                    <p><strong>b.</strong> Harga pesanan Pengguna Akhir yang tertera pada aplikasi SIBAYAR sudah
+                    <p><strong>b.</strong> Harga pesanan Pengguna Akhir yang tertera pada aplikasi OMNIBAYAR sudah
                         termasuk pajak yang berlaku untuk ditagihkan kepada Pengguna Akhir;</p>
 
                     <p><strong>c.</strong> Pembayaran akan ditujukan kepada Klien dengan rekening atas nama
@@ -437,7 +441,7 @@
                         </tbody>
                     </table>
 
-                    <p><strong>b.</strong> The order amount that is shown in SIBAYAR apps already include applicable
+                    <p><strong>b.</strong> The order amount that is shown in OMNIBAYAR apps already include applicable
                         taxes to be charged to End User;</p>
 
                     <p><strong>c.</strong> Payment will be made to the Client by account on behalf of <strong>Pieter
@@ -451,9 +455,9 @@
             <div class="col-6">
                 <h4 class="section-title">4. METODE PEMBAYARAN</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> Pembayaran atas transaksi dengan SIBAYAR akan diterima oleh SIBAYAR dari
-                        Pengguna Akhir, dan akan dibayarkan oleh SIBAYAR kepada Klien setelah melakukan pemotongan Biaya
-                        Jasa dan ditransfer dari rekening bank SIBAYAR dengan detail:</p>
+                    <p><strong>a.</strong> Pembayaran atas transaksi dengan OMNIBAYAR akan diterima oleh OMNIBAYAR dari
+                        Pengguna Akhir, dan akan dibayarkan oleh OMNIBAYAR kepada Klien setelah melakukan pemotongan Biaya
+                        Jasa dan ditransfer dari rekening bank OMNIBAYAR dengan detail:</p>
 
                     <table class="table table-bordered">
                         <thead>
@@ -504,18 +508,18 @@
 
                     <p><strong>b.</strong> Untuk transaksi tunai maka pengiriman faktur tagihan ke Klien paling lambat
                         di tanggal 5 di bulan berikutnya.</p>
-                    <p><strong>c.</strong>Untuk tujuan pembayaran, Klien dengan ini menunjuk SIBAYAR untuk menjadi
+                    <p><strong>c.</strong>Untuk tujuan pembayaran, Klien dengan ini menunjuk OMNIBAYAR untuk menjadi
                         satu-satunya pihak yang
                         dapat menerima dan menagih pembayaran transaksi dari Pengguna Akhir untuk setiap pemesanan
-                        melalui aplikasi SIBAYAR.</p>
+                        melalui aplikasi OMNIBAYAR.</p>
                 </div>
             </div>
             <div class="col-6">
                 <h4 class="section-title">4. PAYMENT METHOD</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> Payment of transactions through SIBAYAR shall be received by SIBAYAR from
+                    <p><strong>a.</strong> Payment of transactions through OMNIBAYAR shall be received by OMNIBAYAR from
                         the End User, and shall be paid to the Client after the deduction of Service Fee and will be
-                        transferred from SIBAYAR bank account with details:</p>
+                        transferred from OMNIBAYAR bank account with details:</p>
 
                     <table class="table table-bordered">
                         <thead>
@@ -566,36 +570,49 @@
 
                     <p><strong>b.</strong> For cash transactions the invoice will be sent to the Client by the 5th
                         of the following month.</p>
-                    <p><strong>c.</strong>Untuk tujuan pembayaran, Klien dengan ini menunjuk SIBAYAR untuk menjadi
+                    <p><strong>c.</strong>Untuk tujuan pembayaran, Klien dengan ini menunjuk OMNIBAYAR untuk menjadi
                         satu-satunya pihak yang dapat menerima dan menagih pembayaran transaksi dari Pengguna Akhir
-                        untuk setiap pemesanan melalui aplikasi SIBAYAR.</p>
+                        untuk setiap pemesanan melalui aplikasi OMNIBAYAR.</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-6">
-                <h4 class="section-title">5. KEWAJIBAN SIBAYAR</h4>
+                <h4 class="section-title">5. KEWAJIBAN OMNIBAYAR</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> SIBAYAR harus memastikan kelancaran pada aplikasi dan melakukan perbaikan jika terdapat kesalahan atau perubahan pada detail pemesanan.</p>
+                    <p><strong>a.</strong> OMNIBAYAR harus memastikan kelancaran pada aplikasi dan melakukan perbaikan
+                        jika terdapat kesalahan atau perubahan pada detail pemesanan.</p>
 
-                    <p><strong>b.</strong> SIBAYAR akan bertanggung jawab atas pengelolaan data. Ini termasuk akuisisi data, penyimpanan, dan keamanan, memastikan integritas dan kerahasiaan semua aset data.</p>
+                    <p><strong>b.</strong> OMNIBAYAR akan bertanggung jawab atas pengelolaan data. Ini termasuk akuisisi
+                        data, penyimpanan, dan keamanan, memastikan integritas dan kerahasiaan semua aset data.</p>
 
-                    <p><strong>c.</strong> SIBAYAR akan bertanggung jawab atas pengelolaan semua proyek secara efisien dan efektif. Ini mencakup perencanaan, pengorganisasian, dan pengawasan pelaksanaan program, termasuk alokasi sumber daya, penjadwalan, manajemen risiko, dan kontrol kualitas.</p>
+                    <p><strong>c.</strong> OMNIBAYAR akan bertanggung jawab atas pengelolaan semua proyek secara efisien
+                        dan efektif. Ini mencakup perencanaan, pengorganisasian, dan pengawasan pelaksanaan program,
+                        termasuk alokasi sumber daya, penjadwalan, manajemen risiko, dan kontrol kualitas.</p>
 
-                    <p><strong>d.</strong> SIBAYAR akan bertanggung jawab untuk mendorong kesuksesan program, memantau kemajuan, dan menerapkan penyesuaian yang diperlukan untuk memastikan hasil program yang optimal, semua dalam kerangka kerja yang ditentukan oleh kontrak.</p>
+                    <p><strong>d.</strong> OMNIBAYAR akan bertanggung jawab untuk mendorong kesuksesan program, memantau
+                        kemajuan, dan menerapkan penyesuaian yang diperlukan untuk memastikan hasil program yang
+                        optimal, semua dalam kerangka kerja yang ditentukan oleh kontrak.</p>
                 </div>
             </div>
             <div class="col-6">
-                <h4 class="section-title">5. SIBAYAR OBLIGATION</h4>
+                <h4 class="section-title">5. OMNIBAYAR OBLIGATION</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> SIBAYAR must ensure the usability of the application and make improvements if there are errors or changes regarding order details.</p>
+                    <p><strong>a.</strong> OMNIBAYAR must ensure the usability of the application and make improvements if
+                        there are errors or changes regarding order details.</p>
 
-                    <p><strong>b.</strong> SIBAYAR will be responsible for Data Automation. This includes data acquisition, storage, and security, ensuring the integrity and confidentiality of all data assets.</p>
+                    <p><strong>b.</strong> OMNIBAYAR will be responsible for Data Automation. This includes data
+                        acquisition, storage, and security, ensuring the integrity and confidentiality of all data
+                        assets.</p>
 
-                    <p><strong>c.</strong> SIBAYAR will be responsible for the efficient and effective management of all projects. This encompasses planning, organization, and overseeing the execution of the program, including resource allocation, scheduling, risk management, and quality control.</p>
+                    <p><strong>c.</strong> OMNIBAYAR will be responsible for the efficient and effective management of all
+                        projects. This encompasses planning, organization, and overseeing the execution of the program,
+                        including resource allocation, scheduling, risk management, and quality control.</p>
 
-                    <p><strong>d.</strong> SIBAYAR will be responsible for driving project success, monitoring progress, and implementing necessary adjustments to ensure optimal program outcomes, all within the framework defined by this contract.</p>
+                    <p><strong>d.</strong> OMNIBAYAR will be responsible for driving project success, monitoring progress,
+                        and implementing necessary adjustments to ensure optimal program outcomes, all within the
+                        framework defined by this contract.</p>
                 </div>
             </div>
         </div>
@@ -605,17 +622,22 @@
             <div class="col-6">
                 <h4 class="section-title">6. RUANG LINGKUP KERJA</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> SIBAYAR harus membayarkan hasil penjualan yang didapatkan Klien setelah dikurangi biaya jasa yang berlaku.</p>
+                    <p><strong>a.</strong> OMNIBAYAR harus membayarkan hasil penjualan yang didapatkan Klien setelah
+                        dikurangi biaya jasa yang berlaku.</p>
 
-                    <p><strong>b.</strong> SIBAYAR akan menerapkan strategi yang kuat, dan memberikan laporan komprehensif untuk mendukung pengambilan keputusan yang tepat dan mendorong pertumbuhan bisnis.</p>
+                    <p><strong>b.</strong> OMNIBAYAR akan menerapkan strategi yang kuat, dan memberikan laporan
+                        komprehensif untuk mendukung pengambilan keputusan yang tepat dan mendorong pertumbuhan bisnis.
+                    </p>
                 </div>
             </div>
             <div class="col-6">
                 <h4 class="section-title">6. SCOPE OF WORK</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> SIBAYAR must disburse payment that is obtained by the Client after deducting the agreed fee.</p>
+                    <p><strong>a.</strong> OMNIBAYAR must disburse payment that is obtained by the Client after deducting
+                        the agreed fee.</p>
 
-                    <p><strong>b.</strong> SIBAYAR will implement robust strategies and deliver comprehensive reports to support informed decision-making and drive business growth.</p>
+                    <p><strong>b.</strong> OMNIBAYAR will implement robust strategies and deliver comprehensive reports to
+                        support informed decision-making and drive business growth.</p>
                 </div>
             </div>
         </div>
@@ -625,16 +647,214 @@
             <div class="col-6">
                 <h4 class="section-title">7. KEWAJIBAN KLIEN</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> Klien wajib memberikan semua informasi yang diperlukan untuk menyajikan produk yang ditawarkan. Hal ini termasuk tapi tidak terbatas pada: menu, logo, gambar, harga, identitas perusahaan, untuk usaha kecil termasuk nama lengkap pemilik dan alamat sah, dan untuk korporasi termasuk nama perusahaan alamat terdaftar, nama merek dagang, penandatangan yang sah, dan Nomor Pokok Wajib Pajak (NPWP). Berkaitan dengan perubahan wajib disampaikan kepada pihak SIBAYAR dengan segera. Klien diperlukan untuk memverifikasi segala informasi yang dipublikasikan oleh SIBAYAR dan segera menunjukkan kesalahan yang ada atau menunjukkan informasi yang tidak akurat. Klien dapat memberitahukan langsung kepada SIBAYAR jika ada perubahan pada harga atau informasi terkait. Di dalam hal ini, menu yang Klien miliki, logo, foto, harga dan identitas merchant akan dipublikasikan dalam aplikasi SIBAYAR dan media lainnya (termasuk dan tidak terbatas ke dalam Instagram, Facebook, and Google).</p>
+                    <p><strong>a.</strong> Klien wajib memberikan semua informasi yang diperlukan untuk menyajikan
+                        produk yang ditawarkan. Hal ini termasuk tapi tidak terbatas pada: menu, logo, gambar, harga,
+                        identitas perusahaan, untuk usaha kecil termasuk nama lengkap pemilik dan alamat sah, dan untuk
+                        korporasi termasuk nama perusahaan alamat terdaftar, nama merek dagang, penandatangan yang sah,
+                        dan Nomor Pokok Wajib Pajak (NPWP). Berkaitan dengan perubahan wajib disampaikan kepada pihak
+                        OMNIBAYAR dengan segera. Klien diperlukan untuk memverifikasi segala informasi yang dipublikasikan
+                        oleh OMNIBAYAR dan segera menunjukkan kesalahan yang ada atau menunjukkan informasi yang tidak
+                        akurat. Klien dapat memberitahukan langsung kepada OMNIBAYAR jika ada perubahan pada harga atau
+                        informasi terkait. Di dalam hal ini, menu yang Klien miliki, logo, foto, harga dan identitas
+                        merchant akan dipublikasikan dalam aplikasi OMNIBAYAR dan media lainnya (termasuk dan tidak
+                        terbatas ke dalam Instagram, Facebook, and Google).</p>
+                    <p><strong>b.</strong> Klien harus menginformasikan jika terjadi perubahan informasi kepada OMNIBAYAR
+                        dalam keadaan apapun selambat-lambatnya 7 hari kerja;</p>
+                    <p><strong>c.</strong> Klien wajib memproses semua pembayaran customer dengan QRIS OMNIBAYAR.</p>
+                    <p><strong>d.</strong> Segala perselisihan yang timbul antara Klien dengan para pelanggan Klien
+                        menjadi tanggung jawab Klien sepenuhnya.</p>
+                    <p><strong>e.</strong> Bertanggung jawab dan dengan ini membebaskan OMNIBAYAR dari tuntutan apapun
+                        yang dilakukan oleh pelanggan Klien.</p>
+                    <p><strong>f.</strong> Menanggung pemenuhan tanggung jawab atas fraud yang terjadi dalam transaksi
+                        pelanggan.</p>
+                    <p><strong>g.</strong> Klien wajib mematuhi dan menerapkan requirement security dari OMNIBAYAR.</p>
+                    <p><strong>h.</strong> Klien tidak akan menjual barang/jasa:
+                    <ul>
+                        <li>Melanggar hukum/peraturan</li>
+                        <li>Melanggar norma sosial dan agama</li>
+                        <li>Secara spesifik dilarang hukum seperti: senjata tajam, pornografi, barang tiruan</li>
+                    </ul>
+                    </p>
                 </div>
             </div>
             <div class="col-6">
                 <h4 class="section-title">7. CLIENT OBLIGATION</h4>
                 <div class="article-content">
-                    <p><strong>a.</strong> The Client must provide all information needed to present the product offered. This includes, but not limited to: menus, logos, pictures, prices, company identity, where for small businesses including the owner's full name and legal address, and for corporations including company name registered address, trademark name, legal signatures, and Taxpayer Identification Number (NPWP). In regards to the change, it must be conveyed to SIBAYAR immediately. The Client is required to verify all information published by SIBAYAR and immediately point out errors or show inaccurate information. The Client can notify SIBAYAR directly if there is a change in price and related information. In this case, the Clients menu, logo, photo, price and merchants identity will be published in the SIBAYAR application and other media (including but not limited to Instagram, Facebook, and Google campaigns).</p>
+                    <p><strong>a.</strong> The Client must provide all information needed to present the product
+                        offered. This includes, but not limited to: menus, logos, pictures, prices, company identity,
+                        where for small businesses including the owner's full name and legal address, and for
+                        corporations including company name registered address, trademark name, legal signatures, and
+                        Taxpayer Identification Number (NPWP). In regards to the change, it must be conveyed to OMNIBAYAR
+                        immediately. The Client is required to verify all information published by OMNIBAYAR and
+                        immediately point out errors or show inaccurate information. The Client can notify OMNIBAYAR
+                        directly if there is a change in price and related information. In this case, the Clients menu,
+                        logo, photo, price and merchants identity will be published in the OMNIBAYAR application and other
+                        media (including but not limited to Instagram, Facebook, and Google campaigns).</p>
+                    <p><strong>b.</strong> The Client must inform OMNIBAYAR if there is a change of information within 7
+                        working days.</p>
+                    <p><strong>c.</strong> The Client is required to process all customer payments via OMNIBAYAR QRIS.</p>
+                    <p><strong>d.</strong> All disputes between Client and customers are Client's responsibility.</p>
+                    <p><strong>e.</strong> Client releases OMNIBAYAR from claims from customers.</p>
+                    <p><strong>f.</strong> Fully responsible for fraud during transactions by customers.</p>
+                    <p><strong>g.</strong> Client must comply with OMNIBAYAR's security requirements.</p>
+                    <p><strong>h.</strong> Client shall not sell goods/services:
+                    <ul>
+                        <li>That violate laws</li>
+                        <li>That violate public norms</li>
+                        <li>Explicitly prohibited such as weapons, pornography, counterfeit goods</li>
+                    </ul>
+                    </p>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4 class="section-title">8. KEBERLAKUAN</h4>
+                <p>Perjanjian ini berlaku selama 12 (Dua Belas) bulan sejak tanggal pada Perjanjian ini.
+                    Kewajiban–kewajiban untuk menjaga kerahasiaan dan pembatasan – pembatasan atas penggunaan dan
+                    pengungkapan Informasi Rahasia yang berlaku atas Pihak Yang Menerima berdasarkan Perjanjian ini akan
+                    tetap berlanjut seterusnya walaupun Tujuan Bisnis telah diselesaikan, tidak berjalan, dibatalkan
+                    atau terjadinya pengakhiran dari Perjanjian ini</p>
+                <h4 class="section-title">9. KEPEMILIKAN DATABASE</h4>
+                <ol type="a">
+                    <li>Para Pihak dengan ini sepakat bahwa database pelanggan (Database) yang dikelola berdasarkan
+                        perjanjian ini dimiliki bersama oleh kedua belah pihak.</li>
+                    <li>Masing-masing pihak memiliki hak yang sama untuk mengakses, menggunakan, dan memodifikasi
+                        Database sesuai dengan keperluan bisnis mereka masing-masing, tunduk pada syarat dan ketentuan
+                        perjanjian ini dan hukum yang berlaku.</li>
+                    <li>Kedua belah pihak sepakat untuk mematuhi semua hukum dan peraturan perlindungan data dan privasi
+                        yang berlaku dalam penggunaan dan pengelolaan Database masing-masing.</li>
+                    <li>Masing-masing pihak harus menerapkan langkah-langkah teknis dan organisasi yang tepat untuk
+                        melindungi Database dari akses, perubahan, pengungkapan, atau penghancuran yang tidak sah.</li>
+                    <li>Kedua belah pihak dapat menggunakan data yang terdapat dalam Database untuk keperluan pemasaran,
+                        analitik, dan operasional masing-masing.</li>
+                    <li>Tidak ada pihak yang boleh menjual, menyewakan, atau mengungkapkan data dalam Database kepada
+                        pihak ketiga tanpa persetujuan tertulis terlebih dahulu dari pihak lain, kecuali jika diwajibkan
+                        oleh hukum.</li>
+                </ol>
+                <h4 class="section-title">10. HUKUM YANG BERLAKU</h4>
+                <p>Perjanjian ini serta pelaksanaan dari dan penafsiran atas Perjanjian ini diatur oleh dan tunduk pada
+                    hukum Negara Republik Indonesia.</p>
+                <h4 class="section-title">11. PENYELESAIAN SENGKETA</h4>
+                <p>Setiap perselisihan atau sengketa yang tidak dapat diselesaikan secara musyawarah oleh Para Pihak
+                    dalam jangka waktu 30 hari, maka salah satu Pihak atau Para Pihak secara bersama-sama dapat
+                    mengajukan perselisihan atau sengketa tersebut kepada arbitrase untuk penyelesaian perselisihan atau
+                    sengketa itu secara eksklusif dan terakhir. Arbitrase dilaksanakan di Jakarta, Indonesia, sesuai
+                    dengan peraturan Badan Arbitrase Nasional Indonesia (BANI), dengan menggunakan 3 (tiga) orang
+                    arbiter yang ditunjuk sesuai dengan peraturan tersebut, dan menggunakan Bahasa Indonesia.</p>
+                <h4 class="section-title">12. BAHASA</h4>
+                <p>Perjanjian ini dibuat dalam dua bahasa, yaitu Bahasa Indonesia dan Bahasa Inggris. Dalam hal terdapat
+                    perbedaan dalam penafsiran atau pengertian mengenai isi Perjanjian ini antara kata-kata dalam Bahasa
+                    Indonesia dan kata-kata dalam Bahasa Inggris, maka kata-kata dalam Bahasa Indonesia yang berlaku.
+                </p>
+                <h4 class="section-titl e">13. PERUBAHAN</h4>
+                <p>Setiap perubahan terhadap Perjanjian ini tidak berlaku dan tidak mengikat bagi Para Pihak kecuali
+                    apabila perubahan tersebut dituangkan secara tertulis dan ditandatangani oleh wakil-wakil yang sah
+                    dari Para Pihak. Setelah perubahan tersebut ditandatangani dengan sebagaimana mestinya oleh
+                    wakil-wakil yang sah dari Para Pihak, perubahan tersebut akan menjadi satu kesatuan dengan dan
+                    bagian yang tidak terpisahkan dari Perjanjian ini.</p>
+                <h4 class="section-title">14. KESELURUHAN</h4>
+                <p>Perjanjian ini memuat keseluruhan perjanjian antara Para Pihak dalam Perjanjian ini yang berkaitan
+                    dengan materi pokok dari Perjanjian ini, dan menggantikan setiap dan semua perjanjian, komunikasi
+                    dan kesepahaman sebelumnya, baik secara tertulis atau lisan, mengenai materi pokok tersebut.</p>
+                <h4 class="section-title">15. BERAKHIRNYA PERJANJIAN</h4>
+                <p>Ketentuan Berakhirnya Perjanjian</p>
+                <p>Perjanjian ini dapat berakhir apabila memenuhi ketentuan-ketentuan sebagai berikut:</p>
+                <ul>
+                    <li>Berakhirnya jangka waktu perjanjian sebagaimana diatur dalam pasal 8 perjanjian ini.</li>
+                    <li>Kesepakatan kedua belah pihak.</li>
+                    <li>Terjadinya keadaan memaksa (Bencana Alam, Perang dll).</li>
+                    <li>Perusahaan mengalami gulung tikar (Bankrut).</li>
+                </ul>
+                <p>Demikian, Perjanjian ini dibuat dan ditandatangani secara Digital dengan sebagaimana mestinya oleh
+                    Para Pihak pada tanggal sebagaimana disebut di awal Perjanjian ini, dan mempunyai kekuatan hukum
+                    yang sama.</p>
+            </div>
+            <div class="col-6">
+                <h4 class="section-title">8. EFFECTIVENESS</h4>
+                <p>This agreement is effective for 12 (Twelve) Months from the date of this Agreement. The obligations
+                    of confidentiality and restrictions on the use and disclosure of the confidential information under
+                    this agreement on the Receiving Party shall continue notwithstanding the completion of the Business
+                    Purposes, the cancellation or termination of this Agreement.</p>
+                <h4 class="section-title">9. OWNERSHIP OF CUSTOMER DATABASE</h4>
+                <ol type="a">
+                    <li>Both Parties hereby agree that the customer database (Database) managed and maintained under
+                        this agreement is co-owned by both parties.</li>
+                    <li>Each party shall have equal rights to access, use, and modify the Database as necessary for
+                        their respective business purposes, subject to the terms and conditions of this agreement and
+                        applicable laws.</li>
+                    <li>Both parties agree to comply with all applicable data protection and privacy laws and
+                        regulations in their respective use and management of the Database.</li>
+                    <li>Each party shall implement appropriate technical and organizational measures to protect the
+                        Database against unauthorized access, alteration, disclosure, or destruction.</li>
+                    <li>Both parties may use the data contained in the Database for their own marketing, analytical, and
+                        operational purposes.</li>
+                    <li>Neither party shall sell, lease, or otherwise disclose the data in the Database to any third
+                        party without the prior written consent of the other party, except as required by law.</li>
+                </ol>
+                <h4 class="section-title">10. GOVERNING LAW</h4>
+                <p>This Agreement and the implementation and interpretation of it are governed by and subject to the
+                    laws of the Republic of Indonesia.</p>
+                <h4 class="section-title">11. DISPUTE RESOLUTION</h4>
+                <p>Any dispute or controversy which cannot be settled amicably by the Parties within 30 days, then
+                    either Party or the Parties together may submit the dispute or controversy to arbitration for the
+                    exclusive and final settlement of such dispute or controversy. The arbitration shall be conducted in
+                    Jakarta, Indonesia, in accordance with the rules of the Indonesian National Board of Arbitration
+                    (BANI), using 3 (three) arbitrators appointed in accordance with those rules, and using the
+                    Indonesian language.</p>
+                <h4 class="section-title">12. LANGUAGE</h4>
+                <p>This Agreement is made in two (2) languages, namely the Indonesian language and the English language.
+                    In case of any discrepancy in interpretation or understanding upon the content of this Agreement
+                    between the Indonesian-language text and the English-language text, the Indonesian language text
+                    shall prevail.</p>
+                <h4 class="section-title">13. AMENDMENT</h4>
+                <p>Any amendment to this Agreement shall not be valid and not be binding upon the Parties unless such
+                    amendment is made in writing and executed by the authorized representatives of the Parties. Once
+                    duly executed by the authorized representatives of the Parties, such amendment shall constitute an
+                    integral and inseparable part of this Agreement.</p>
+                <h4 class="section-title">14. ENTIRE AGREEMENT</h4>
+                <p>This Agreement constitutes the entire agreement between the Parties hereto regarding the subject
+                    matter hereof, and supersedes any and all prior agreements, communications, and understandings,
+                    whether written or oral, regarding such subject matter.</p>
+                <h4 class="section-title">15. TERMINATION</h4>
+                <p>This Agreement may be terminated under the following conditions:</p>
+                <ul>
+                    <li>Expiration of the term of the Agreement as stipulated in Article 8 of this Agreement.</li>
+                    <li>Mutual consent of both parties.</li>
+                    <li>Occurrence of force majeure events (natural disasters, war, etc.).</li>
+                    <li>Company bankruptcy.</li>
+                </ul>
+
+                <p>In witness whereof, this Agreement is made and signed by the Parties using Digital Signatures on the date mentioned at the beginning of this Agreement and has equal legal force.</p>
+            </div>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="row mt-5">
+            <div class="col-6">
+                <p><strong>PT. DIGITAL VOUCHER MARKET BERSAMA</strong>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br>Hasungkoro Agni Soebekti<br>
+                    Director</p>
+            </div>
+            <div class="col-6">
+                <p><strong>Signature</strong>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>Pieter Hasudungan</p>
             </div>
         </div>
     </div>
 </body>
+
 </html>
