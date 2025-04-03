@@ -73,6 +73,10 @@ class CompanyController extends Controller
         // status company jadi not verify 'a'
     }
 
+    public function aggrement(){
+        return view('company.pks');
+    }
+
     public function getCity($id){
         $data = MtCity::where('kode_provinsi', $id)->get();
         return response()->json($data);
