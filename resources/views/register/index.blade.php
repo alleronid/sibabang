@@ -44,7 +44,7 @@
         <div class="d-flex flex-column-auto flex-column pt-15 px-30">
             <!--begin::Aside header-->
             <a href="#" class="login-logo py-6">
-                <img src="{{asset('sibabang-logo.png')}}" width="450" alt="">
+                <img src="{{asset('omnibayar_hero_hd_nobg.png')}}" width="450" alt="">
             </a>
             <!--end::Aside header-->
             <!--begin: Wizard Nav-->

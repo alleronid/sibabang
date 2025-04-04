@@ -24,7 +24,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="{{route('dashboard')}}" class="brand-logo">
-							<img alt="Logo" src="{{asset('sibabang-logo.png')}}" style="width:128px;"/>
+							<img alt="Logo" src="{{asset('omnibayar_hero_hd_nobg.png')}}" style="width:128px;"/>
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->

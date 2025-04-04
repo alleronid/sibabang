@@ -85,14 +85,19 @@
 
 @push('addon-script')
     <script>
+        $(document).ready(function() {
+            $("#v-pills-tabContent input, #v-pills-tabContent textarea, #v-pills-tabContent select").prop("disabled", true)
+        });
+
         $('#toggleEdit').click(function() {
-            var isReadOnly = $("#companyName").prop("readonly");
+            var isReadOnly = $("#v-pills-tabContent #client_name").prop("disabled");
 
             // Toggle all text inputs
-            $("#detailCompany input, #detailCompany textarea, #detailCompany select").each(function() {
+            $("#v-pills-tabContent input, #v-pills-tabContent textarea, #v-pills-tabContent select").each(function() {
+                console.log($(this));
                 if ($(this).attr("name") !== "_token") {
-                    $(this).prop("readonly", isReadOnly);
-                    $(this).prop("disabled", isReadOnly);
+                    //$(this).prop("readonly", isReadOnly ? false : true);
+                    $(this).prop("disabled", isReadOnly ? false : true);
                 }
             });
 
@@ -145,34 +150,92 @@
         function getCompany(id) {
             $.get('/app/admin/company/show/' + id, function(data) {
                 let detail = data.detail
-                $("#company_id").val(detail.id);
-                $("#client_name").val(detail.client_name);
-                $("#client_no_ktp").val(detail.client_no_ktp);
-                $("#client_address").val(detail.client_address);
-                $("#client_postcode").val(detail.client_postcode);
-                $("#client_npwp").val(detail.client_npwp);
-                $("#client_email").val(detail.client_email);
-                $("#client_phone_number").val(detail.client_phone_number);
-                $("#client_rt_rw").val(detail.client_rt_rw);
-                $("#client_no_kk").val(detail.client_no_kk);
+                if(detail){
+                    $("#company_id").val(detail.id);
+                    $("#client_name").val(detail.client_name);
+                    $("#client_no_ktp").val(detail.client_no_ktp);
+                    $("#client_address").val(detail.client_address);
+                    $("#client_postcode").val(detail.client_postcode);
+                    $("#client_npwp").val(detail.client_npwp);
+                    $("#client_email").val(detail.client_email);
+                    $("#client_phone_number").val(detail.client_phone_number);
+                    $("#client_rt_rw").val(detail.client_rt_rw);
+                    $("#client_no_kk").val(detail.client_no_kk);
 
-                // Populate province dropdown
-                $("#propinsi").val(detail.client_province_id).trigger("change");
+                    // Populate province dropdown
+                    $("#propinsi").val(detail.client_province_id).trigger("change");
 
-                // Populate Kota/Kabupaten dropdown
-                if (detail.client_city_id) {
-                    $("#kabKota").html(`<option value="${detail.client_city_id}" selected>${detail.kota_kabupaten?.nama_kab_kota ?? ''}</option>`);
-                    //$("#kabKota").val(detail.client_city_id).trigger("change");
-                }
+                    // Populate Kota/Kabupaten dropdown
+                    if (detail.client_city_id) {
+                        $("#kabKota").html(`<option value="${detail.client_city_id}" selected>${detail.kota_kabupaten?.nama_kab_kota ?? ''}</option>`);
+                        //$("#kabKota").val(detail.client_city_id).trigger("change");
+                    }
 
-                // Populate Kecamatan dropdown
-                if (detail.client_kecamatan_id) {
-                    $("#kecamatan").html(`<option value="${detail.client_kecamatan_id}" selected>${detail.kecamatan?.nama_kecamatan ?? ''}</option>`);
-                }
+                    // Populate Kecamatan dropdown
+                    if (detail.client_kecamatan_id) {
+                        $("#kecamatan").html(`<option value="${detail.client_kecamatan_id}" selected>${detail.kecamatan?.nama_kecamatan ?? ''}</option>`);
+                    }
 
-                // Populate Kelurahan/Desa dropdown
-                if (detail.client_kel_desa_id) {
-                    $("#kelDesa").html(`<option value="${detail.client_kel_desa_id}" selected>${detail.desa_kelurahan?.nama_desa_kelurahan ?? ''}</option>`);
+                    // Populate Kelurahan/Desa dropdown
+                    if (detail.client_kel_desa_id) {
+                        $("#kelDesa").html(`<option value="${detail.client_kel_desa_id}" selected>${detail.desa_kelurahan?.nama_desa_kelurahan ?? ''}</option>`);
+                    }
+
+
+                    // Fill merchant/company info
+                    $("#merchant_name").val(detail.merchant_name);
+                    $("#merchant_address").val(detail.merchant_address);
+                    $("#merchant_postcode").val(detail.merchant_postcode);
+                    $("#merchant_amount").val(detail.merchant_amount);
+                    $("#merchant_rt_rw").val(detail.merchant_rt_rw);
+                    $("#account_number").val(detail.account_number);
+                    $("#account_name").val(detail.account_name);
+                    $("#bank_name").val(detail.bank_name); // hidden input
+                    $("#bank_id").val(detail.bank_id).trigger('change');
+
+                    // Province
+                    $("#merchant_province_id").val(detail.merchant_province_id).trigger('change');
+
+                    // City
+                    if (detail.merchant_city_id) {
+                        $("#merchant_city_id").html(`<option value="${detail.merchant_city_id}" selected>${detail.merchant_kota?.nama_kab_kota ?? ''}</option>`);
+                    }
+
+                    // Kecamatan
+                    if (detail.merchant_kecamatan_id) {
+                        $("#merchant_kecamatan_id").html(`<option value="${detail.merchant_kecamatan_id}" selected>${detail.merchant_kecamatan?.nama_kecamatan ?? ''}</option>`);
+                    }
+
+                    // Kelurahan
+                    if (detail.merchant_kel_desa_id) {
+                        $("#merchant_kel_desa_id").html(`<option value="${detail.merchant_kel_desa_id}" selected>${detail.merchant_kelurahan?.nama_desa_kelurahan ?? ''}</option>`);
+                    }
+                    const files = {
+                        file_ktp: 'KTP Direktur',
+                        file_rekening: 'Buku Rekening',
+                        file_tempat_usaha: 'Foto Tempat Usaha',
+                        file_npwp: 'NPWP',
+                        file_siup: 'SIUP',
+                        file_nib: 'NIB',
+                        file_akta_pendirian: 'Akta Pendirian',
+                        file_akta_perubahan: 'Dokumen Lainnya'
+                    };
+
+                    Object.entries(files).forEach(([key, label]) => {
+                        const container = $(`#preview_${key}`);
+                        if (detail[key]) {
+                            container.html(`
+                                <a href="/storage/${detail[key]}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> ${label}
+                                </a>
+                            `);
+                        } else {
+                            container.html(`
+                                <label for="">${label}</label>
+                                <input type="file" class="form-control" name="${key}" ${['file_npwp', 'file_akta_perubahan'].includes(key) ? '' : 'required'}/>
+                            `);
+                        }
+                    });
                 }
 
                 $('#detailCompany').modal("toggle")

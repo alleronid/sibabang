@@ -5,113 +5,105 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        @if (empty($detail->file_ktp))
-                        <div class="form-group">
-                            <label for="">KTP Direktur</label>
-                            <input type="file" class="form-control" name="file_ktp" required/>
+                        <div class="form-group" id="preview_file_ktp">
+                            @if (empty($detail->file_ktp))
+                                <label for="">KTP Direktur</label>
+                                <input type="file" class="form-control" name="file_ktp" required/>
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_ktp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> KTP
+                                </a>
+                            @endif
                         </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_ktp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                KTP</a>
+
+                        <div class="form-group" id="preview_file_rekening">
+                            @if (empty($detail->file_rekening))
+                                <label for="">Buku Rekening</label>
+                                <input type="file" class="form-control" name="file_rekening" required/>
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> Buku Rekening
+                                </a>
+                            @endif
                         </div>
-                        @endif
-                        @if (empty($detail->file_rekening))
-                        <div class="form-group">
-                            <label for="">Buku Rekening</label>
-                            <input type="file" class="form-control" name="file_rekening" required/>
+
+                        <div class="form-group" id="preview_file_tempat_usaha">
+                            @if (empty($detail->file_tempat_usaha))
+                                <label for="">Foto Tempat Usaha</label>
+                                <input type="file" class="form-control" name="file_tempat_usaha" required />
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_tempat_usaha)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> Foto Tempat Usaha
+                                </a>
+                            @endif
                         </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                Buku Rekening</a>
+
+                        <div class="form-group" id="preview_file_npwp">
+                            @if (empty($detail->file_npwp))
+                                <label for="">NPWP <sup>*)</sup></label>
+                                <input type="file" class="form-control" name="file_npwp" />
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_npwp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> NPWP
+                                </a>
+                            @endif
                         </div>
-                        @endif
-                        @if (empty($detail->file_rekening))
-                        <div class="form-group">
-                            <label for="">Foto Tempat Usaha</label>
-                            <input type="file" class="form-control" name="file_tempat_usaha" required />
-                        </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_rekening)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                Foto Tempat Usaha</a>
-                        </div>
-                        @endif
-                        @if (empty($detail->file_npwp))
-                        <div class="form-group">
-                            <label for="">NPWP <sup>*)</sup></label>
-                            <input type="file" class="form-control" name="file_npwp" />
-                        </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_npwp)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                NPWP</a>
-                        </div>
-                        @endif
                     </div>
+
                     <div class="col-md-6">
-                        @if (empty($detail->file_siup))
-                        <div class="form-group">
-                            <label for="">SIUP</label>
-                            <input type="file" class="form-control" name="file_siup" required/>
+                        <div class="form-group" id="preview_file_siup">
+                            @if (empty($detail->file_siup))
+                                <label for="">SIUP</label>
+                                <input type="file" class="form-control" name="file_siup" required/>
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_siup)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> SIUP
+                                </a>
+                            @endif
                         </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_siup)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                SIUP</a>
+
+                        <div class="form-group" id="preview_file_nib">
+                            @if (empty($detail->file_nib))
+                                <label for="">NIB</label>
+                                <input type="file" class="form-control" name="file_nib" required/>
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_nib)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> NIB
+                                </a>
+                            @endif
                         </div>
-                        @endif
-                        @if (empty($detail->file_nib))
-                        <div class="form-group">
-                            <label for="">NIB</label>
-                            <input type="file" class="form-control" name="file_nib" required/>
+
+                        <div class="form-group" id="preview_file_akta_pendirian">
+                            @if (empty($detail->file_akta_pendirian))
+                                <label for="">Akta Pendirian</label>
+                                <input type="file" class="form-control" name="file_akta_pendirian" required />
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_akta_pendirian)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> Akta Pendirian
+                                </a>
+                            @endif
                         </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_nib)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                NIB</a>
+
+                        <div class="form-group" id="preview_file_akta_perubahan">
+                            @if (empty($detail->file_akta_perubahan))
+                                <label for="">Dokumen Lainnya <sup>*)</sup></label>
+                                <input type="file" class="form-control" name="file_akta_perubahan" />
+                            @else
+                                <a href="{{asset('storage/'. $detail->file_akta_perubahan)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
+                                    <i class="flaticon-file"></i> Akta Perubahan
+                                </a>
+                            @endif
                         </div>
-                        @endif
-                        @if (empty($detail->file_akta_pendirian))
-                        <div class="form-group">
-                            <label for="">Akta Pendirian</label>
-                            <input type="file" class="form-control" name="file_akta_pendirian" required />
-                        </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_akta_pendirian)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                Akta Pendirian</a>
-                        </div>
-                        @endif
-                        @if (empty($detail->file_akta_perubahan))
-                        <div class="form-group">
-                            <label for="">Dokumen Lainnya <sup>*)</sup></label>
-                            <input type="file" class="form-control" name="file_akta_perubahan" />
-                        </div>
-                        @else
-                        <div class="form-group">
-                            <a href="{{asset('storage/'. $detail->file_akta_perubahan)}}" class="btn btn-sm btn-primary rounded-lg ml-2" target="_blank">
-                                <i class="flaticon-file"></i>
-                                Akta Perubahan</a>
-                        </div>
-                        @endif
                     </div>
                 </div>
+
                 <div class="row">
                     @if (empty($detail->file_ktp))
-                    <button type="submit" class="btn btn-block btn-success">
-                        Submit
-                    </button>
+                        <button type="submit" class="btn btn-block btn-success">
+                            Submit
+                        </button>
                     @else
-                    <a href="" class="btn btn-block btn-primary">Edit</a>
+                        <a href="" class="btn btn-block btn-primary">Edit</a>
                     @endif
                 </div>
             </div>
