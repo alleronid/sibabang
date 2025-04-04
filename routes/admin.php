@@ -9,7 +9,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Middleware\IsAdmin;
 use App\Models\User;
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'app'], function () {
+Route::group(['middleware' => ['NotLandingPage'], 'prefix' => 'app'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
             Route::get('/', [DashboardController::class, 'admin'])->name('index');

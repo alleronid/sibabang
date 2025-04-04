@@ -10,7 +10,8 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 
-Route::group(['middleware' => 'auth', 'prefix' => 'app'], function () {
+// ga bisa diakses sama app.com
+Route::group(['middleware' => 'NotLandingPage', 'prefix' => 'app'], function () {
     Route::get('/dashboard', [DashboardController::class, 'merchant'])->name('dashboard');
     Route::get('/detail-wallet/{mId}', [DashboardController::class, 'getDetailWallet'])->name('dashboard.wallet');
 
