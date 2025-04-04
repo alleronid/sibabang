@@ -4,7 +4,7 @@
 <!-- About Us Section -->
 <section class="pt-24 pb-16 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <img src="{{asset('sibabang-logo.png')}}" alt="SIBABANG Logo" class="h-12 mx-auto mb-4">
+        <img src="{{asset('omnibayar_hero_hd_nobg.png')}}" alt="SIBABANG Logo" class="h-12 mx-auto mb-4">
         <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-4">
             Tentang <span class="text-indigo-600">SIBABANG</span>
         </h1>
