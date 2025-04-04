@@ -45,7 +45,16 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center">
-                    <a href="{{route('login')}}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                    @php
+                        if (app()->environment('production')) {
+                                $host = request()->getHost(); // e.g. merchant.app.com or backoffice.app.com
+                                $baseDomain = preg_replace('/^(.*?)\\./', '', $host); // strip subdomain
+                                $login_url = 'https://merchant.' . $baseDomain . '/login';
+                            }else{
+                                $login_url = route('login');
+                            }
+                    @endphp
+                    <a href="{{$login_url}}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
                         Masuk
                     </a>
                     <a href="{{route('register')}}" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
@@ -89,8 +98,17 @@
                         </a>
                     </div>
                     @else
+                        @php
+                            if (app()->environment('production')) {
+                                $host = request()->getHost(); // e.g. merchant.app.com or backoffice.app.com
+                                $baseDomain = preg_replace('/^(.*?)\\./', '', $host); // strip subdomain
+                                $login_url = 'merchant.' . $baseDomain . '/login';
+                            }else{
+                                $login_url = route('login');
+                            }
+                        @endphp
                     <div class="flex-shrink-0">
-                        <a href="{{route('login')}}" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                        <a href="{{$login_url}}" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
                             Masuk
                         </a>
                     </div>
