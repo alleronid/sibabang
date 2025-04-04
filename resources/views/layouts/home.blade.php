@@ -47,9 +47,8 @@
                 <div class="hidden md:flex items-center">
                     @php
                         if (app()->environment('production')) {
-                                $host = request()->getHost(); // e.g. merchant.app.com or backoffice.app.com
-                                $baseDomain = preg_replace('/^(.*?)\\./', '', $host); // strip subdomain
-                                $login_url = 'https://merchant.' . $baseDomain . '/login';
+                                $host = request()->getHost();
+                                $login_url = 'merchant.' . $host . '/login';
                             }else{
                                 $login_url = route('login');
                             }
@@ -100,9 +99,8 @@
                     @else
                         @php
                             if (app()->environment('production')) {
-                                $host = request()->getHost(); // e.g. merchant.app.com or backoffice.app.com
-                                $baseDomain = preg_replace('/^(.*?)\\./', '', $host); // strip subdomain
-                                $login_url = 'merchant.' . $baseDomain . '/login';
+                                $host = request()->getHost();
+                                $login_url = 'merchant.' . $host . '/login';
                             }else{
                                 $login_url = route('login');
                             }
